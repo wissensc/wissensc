@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="scale_exit_group_user" model="res.groups">
+        <field name="name">Báscula de salida</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="scale_driver_group_user" model="res.groups">
+        <field name="name">Choferes</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

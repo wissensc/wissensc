@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bascule
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20210112\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-14 06:32+0000\n"
+"PO-Revision-Date: 2021-01-14 00:39-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "<span>Kg</span>"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Additional costs"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: bascule
+#: model:ir.actions.act_window,name:bascule.bascule_model_action
+#: model:ir.actions.report,name:bascule.bascule_report
+#: model:ir.model,name:bascule.model_bascule
+#: model:ir.ui.menu,name:bascule.bascule_menu
+#: model:ir.ui.menu,name:bascule.base_menu
+#: model:res.groups,name:bascule.bascule_group_user
+msgid "Bascule"
+msgstr "Báscula"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__current_weight
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Current weight"
+msgstr "Peso actual"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__rel_driver
+msgid "Driver"
+msgstr "Conductor"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__name
+msgid "Folio"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__freight
+msgid "Freight"
+msgstr "Carga"
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Gross weight"
+msgstr "Peso bruto"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__id
+msgid "ID"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__message_needaction
+#: model:ir.model.fields,help:bascule.field_bascule__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__rel_license_plate
+msgid "License plate"
+msgstr "Matrícula"
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__rel_license_plate
+msgid "License plate number of the vehicle (i = plate number for a car)"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__maneuvers
+msgid "Maneuvers"
+msgstr "Maniobras"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__note
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Note"
+msgstr "Nota"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__others
+msgid "Others"
+msgstr "Otros"
+
+#. module: bascule
+#: model:ir.model.fields.selection,name:bascule.selection__bascule__type__purchase
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Purchase information"
+msgstr "Información de compra"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__purchase_number
+msgid "Purchase number"
+msgstr "Número de compra"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__read_weight
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Read weight"
+msgstr "Leer peso"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields.selection,name:bascule.selection__bascule__type__sale
+msgid "Sale"
+msgstr "Venta"
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Sale information"
+msgstr "Información de compra"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__sale_number
+msgid "Sale number"
+msgstr "Número de compra"
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__tare_weight
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Tare weight"
+msgstr "Leer peso"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__total_cost
+msgid "Total cost"
+msgstr "Costo total"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__vehicle_id
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: bascule
+#: model:ir.model.fields,help:bascule.field_bascule__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: bascule
+#: model_terms:ir.ui.view,arch_db:bascule.bascule_view_form
+msgid "Weights"
+msgstr "Pesos"
+
+#. module: bascule
+#: model:ir.model.fields,field_description:bascule.field_bascule__gross_weight
+msgid "gross weight"
+msgstr "Peso bruto"
