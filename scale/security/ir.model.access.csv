@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+scale_exit_model_access_right_user,scale_exit_model_access_right,model_scale_exit,scale_exit_group_user,1,1,1,1
+scale_driver_model_access_right_user,scale_driver_model_access_right,model_scale_driver,scale_driver_group_user,1,1,1,1
+scale_exit_orderline_model_access_right_user,scale_exit_orderline_model_access_right,model_scale_exit_orderline,scale_exit_group_user,1,1,1,1
