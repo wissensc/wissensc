@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="lob_view_form" model="ir.ui.view">
+        <field name="name">LOB Form</field>
+        <field name="model">lob</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <field name="image"
+                           widget='image' class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Compras">
+                            <group>
+                                <group>
+                                    <field name="scale_entrance"/>
+                                    <field name="entrance_seq_id"
+                                           attrs="{'required':[('scale_entrance','=',True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Ventas">
+                            <group>
+                                <group>
+                                    <field name="scale_exit"/>
+                                    <field name="exit_seq_id"
+                                           attrs="{'required':[('scale_exit','=',True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="lob_view_tree" model="ir.ui.view">
+        <field name="name">LOB Tree</field>
+        <field name="model">lob</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="lob_model_action" model="ir.actions.act_window">
+        <field name="name">Líneas de negocio</field>
+        <field name="res_model">lob</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Líneas de negocio" id="lob_menu"
+              parent="base.menu_users" action="lob_model_action" groups="base.group_system"/>
+</odoo>
