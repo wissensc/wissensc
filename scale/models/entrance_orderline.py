@@ -3,9 +3,9 @@
 from odoo import fields, models
 
 
-class ExitOrderLine(models.Model):
-   _name = 'scale.exit.orderline'
-   _description = 'Linea de pedido de báscula de salida'
+class EntranceOrderLine(models.Model):
+   _name = 'scale.entrance.orderline'
+   _description = 'Linea de pedido de báscula de entrada'
 
    state = fields.Selection(
       [('draft', 'Sin pesar'), ('done', 'Pesado')], 'Estado',
@@ -13,8 +13,8 @@ class ExitOrderLine(models.Model):
 
    name = fields.Char('Nombre', readonly=True)
 
-   order_id = fields.Many2one('scale.exit', 'Número de orden', readonly=True,
-                              ondelete='cascade')
+   order_id = fields.Many2one('scale.entrance', 'Número de orden',
+                              readonly=True, ondelete='cascade')
    id_line = fields.Integer('Id', readonly=True)
    unit_id = fields.Many2one('uom.uom', 'Unidad de medida', readonly=True,
                              ondelete='restrict')

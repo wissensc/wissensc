@@ -24,6 +24,7 @@
         'report/scale_report.xml',
         'report/scale_report_template.xml',
         'views/scale_exit_views.xml',
+        'views/scale_entrance_views.xml',
         'views/scale_driver_views.xml',
         'views/scale_exit_orderline_views.xml',
         #'wizard/bascule_exit_register_view.xml'
