@@ -8,14 +8,14 @@
         
     """,
 
-    'author': "Wissen S.A de CV",
+    'author': "Wissen",
     'website': "http://www.yourcompany.com",
 
 
     'category': 'Báscula',
     'version': '14.0.1',
 
-    'depends': ['sale_management', 'purchase', 'fleet', 'contacts', 'lob'],
+    'depends': ['sale_management', 'purchase', 'fleet', 'contacts', 'lob_extend'],
 
     # always loaded
     'data': [
@@ -26,7 +26,6 @@
         'views/scale_exit_views.xml',
         'views/scale_driver_views.xml',
         'views/scale_exit_orderline_views.xml',
-        'views/sale_order_view.xml',
         #'wizard/bascule_exit_register_view.xml'
     ],
     # only loaded in demonstration mode

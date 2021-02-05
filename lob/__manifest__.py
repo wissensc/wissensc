@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Lineas de negocio",
+    'name': "Líneas de negocio",
 
     'summary': """Líneas de negocio""",
 
     'description': """
-        
     """,
 
     'author': "Wissen",
@@ -20,9 +19,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/lob_view.xml',
-        'data/lob_data.xml'
+        'data/lob_data.xml',
     ],
 
-    'application': True,
     'auto_install': True,
 }
