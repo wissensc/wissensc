@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-lob_model_access_right_user,lob_model_access_right,model_lob,base.group_system,1,1,1,1
+id_lob_model_access_system,lob_model_access_system,model_lob,base.group_system,1,1,1,1
+id_lob_model_access_user,lob_model_access_user,model_lob,base.group_user,1,0,0,0
