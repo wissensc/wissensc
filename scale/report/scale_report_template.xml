@@ -45,8 +45,8 @@
                     <div class="page">
                         <div class="row">
                             <div class="col">
-                                <span>Fecha y hora de inicio: </span>
-                                <span t-field="doc.input_date"/>
+                                <strong>Fecha y hora de inicio: </strong>
+                                <strong t-field="doc.input_date"/>
                             </div>
                         </div>
                         <div class="row">
@@ -68,8 +68,6 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">PRODUCTO</th>
-                                    <th scope="col">UNIDAD</th>
-                                    <th scope="col">PESO REQUERIDO</th>
                                     <th scope="col">PESO NETO</th>
                                     <th scope="col">PESO TARA</th>
                                     <th scope="col">PESO BRUTO</th>
@@ -80,12 +78,6 @@
                                     <tr>
                                         <td>
                                             <span t-field="line.name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.unit_id"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.weight_order"/>
                                         </td>
                                         <td>
                                             <span t-field="line.net_weight"/>
@@ -101,10 +93,10 @@
                             </tbody>
                         </table>
                        <div class="float-right mt-4"
-                             style="color:#000;font-weight:bold;font-size:15px;">
-                            <span class="mr-3">Peso neto total: </span>
+                             style="color:#000;font-weight:bold;font-size:16px;">
+                            <span class="mr-2">Peso neto total: </span>
                             <span t-field="doc.total_weight"/>
-                            <span> Kg</span>
+                            <span class="pr-1" t-field="doc.unit_id.name"/>
                         </div>
                     </div>
                     <div class="footer">
