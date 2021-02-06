@@ -18,8 +18,8 @@
                                 </h2>
                             </div>
                             <div class="col-3">
-                                <img t-if="doc.plant_id.image"
-                                     t-att-src="image_data_uri(doc.plant_id.image)"
+                                <img t-if="doc.plant_id.logo"
+                                     t-att-src="image_data_uri(doc.plant_id.logo)"
                                      alt="Logo" style="max-height:80px;" class="float-right"/>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 Matrícula: <span t-field="doc.rel_license_plate"/></p>
                             </div>
                             <div class="col-6">
-                                <p>Cliente: <span t-field="doc.rel_customer"/></p>
+                                <p>Cliente: <span t-field="doc.rel_partner"/></p>
                             </div>
                         </div>
                         <table class="table mt-5">
