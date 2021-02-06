@@ -9,11 +9,11 @@ class Lob(models.Model):
 
    name = fields.Char('Nombre', required=True)
    code = fields.Char('Código', required=True)
-   image = fields.Binary(attachment=True)
+   logo = fields.Binary(attachment=True, copy=False)
 
-   scale_entrance = fields.Boolean('Báscula de entrada')
-   scale_exit = fields.Boolean('Báscula de salida')
+   scale_entrance = fields.Boolean('Báscula de entrada', copy=False)
+   scale_exit = fields.Boolean('Báscula de salida', copy=False)
    entrance_seq_id = fields.Many2one('ir.sequence',
-                                     'Secuencia de báscula de entrada')
+                                     'Secuencia de báscula de entrada', copy=False)
    exit_seq_id = fields.Many2one('ir.sequence',
-                                 'Secuencia de báscula de sálida')
+                                 'Secuencia de báscula de sálida', copy=False)

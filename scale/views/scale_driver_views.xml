@@ -9,6 +9,7 @@
                 <header>
                 </header>
                 <sheet>
+                    <field name="photo" widget='image' class="oe_avatar"/>
                     <group>
                         <group>
                             <field name="name"/>

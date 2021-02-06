@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <odoo>
 
-    <record id="scale_exit_view_form" model="ir.ui.view">
-        <field name="name">Scale Exit Form</field>
-        <field name="model">scale.exit</field>
+    <record id="scale_entrance_view_form" model="ir.ui.view">
+        <field name="name">Scale Entrance Form</field>
+        <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
             <form>
                 <header>
@@ -81,7 +81,7 @@
                                     </sheet>
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom" create="false" delete="false">
-                                    <field name="id_line" force_save="1" optional="show"/>
+                                    <field name="id_line" force_save="1" oiptional="show"/>
                                     <field name="name" force_save="1" widget="section_and_note_text"/>
                                     <field name="unit_id" force_save="1" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -128,9 +128,9 @@
             </form>
         </field>
     </record>
-    <record id="scale_exit_view_tree" model="ir.ui.view">
-        <field name="name">Scale Exit Tree</field>
-        <field name="model">scale.exit</field>
+    <record id="scale_entrance_view_tree" model="ir.ui.view">
+        <field name="name">Scale Entrance Tree</field>
+        <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -141,26 +141,21 @@
             </tree>
         </field>
     </record>
-    <record id="scale_exit_view_search" model="ir.ui.view">
-        <field name="name">Scale Exit Search</field>
-        <field name="model">scale.exit</field>
+    <record id="scale_entrance_view_search" model="ir.ui.view">
+        <field name="name">Scale Entrance Search</field>
+        <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
             </search>
         </field>
     </record>
-    <record id="scale_exit_model_action" model="ir.actions.act_window">
-        <field name="name">Salidas de báscula</field>
-        <field name="res_model">scale.exit</field>
+    <record id="scale_entrance_model_action" model="ir.actions.act_window">
+        <field name="name">Entradas de báscula</field>
+        <field name="res_model">scale.entrance</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Báscula" id="base_menu"/>
-    <menuitem name="Informes" sequence="98" id="reporting"
-              parent="base_menu"/>
-    <menuitem name="Configuración" sequence="99" id="configuration"
-              parent="base_menu"/>
-    <menuitem name="Salidas" id="scale_exit_menu"
-              parent="base_menu" sequence="2" action="scale_exit_model_action"/>
+    <menuitem name="Entradas" id="scale_entrance_menu"
+              parent="base_menu" sequence="1" action="scale_entrance_model_action"/>
 </odoo>
