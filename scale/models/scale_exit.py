@@ -22,11 +22,12 @@ class ScaleExit(models.Model):
                             index=True, tracking=3,
                             default='draft')
 
-   type = fields.Char('Tipo', default='Salida', required=True, readonly=True)
+   type = fields.Selection([('exit', 'Salida')], 'Tipo', default='exit',
+                           required=True, readonly=True)
 
    plant_id = fields.Many2one('lob', 'Planta', default=None, required=True,
                               domain="[('scale_exit','=',True)]",
-                              states=STATES, copy=False,
+                              states=STATES,
                               ondelete='restrict', tracking=True)
 
    @api.onchange('plant_id')
@@ -34,7 +35,7 @@ class ScaleExit(models.Model):
       self.order_id = None
       self.order_line_ids = None
 
-   order_id = fields.Many2one('sale.order', 'Pedido de venta',
+   order_id = fields.Many2one('sale.order', 'Número de orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
                               domain="[('state', '=', 'sale'),('business_line','=',plant_id)]",
@@ -55,21 +56,20 @@ class ScaleExit(models.Model):
 
    rel_user = fields.Char('Comercial', related='order_id.user_id.name',
                           readonly=True)
-   rel_date_order = fields.Datetime('Fecha de pedido',
+   rel_date_order = fields.Datetime('Fecha de orden',
                                     related='order_id.date_order',
                                     readonly=True)
-   rel_customerId = fields.Integer('Cliente Id',
-                                   related='order_id.partner_id.id',
-                                   readonly=True)
-   rel_customer = fields.Char('Cliente',
-                              related='order_id.partner_id.name',
-                              readonly=True)
+   rel_idpartner = fields.Integer('Cliente Id',
+                                  related='order_id.partner_id.id',
+                                  readonly=True)
+   rel_partner = fields.Char('Cliente',
+                             related='order_id.partner_id.name',
+                             readonly=True)
 
-   unit_id = fields.Many2one('uom.uom', 'Unidad de medida',
+   unit_id = fields.Many2one('uom.uom', 'Unidad de báscula',
                              default=lambda x: x.env.ref(
                                 'uom.product_uom_kgm').id, ondelete='restrict',
-                             required=True,
-                             readonly=True)
+                             required=True, readonly=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -96,7 +96,8 @@ class ScaleExit(models.Model):
                                         self.order_id.name))
 
    order_line_ids = fields.One2many('scale.exit.orderline', 'order_id',
-                                    string='Lineas del pedido', states=STATES, copy=False)
+                                    string='Lineas del pedido', states=STATES,
+                                    copy=False)
 
    note = fields.Text('Nota')
 
@@ -107,6 +108,7 @@ class ScaleExit(models.Model):
                                    default=fields.Datetime.now,
                                    readonly=True)
    exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
+
 
    @api.depends('order_line_ids', 'order_id')
    def _compute_lines(self):
@@ -125,6 +127,11 @@ class ScaleExit(models.Model):
          vals['name'] = seq.next_by_code(code) or 'Nuevo'
       result = super(ScaleExit, self).create(vals)
       return result
+
+   def unlink(self):
+      if self.state == 'sent':
+         raise ValidationError(_('No se puede eliminar báscula enviada, existen movimientos'))
+      return super(ScaleExit, self).unlink()
 
    def action_confirm(self):
       if not 'draft' in self.order_line_ids.mapped('state'):

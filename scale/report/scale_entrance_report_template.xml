@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Template-->
+    <template id="scale_entrance_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="header">
+                        <div class="row">
+                            <div class="col-3">
+                                <img t-if="user.company_id.logo"
+                                     t-att-src="image_data_uri(user.company_id.logo)"
+                                     alt="Logo" style="max-height:80px;" class="float-left"/>
+                            </div>
+                            <div class="col-6 text-center">
+                                <h2>
+                                    PROTEÍNAS, ENERGÉTICOS Y OLEOS, S.A. DE C.V.
+                                </h2>
+                            </div>
+                            <div class="col-3">
+                                <img t-if="doc.plant_id.logo"
+                                     t-att-src="image_data_uri(doc.plant_id.logo)"
+                                     alt="Logo" style="max-height:80px;" class="float-right"/>
+                            </div>
+                        </div>
+                        <div class="mt-2" style="border:1px solid #222;">
+                            <p class="text-center text-secondary p-1"
+                               style="font-size:13px;line-height:normal;padding:0;margin:0">
+                                Domicilio: Antonio Gonzalez Mendoza No. 1 Col. Viveros de Xalostoc, Ecatepec, Edo de
+                                México, C.P: 55340 R.F.C: PEO 8602207 4J1 Tel. Conmutador: 57 55 81 90 Fax: 55 69 85
+                                85
+                                e-mail: <u>bascula@proteinasmex.com.mx</u> Sucursal: Camino viejo a San Juan
+                                Teotihuacán
+                                Km 4.5 Col. Santiago Zacualuca , San Juan Teotihuacán, Edo de México , C.P: 55825
+                                Tel.
+                                Conmutador: 59 34 61 74
+                            </p>
+                        </div>
+                        <div class="float-right mt-2"
+                             style="color:#E23E1B;font-weight:bold;font-size:20px;">
+                            <span class="mr-3">NO. DE FOLIO: </span>
+                            <span t-field="doc.name"/>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <div class="row">
+                            <div class="col">
+                                <strong>Fecha y hora de inicio: </strong>
+                                <strong t-field="doc.entrance_date"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>Fecha y hora de Fin: </span>
+                                <span t-field="doc.exit_date"/>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <p>Chofer: <span t-field="doc.driver_id"/><br/>
+                                Matrícula: <span t-field="doc.rel_license_plate"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p>Cliente: <span t-field="doc.rel_partner"/></p>
+                            </div>
+                        </div>
+                        <table class="table mt-5">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">PRODUCTO</th>
+                                    <th scope="col">PESO NETO</th>
+                                    <th scope="col">PESO TARA</th>
+                                    <th scope="col">PESO BRUTO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.order_line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.net_weight"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.tare_weight"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.gross_weight"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                       <div class="float-right mt-4"
+                             style="color:#000;font-weight:bold;font-size:16px;">
+                            <span class="mr-2">Peso neto total: </span>
+                            <span t-field="doc.total_weight"/>
+                            <span class="pr-1" t-field="doc.unit_id.name"/>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col">
+                                <span>Firma de Báscula:</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 mx-auto text-center" style="border-top:1px solid #000;">
+                                <span>Firma</span>
+                            </div>
+                        </div>
+                        <div class="text-right mt-4">
+                            <div t-if="report_type == 'pdf'">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

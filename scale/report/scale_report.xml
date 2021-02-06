@@ -16,6 +16,17 @@
         <field name="dpi">90</field>
     </record>
     <!--Report-->
+    <record id="scale_entrance_report" model="ir.actions.report">
+        <field name="name">Báscula</field>
+        <field name="model">scale.entrance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">scale.scale_entrance_report_template</field>
+        <field name="report_file">scale.scale_entrance_report_template</field>
+        <field name="binding_model_id" ref="model_scale_entrance"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form</field>
+        <field name="paperformat_id" ref="scale.paperformat_scale"/>
+    </record>
     <record id="scale_exit_report" model="ir.actions.report">
         <field name="name">Báscula</field>
         <field name="model">scale.exit</field>
