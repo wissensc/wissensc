@@ -17,7 +17,6 @@
    'depends': ['sale_management', 'purchase', 'fleet', 'contacts',
                'lob_extend'],
 
-   # always loaded
    'data': [
       'security/groups.xml',
       'security/ir.model.access.csv',
@@ -28,12 +27,7 @@
       'views/scale_entrance_views.xml',
       'views/scale_driver_views.xml',
       'report/scale_reporting_views.xml',
-      # 'wizard/bascule_exit_register_view.xml'
    ],
-   # only loaded in demonstration mode
-   # 'demo': [
-   #    'demo.xml',
-   # ],
    'installable': True,
    'application': True,
    'auto_install': False,
