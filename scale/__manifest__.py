@@ -27,7 +27,6 @@
       'views/scale_exit_views.xml',
       'views/scale_entrance_views.xml',
       'views/scale_driver_views.xml',
-      'views/scale_exit_orderline_views.xml',
       'report/scale_reporting_views.xml',
       # 'wizard/bascule_exit_register_view.xml'
    ],
