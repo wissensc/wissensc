@@ -15,7 +15,9 @@ class ExitOrderLine(models.Model):
 
    order_id = fields.Many2one('scale.exit', 'Número de orden', readonly=True,
                               ondelete='cascade')
-   id_line = fields.Integer('Id', readonly=True)
+   line_id = fields.Many2one('sale.order.line', 'Linea de orden', readonly=True)
+   rel_line_id_id = fields.Integer(string='Id', related='line_id.id', readonly=True)
+
    unit_id = fields.Many2one('uom.uom', 'Unidad de medida', readonly=True,
                              ondelete='restrict')
    weight_order = fields.Float('Peso requerido', readonly=True)

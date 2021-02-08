@@ -39,7 +39,8 @@
                     </group>
                     <group>
                         <group>
-                            <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                            <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                                   readonly="True"/>
                         </group>
                     </group>
                     <notebook>
@@ -66,7 +67,7 @@
                                     <sheet>
                                         <group>
                                             <group>
-                                                <field name="id_line"/>
+                                                <field name="rel_line_id_id"/>
                                                 <field name="name"/>
                                                 <field name="unit_id"
                                                        options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -81,7 +82,8 @@
                                     </sheet>
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom" create="false" delete="false">
-                                    <field name="id_line" force_save="1" oiptional="show"/>
+                                    <field name="line_id" force_save="1" invisible="False"/>
+                                    <field name="rel_line_id_id" optional="show"/>
                                     <field name="name" force_save="1" widget="section_and_note_text"/>
                                     <field name="unit_id" force_save="1" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -99,18 +101,20 @@
                             <div class="float-right">
                                 <label for="total_weight"/>
                                 <field name="total_weight" nolabel="1" class="mr-2"/>
-                                <span><field name="unit_id" nolabel="1"/></span>
+                                <span><field name="unit_id" nolabel="1"
+                                             options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                                             readonly="True"/></span>
                             </div>
                             <group name="note_group" col="6" class="mt-2 mt-md-0">
                                 <group colspan="4">
-                                    <field name="note" nolabel="1" placeholder="Note"/>
+                                    <field name="note" nolabel="1" placeholder="Observaciones"/>
                                 </group>
                             </group>
                         </page>
                         <page string="Datos del sistema">
                             <group>
                                 <group>
-                                    <field name="exit_uid"/>
+                                    <field name="create_uid"/>
                                 </group>
                                 <group>
                                     <field name="entrance_date"/>
@@ -136,9 +140,21 @@
                 <field name="name"/>
                 <field name="rel_date_order"/>
                 <field name="rel_partner"/>
+                <field name="driver_id"/>
+                <field name="create_uid"/>
                 <field name="state" widget="badge" decoration-info="state == 'draft'"
                        decoration-success="state == 'sent'"/>
             </tree>
+        </field>
+    </record>
+    <record id="scale_entrance_view_pivot" model="ir.ui.view">
+        <field name="name">Scale Entrance Pivot</field>
+        <field name="model">scale.entrance</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="plant_id" type="row"/>
+                <field name="order_id" type="col"/>
+            </pivot>
         </field>
     </record>
     <record id="scale_entrance_view_search" model="ir.ui.view">
@@ -153,7 +169,7 @@
     <record id="scale_entrance_model_action" model="ir.actions.act_window">
         <field name="name">Entradas de báscula</field>
         <field name="res_model">scale.entrance</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot</field>
     </record>
 
     <menuitem name="Entradas" id="scale_entrance_menu"
