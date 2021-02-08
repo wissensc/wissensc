@@ -69,7 +69,7 @@ class ScaleExit(models.Model):
    unit_id = fields.Many2one('uom.uom', 'Unidad de báscula',
                              default=lambda x: x.env.ref(
                                 'uom.product_uom_kgm').id, ondelete='restrict',
-                             required=True, readonly=True)
+                             required=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -78,7 +78,7 @@ class ScaleExit(models.Model):
          for line in self.env['sale.order.line'].search(
                [('order_id', '=', self.order_id.id),
                 ('display_type', '=', False)]):
-            dic = {'id_line': line.id, 'name': line.product_id.name,
+            dic = {'line_id': line.id, 'name': line.product_id.name,
                    'unit_id': line.product_uom,
                    'weight_order': line.product_uom_qty}
             self.order_line_ids = [(0, 0, dic)]
@@ -101,8 +101,6 @@ class ScaleExit(models.Model):
 
    note = fields.Text('Nota')
 
-   exit_uid = fields.Char('Usuario', default=lambda x: x.env.user.name,
-                          readonly=True)
 
    entrance_date = fields.Datetime('Hora y fecha de inicio',
                                    default=fields.Datetime.now,
@@ -141,6 +139,6 @@ class ScaleExit(models.Model):
          for line in self.env['sale.order.line'].search(
                [('order_id', '=', self.order_id.id)]):
             line.qty_delivered = self.order_line_ids.filtered(
-               lambda x: x.id_line == line.id).net_weight
+               lambda x: x.line_id.id == line.id).net_weight
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
