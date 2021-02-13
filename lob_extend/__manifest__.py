@@ -15,11 +15,12 @@
     'category': 'Báscula',
     'version': '14.0.1',
 
-    'depends': ['sale_management', 'purchase', 'lob'],
+    'depends': ['sale_management', 'purchase', 'product', 'lob'],
 
     'data': [
         'views/sale_order_view.xml',
         'views/purchase_order_view.xml',
+        'views/product_template_view.xml',
     ],
     'auto_install': True,
 }
