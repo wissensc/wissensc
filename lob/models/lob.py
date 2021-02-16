@@ -13,7 +13,11 @@ class Lob(models.Model):
 
    scale_entrance = fields.Boolean('Báscula de entrada', copy=False)
    scale_exit = fields.Boolean('Báscula de salida', copy=False)
+   manoeuvre = fields.Boolean('Maniobras', copy=False)
+
    entrance_seq_id = fields.Many2one('ir.sequence',
                                      'Secuencia de báscula de entrada', copy=False)
    exit_seq_id = fields.Many2one('ir.sequence',
                                  'Secuencia de báscula de sálida', copy=False)
+   manoeuvre_seq_id = fields.Many2one('ir.sequence',
+                                 'Secuencia de maniobras', copy=False)
