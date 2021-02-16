@@ -17,10 +17,12 @@
     'depends': ['base'],
 
     'data': [
+        'security/lob_security.xml',
         'security/ir.model.access.csv',
         'views/lob_view.xml',
+        'views/res_users_view.xml',
         'data/lob_data.xml',
     ],
 
-    'auto_install': True,
+    'installable': True,
 }

@@ -22,5 +22,5 @@
         'views/purchase_order_view.xml',
         'views/product_template_view.xml',
     ],
-    'auto_install': True,
+    'installable': True,
 }

@@ -38,7 +38,7 @@ class ScaleEntrance(models.Model):
    order_id = fields.Many2one('purchase.order', 'Número de orden de compra',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'purchase'),('business_line','=',plant_id)]",
+                              domain="[('state', '=', 'purchase'),('business_line_id','=',plant_id)]",
                               tracking=2)
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
