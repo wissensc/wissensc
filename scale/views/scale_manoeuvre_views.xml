@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="scale_manoeuvre_view_form" model="ir.ui.view">
+        <field name="name">Scale Manoeuvre Form</field>
+        <field name="model">scale.manoeuvre</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm"
+                            string="Enviar" type="object"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="vehicle_id"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                            <field name="rel_license_plate"/>
+                            <field name="driver_id" options="{'no_create': True, 'no_create_edit':True}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                                   readonly="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Información de la orden">
+                                <field name="order_line_ids">
+                                <form string="Línea de la orden">
+                                    <header>
+                                        <field name="state" widget="statusbar"/>
+                                    </header>
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="unit_id"
+                                                       options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                                                <field name="weight_order"/>
+                                            </group>
+                                            <group>
+                                                <field name="net_weight"/>
+                                                <field name="tare_weight"/>
+                                                <field name="gross_weight"/>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                                <tree string="Líneas de la orden" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="unit_id" optional="show"
+                                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                                    <field name="tare_weight"/>
+                                    <field name="gross_weight"/>
+                                    <field name="net_weight"/>
+                                    <field name="state" widget="badge" decoration-info="state == 'draft'"
+                                           decoration-success="state == 'done'"/>
+                                    <button name="action_test" string="Pesar" type="object" class="btn-info"
+                                            icon="fa-truck"
+                                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                                </tree>
+                            </field>
+                            <div class="float-right">
+                                <label for="total_weight"/>
+                                <field name="total_weight" nolabel="1" class="mr-2"/>
+                                <span>
+                                    <field name="unit_id" nolabel="1"
+                                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                                           readonly="True"/>
+                                </span>
+                            </div>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="note" nolabel="1" placeholder="Observaciones"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Datos del sistema">
+                            <group>
+                                <group>
+                                    <field name="create_uid"/>
+                                </group>
+                                <group>
+                                    <field name="entrance_date"/>
+                                    <field name="exit_date"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="scale_manoeuvre_view_tree" model="ir.ui.view">
+        <field name="name">Scale Manoeuvre Tree</field>
+        <field name="model">scale.manoeuvre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="driver_id"/>
+                <field name="create_uid"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'"
+                       decoration-success="state == 'sent'"/>
+            </tree>
+        </field>
+    </record>
+    <record id="scale_manoeuvre_view_search" model="ir.ui.view">
+        <field name="name">Scale Manoeuvre Search</field>
+        <field name="model">scale.manoeuvre</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+    <record id="scale_manoeuvre_model_action" model="ir.actions.act_window">
+        <field name="name">Maniobra de báscula</field>
+        <field name="res_model">scale.manoeuvre</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Maniobras" id="scale_manoeuvre_menu"
+              parent="base_menu" sequence="3" action="scale_manoeuvre_model_action"/>
+</odoo>
