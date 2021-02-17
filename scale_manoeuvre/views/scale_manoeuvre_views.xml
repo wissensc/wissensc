@@ -135,10 +135,10 @@
         </field>
     </record>
     <record id="scale_manoeuvre_model_action" model="ir.actions.act_window">
-        <field name="name">Maniobra de báscula</field>
+        <field name="name">Maniobras de báscula</field>
         <field name="res_model">scale.manoeuvre</field>
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem name="Maniobras" id="scale_manoeuvre_menu"
-              parent="base_menu" sequence="3" action="scale_manoeuvre_model_action"/>
+              parent="scale.base_menu" sequence="3" action="scale_manoeuvre_model_action"/>
 </odoo>
