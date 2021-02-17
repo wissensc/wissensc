@@ -25,7 +25,7 @@ class ScaleEntrance(models.Model):
    type = fields.Selection([('ent', 'Entrada')], 'Tipo', default='ent',
                            required=True, readonly=True)
 
-   plant_id = fields.Many2one('lob', 'Planta', default=None, required=True,
+   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
                               domain="[('scale_entrance','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)

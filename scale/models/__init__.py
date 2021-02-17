@@ -3,6 +3,8 @@
 
 from . import scale_exit
 from . import scale_entrance
+from . import scale_manoeuvre
 from . import scale_driver
 from . import exit_orderline
 from . import entrance_orderline
+from . import manoeuvre_orderline

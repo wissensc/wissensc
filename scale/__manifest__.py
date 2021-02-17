@@ -25,6 +25,7 @@
       'report/scale_exit_report_template.xml',
       'views/scale_exit_views.xml',
       'views/scale_entrance_views.xml',
+      'views/scale_manoeuvre_views.xml',
       'views/scale_driver_views.xml',
       'report/scale_reporting_views.xml',
    ],
