@@ -25,7 +25,7 @@ class ScaleExit(models.Model):
    type = fields.Selection([('exit', 'Salida')], 'Tipo', default='exit',
                            required=True, readonly=True)
 
-   plant_id = fields.Many2one('lob', 'Planta', default=None, required=True,
+   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
                               domain="[('scale_exit','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)
@@ -38,7 +38,7 @@ class ScaleExit(models.Model):
    order_id = fields.Many2one('sale.order', 'Número de orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'sale'),('business_line','=',plant_id)]",
+                              domain="[('state', '=', 'sale'),('business_line_id','=',plant_id)]",
                               tracking=2)
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',

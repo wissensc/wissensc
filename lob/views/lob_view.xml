@@ -36,6 +36,15 @@
                                 </group>
                             </group>
                         </page>
+                        <page string="Maniobras">
+                            <group>
+                                <group>
+                                    <field name="manoeuvre"/>
+                                    <field name="manoeuvre_seq_id"
+                                           attrs="{'required':[('manoeuvre','=',True)]}"/>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
@@ -58,5 +67,5 @@
     </record>
 
     <menuitem name="Líneas de negocio" id="lob_menu"
-              parent="base.menu_users" action="lob_model_action" groups="base.group_system"/>
+              parent="base.menu_users" action="lob_model_action"/>
 </odoo>

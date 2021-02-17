@@ -60,5 +60,5 @@
     </record>
 
     <menuitem name="Folios de báscula por producto" id="scale_reporting_menu"
-              parent="reporting" action="scale_reporting_model_action"/>
+              parent="scale.reporting" action="scale_reporting_model_action"/>
 </odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+id_scale_manoeuvre_model_group,scale_manoeuvre_model_group,model_scale_manoeuvre,scale_manoeuvre_group,1,1,1,1
+id_scale_manoeuvre_orderline_model_group,scale_manoeuvre_orderline_model_group,model_scale_manoeuvre_orderline,scale_manoeuvre_group,1,1,1,1
+
+
