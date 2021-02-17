@@ -170,12 +170,6 @@
         <field name="res_model">scale.exit</field>
         <field name="view_mode">tree,form,pivot</field>
     </record>
-
-    <menuitem name="Báscula" id="base_menu"/>
-    <menuitem name="Informes" sequence="98" id="reporting"
-              parent="base_menu"/>
-    <menuitem name="Configuración" sequence="99" id="configuration"
-              parent="base_menu"/>
     <menuitem name="Salidas" id="scale_exit_menu"
               parent="base_menu" sequence="2" action="scale_exit_model_action"/>
 </odoo>
