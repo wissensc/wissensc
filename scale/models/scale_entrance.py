@@ -25,7 +25,8 @@ class ScaleEntrance(models.Model):
    type = fields.Selection([('ent', 'Entrada')], 'Tipo', default='ent',
                            required=True, readonly=True)
 
-   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
+   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None,
+                              required=True,
                               domain="[('scale_entrance','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)
@@ -38,7 +39,7 @@ class ScaleEntrance(models.Model):
    order_id = fields.Many2one('purchase.order', 'Número de orden de compra',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'purchase'),('business_line_id','=',plant_id)]",
+                              domain="[('state', '=', 'purchase'),('business_line_id','=',plant_id),('scale','=',False)]",
                               tracking=2)
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
@@ -106,7 +107,6 @@ class ScaleEntrance(models.Model):
                                    readonly=True)
    exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
 
-
    @api.depends('order_line_ids', 'order_id')
    def _compute_lines(self):
       total = 0
@@ -127,13 +127,15 @@ class ScaleEntrance(models.Model):
 
    def unlink(self):
       if self.state == 'sent':
-         raise ValidationError(_('No se puede eliminar báscula enviada, existen movimientos'))
+         raise ValidationError(
+            _('No se puede eliminar báscula enviada, existen movimientos'))
       return super(ScaleEntrance, self).unlink()
 
    def action_confirm(self):
       if not 'draft' in self.order_line_ids.mapped('state'):
          self.exit_date = datetime.now()
          self.state = 'sent'
+         self.order_id.scale = True
 
          for line in self.env['purchase.order.line'].search(
                [('order_id', '=', self.order_id.id)]):
@@ -141,3 +143,6 @@ class ScaleEntrance(models.Model):
                lambda x: x.line_id.id == line.id).net_weight
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
+
+   def action_init_weight(self):
+      pass

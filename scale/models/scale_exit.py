@@ -25,7 +25,8 @@ class ScaleExit(models.Model):
    type = fields.Selection([('exit', 'Salida')], 'Tipo', default='exit',
                            required=True, readonly=True)
 
-   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
+   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None,
+                              required=True,
                               domain="[('scale_exit','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)
@@ -38,7 +39,7 @@ class ScaleExit(models.Model):
    order_id = fields.Many2one('sale.order', 'Número de orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'sale'),('business_line_id','=',plant_id)]",
+                              domain="[('state', '=', 'sale'),('business_line_id','=',plant_id),('scale','=',False)]",
                               tracking=2)
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
@@ -101,12 +102,10 @@ class ScaleExit(models.Model):
 
    note = fields.Text('Nota')
 
-
    entrance_date = fields.Datetime('Hora y fecha de inicio',
                                    default=fields.Datetime.now,
                                    readonly=True)
    exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
-
 
    @api.depends('order_line_ids', 'order_id')
    def _compute_lines(self):
@@ -128,13 +127,15 @@ class ScaleExit(models.Model):
 
    def unlink(self):
       if self.state == 'sent':
-         raise ValidationError(_('No se puede eliminar báscula enviada, existen movimientos'))
+         raise ValidationError(
+            _('No se puede eliminar báscula enviada, existen movimientos'))
       return super(ScaleExit, self).unlink()
 
    def action_confirm(self):
       if not 'draft' in self.order_line_ids.mapped('state'):
          self.exit_date = datetime.now()
          self.state = 'sent'
+         self.order_id.scale = True
 
          for line in self.env['sale.order.line'].search(
                [('order_id', '=', self.order_id.id)]):
@@ -142,3 +143,6 @@ class ScaleExit(models.Model):
                lambda x: x.line_id.id == line.id).net_weight
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
+
+   def action_init_weight(self):
+      pass
