@@ -6,3 +6,5 @@ from . import scale_entrance
 from . import scale_driver
 from . import exit_orderline
 from . import entrance_orderline
+from . import sale_order
+from . import purchase_order
