@@ -39,9 +39,9 @@
                         <page string="Maniobras">
                             <group>
                                 <group>
-                                    <field name="manoeuvre"/>
+                                    <field name="scale_manoeuvre"/>
                                     <field name="manoeuvre_seq_id"
-                                           attrs="{'required':[('manoeuvre','=',True)]}"/>
+                                           attrs="{'required':[('scale_manoeuvre','=',True)]}"/>
                                 </group>
                             </group>
                         </page>

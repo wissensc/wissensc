@@ -26,7 +26,7 @@ class ScaleManoeuvre(models.Model):
                            required=True, readonly=True)
 
    plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
-                              domain="[('scale_exit','=',True)]",
+                              domain="[('scale_manoeuvre','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)
 
