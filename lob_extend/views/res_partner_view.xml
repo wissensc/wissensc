@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_partner_view_form_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]/group[2]/field[last()]" position="before">
+                <field name="business_line_id"
+                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+            </xpath>
+            <xpath expr="//sheet/group[1]/group[1]/field[1]" position="before">
+                <field name="code"/>
+                <field name="legal_representative"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

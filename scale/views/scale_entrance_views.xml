@@ -10,6 +10,9 @@
                     <button name="action_confirm"
                             string="Enviar" type="object"
                             attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_init_weight"
+                            string="Peso Inicial" type="object"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -67,7 +70,6 @@
                                     <sheet>
                                         <group>
                                             <group>
-                                                <field name="rel_line_id_id"/>
                                                 <field name="name"/>
                                                 <field name="unit_id"
                                                        options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -83,14 +85,14 @@
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom" create="false" delete="false">
                                     <field name="line_id" force_save="1" invisible="True"/>
-                                    <field name="rel_line_id_id" optional="show"/>
+                                    <field name="rel_line_id_id" force_save="1" invisible="True"/>
                                     <field name="name" force_save="1" widget="section_and_note_text"/>
                                     <field name="unit_id" force_save="1" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                                     <field name="weight_order" force_save="1" optional="show"/>
-                                    <field name="tare_weight"/>
-                                    <field name="gross_weight"/>
-                                    <field name="net_weight"/>
+                                    <field name="tare_weight" class="font-weight-bold"/>
+                                    <field name="gross_weight" class="font-weight-bold"/>
+                                    <field name="net_weight" class="font-weight-bold"/>
                                     <field name="state" widget="badge" decoration-info="state == 'draft'"
                                            decoration-success="state == 'done'"/>
                                     <button name="action_test" string="Pesar" type="object" class="btn-info"
