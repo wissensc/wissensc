@@ -15,12 +15,13 @@ class EntranceOrderLine(models.Model):
 
    order_id = fields.Many2one('scale.entrance', 'Número de orden',
                               readonly=True, ondelete='cascade')
+   rel_state = fields.Selection(string='Estado de orden', related='order_id.state', readonly=True)
    line_id = fields.Many2one('purchase.order.line', 'Linea de orden',
                              readonly=True)
    rel_line_id_id = fields.Integer(string='Id', related='line_id.id',
                                    readonly=True)
 
-   unit_id = fields.Many2one('uom.uom', 'Unidad de medida', readonly=True,
+   unit_id = fields.Many2one('uom.uom', 'UdM', readonly=True,
                              ondelete='restrict')
    weight_order = fields.Float('Peso requerido', readonly=True)
 

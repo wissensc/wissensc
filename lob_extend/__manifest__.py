@@ -18,6 +18,7 @@
     'depends': ['sale_management', 'purchase', 'product', 'lob', 'contacts'],
 
     'data': [
+        'security/groups.xml',
         'views/sale_order_view.xml',
         'views/purchase_order_view.xml',
         'views/product_template_view.xml',

@@ -5,12 +5,12 @@
         <field name="name">Scale Entrance Form</field>
         <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Entradas" duplicate="false">
                 <header>
-                    <button name="action_confirm"
+                    <button name="action_sent"
                             string="Enviar" type="object"
-                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
-                    <button name="action_init_weight"
+                            attrs="{'invisible': [('state', 'in', ['draft', 'sent'])]}"/>
+                    <button name="confirmation_init_weight"
                             string="Peso Inicial" type="object"
                             attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                     <field name="state" widget="statusbar"/>
@@ -18,34 +18,35 @@
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" readonly="1"/>
+                            <span attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('name', '!=', '/')]}">
+                                Borrador</span>
+                        </h1>
+
+                        <h1 class="mt0" attrs="{'invisible':[('name', '=', '/'), ('state', '=', 'draft')]}">
+                            <field name="name" readonly="True"/>
                         </h1>
                     </div>
                     <group>
                         <group>
                             <field name="type"/>
-                            <field name="plant_id"
+                            <field name="lob_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="order_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                         </group>
                         <group>
-                        </group>
-                    </group>
-                    <group>
-                        <group>
                             <field name="vehicle_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="rel_license_plate"/>
                             <field name="driver_id" options="{'no_create': True, 'no_create_edit':True}"/>
+                            <field name="vehicle_weight"/>
                         </group>
-                    </group>
+                    </group><group>
                     <group>
-                        <group>
-                            <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
-                                   readonly="True"/>
-                        </group>
+                        <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                               readonly="False"/>
                     </group>
+                </group>
                     <notebook>
                         <page string="Información de la orden">
                             <group>
@@ -84,28 +85,30 @@
                                     </sheet>
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom" create="false" delete="false">
+                                    <field name="rel_state" invisible="1"/>
                                     <field name="line_id" force_save="1" invisible="True"/>
                                     <field name="rel_line_id_id" force_save="1" invisible="True"/>
-                                    <field name="name" force_save="1" widget="section_and_note_text"/>
+                                    <field name="name" force_save="1"/>
                                     <field name="unit_id" force_save="1" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                                     <field name="weight_order" force_save="1" optional="show"/>
-                                    <field name="tare_weight" class="font-weight-bold"/>
-                                    <field name="gross_weight" class="font-weight-bold"/>
-                                    <field name="net_weight" class="font-weight-bold"/>
-                                    <field name="state" widget="badge" decoration-info="state == 'draft'"
+                                    <field name="tare_weight" decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="gross_weight" decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="net_weight" decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="state" widget="badge" class="text-white" decoration-info="state == 'draft'"
                                            decoration-success="state == 'done'"/>
                                     <button name="action_test" string="Pesar" type="object" class="btn-info"
                                             icon="fa-truck"
-                                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                                            attrs="{'invisible': ['|',('state', '!=', 'draft'),('rel_state','!=','assigned')]}"/>
                                 </tree>
                             </field>
                             <div class="float-right">
                                 <label for="total_weight"/>
                                 <field name="total_weight" nolabel="1" class="mr-2"/>
-                                <span><field name="unit_id" nolabel="1"
-                                             options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
-                                             readonly="True"/></span>
+                                <span><field name="rel_unit_name" nolabel="1"/></span>
                             </div>
                             <group name="note_group" col="6" class="mt-2 mt-md-0">
                                 <group colspan="4">
@@ -127,9 +130,9 @@
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
@@ -138,13 +141,16 @@
         <field name="name">Scale Entrance Tree</field>
         <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string="Entradas">
                 <field name="name"/>
+                <field name="order_id" optional="show"/>
                 <field name="rel_date_order"/>
                 <field name="rel_partner"/>
-                <field name="driver_id"/>
-                <field name="create_uid"/>
+                <field name="driver_id" widget="many2one_avatar"/>
+                <field name="create_uid" widget="many2one_avatar_user"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
                 <field name="state" widget="badge" decoration-info="state == 'draft'"
+                       decoration-warning="state == 'assigned'"
                        decoration-success="state == 'sent'"/>
             </tree>
         </field>
@@ -153,9 +159,9 @@
         <field name="name">Scale Entrance Pivot</field>
         <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
-            <pivot>
-                <field name="plant_id" type="row"/>
-                <field name="order_id" type="col"/>
+            <pivot string="Entradas">
+                <field name="entrance_date" type="row"/>
+                <field name="lob_id" type="col"/>
             </pivot>
         </field>
     </record>
@@ -163,7 +169,7 @@
         <field name="name">Scale Entrance Search</field>
         <field name="model">scale.entrance</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Entradas">
                 <field name="name"/>
             </search>
         </field>

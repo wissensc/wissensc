@@ -25,7 +25,7 @@ class ScaleManoeuvre(models.Model):
    type = fields.Selection([('exit', 'Salida')], 'Tipo', default='exit',
                            required=True, readonly=True)
 
-   plant_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
+   lob_id = fields.Many2one('lob', 'Línea de negocio', default=None, required=True,
                               domain="[('scale_manoeuvre','=',True)]",
                               states=STATES,
                               ondelete='restrict', tracking=True)
@@ -75,7 +75,7 @@ class ScaleManoeuvre(models.Model):
    def create(self, vals):
       if vals.get('name', 'Nuevo') == 'Nuevo':
          seq = self.env['ir.sequence']
-         code = self.env['lob'].browse(vals['plant_id']).exit_seq_id.code
+         code = self.env['lob'].browse(vals['lob_id']).exit_seq_id.code
          vals['name'] = seq.next_by_code(code) or 'Nuevo'
       result = super(ScaleManoeuvre, self).create(vals)
       return result

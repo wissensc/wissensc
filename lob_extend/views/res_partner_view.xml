@@ -10,8 +10,14 @@
                        groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
             </xpath>
             <xpath expr="//sheet/group[1]/group[1]/field[1]" position="before">
-                <field name="code"/>
-                <field name="legal_representative"/>
+                <field name="legal_representative" placeholder="Nombre del representante legal"/>
+            </xpath>
+            <xpath expr="//sheet/group[1]" position="before">
+                <group>
+                    <group>
+                        <field name="code" placeholder="Por ejemplo, 000001"/>
+                    </group>
+                </group>
             </xpath>
         </field>
     </record>

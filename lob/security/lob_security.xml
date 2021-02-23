@@ -3,7 +3,6 @@
     <!--Groups-->
     <record id="group_lob" model="res.groups">
         <field name="name">Lineas de negocio</field>
-        <field name="category_id" ref="base.module_category_usability"/>
     </record>
     <data noupdate="1">
         <!--Record rules-->
