@@ -9,6 +9,16 @@
                 <field name="business_line_id" groups="lob.group_lob"
                        options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
             </xpath>
+            <xpath expr="//div[@name='options']/div[last()]" position="after">
+                <div>
+                    <field name="weight_ok"/>
+                    <label for="weight_ok"/>
+                </div>
+            </xpath>
+            <xpath expr="//notebook/page[@name='general_information']/group[2]" position="replace">
+                <group string="Descripción">
+                    <field name="description" nolabel="1" placeholder="Añada una descripción del producto..."/>
+                </group></xpath>
         </field>
     </record>
 </odoo>

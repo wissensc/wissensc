@@ -8,3 +8,4 @@ class ProductTemplate(models.Model):
 
    business_line_id = fields.Many2one('lob', 'Línea de negocio', default=lambda
       self: self.env.user.business_line_id.id, tracking=True)
+   weight_ok = fields.Boolean("Puede ser pesado", default=False)

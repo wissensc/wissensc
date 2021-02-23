@@ -18,8 +18,8 @@
                                 </h2>
                             </div>
                             <div class="col-3">
-                                <img t-if="doc.plant_id.logo"
-                                     t-att-src="image_data_uri(doc.plant_id.logo)"
+                                <img t-if="doc.lob_id.image_128"
+                                     t-att-src="image_data_uri(doc.lob_id.image_128)"
                                      alt="Logo" style="max-height:80px;" class="float-right"/>
                             </div>
                         </div>

@@ -5,13 +5,13 @@ from odoo import fields, models
 
 class ScaleDriver(models.Model):
    _name = 'scale.driver'
-   _inherit = ['mail.thread', 'mail.activity.mixin']
+   _inherit = ['mail.thread', 'mail.activity.mixin', 'image.mixin']
    _description = 'Chofer de camión'
 
    name = fields.Char('Nombre', required=True, tracking=1)
-   photo = fields.Binary(attachment=True, copy=False)
-   license = fields.Char('Licencia', copy=False, tracking=2)
-   external = fields.Boolean('Externo', tracking=3)
+
+   license = fields.Char('Licencia', copy=False)
+   external = fields.Boolean('Externo')
 
    _sql_constraints = [
       ('license_uniq', 'unique (license)', 'Licencia usada por otro chofer')

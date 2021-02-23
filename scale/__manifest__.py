@@ -26,6 +26,7 @@
       'views/scale_entrance_views.xml',
       'views/scale_exit_views.xml',
       'views/scale_driver_views.xml',
+      'wizard/scale_confirmation_wizard.xml',
    ],
    'installable': True,
    'application': True,
