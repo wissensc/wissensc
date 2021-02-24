@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="entrance_confirmation_wizard_form" model="ir.ui.view">
+            <field name="name">entrance.confirmation.form</field>
+            <field name="model">entrance.confirmation</field>
+            <field name="arch" type="xml">
+                <form string="Mensaje">
+                    <group>
+                        <group>
+                            <field name="lot_name"/>
+                        </group>
+                    </group>
+                    <separator colspan="6"/>
+                    <footer>
+                        <button string="Confirmar" name="yes" class="btn-primary" type="object"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

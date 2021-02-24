@@ -8,27 +8,41 @@ class EntranceOrderLine(models.Model):
    _description = 'Linea de pedido de báscula de entrada'
 
    state = fields.Selection(
-      [('draft', 'Sin pesar'), ('done', 'Pesado')], 'Estado',
+      [('draft', 'Sin pesar'), ('done', 'Pesado')], "Estado",
       default='draft', readonly=True)
 
-   name = fields.Char('Nombre', readonly=True)
+   name = fields.Many2one('product.product', "Nombre", readonly=True)
 
-   order_id = fields.Many2one('scale.entrance', 'Número de orden',
+   order_id = fields.Many2one('scale.entrance', "Número de orden",
                               readonly=True, ondelete='cascade')
-   rel_state = fields.Selection(string='Estado de orden', related='order_id.state', readonly=True)
-   line_id = fields.Many2one('purchase.order.line', 'Linea de orden',
+   rel_state = fields.Selection(string="Estado de orden", related='order_id.state', readonly=True)
+   moveline_id = fields.Many2one('stock.move.line', "Linea de movimiento de stock",
                              readonly=True)
-   rel_line_id_id = fields.Integer(string='Id', related='line_id.id',
-                                   readonly=True)
 
-   unit_id = fields.Many2one('uom.uom', 'UdM', readonly=True,
+   unit_id = fields.Many2one('uom.uom', "UdM", readonly=True,
                              ondelete='restrict')
-   weight_order = fields.Float('Peso requerido', readonly=True)
+   weight_order = fields.Float("Peso requerido", readonly=True)
 
-   tare_weight = fields.Float('Peso tara', readonly=True)
-   gross_weight = fields.Float('Peso bruto', readonly=True)
-   net_weight = fields.Float('Peso neto', readonly=True)
+   tare_weight = fields.Float("Peso tara", readonly=True)
+   gross_weight = fields.Float("Peso bruto", readonly=True)
+   net_weight = fields.Float("Peso neto", readonly=True)
 
-   def action_test(self):
-      self.net_weight = 300
+   lot_name = fields.Char("Número de lote", readonly=True)
+
+
+   def confirmation_weight(self):
+      return {
+         'name': 'Confirmación',
+         'type': 'ir.actions.act_window',
+         'res_model': 'entrance.confirmation',
+         'view_mode': 'form',
+         'context': {'active_id': self.id},
+         'target': 'new',
+      }
+
+   def action_weight(self):
+      self.ensure_one()
+      self.net_weight = 100.00;
+      self.tare_weight = 200.00;
+      self.gross_weight = 300.00;
       self.state = 'done'
