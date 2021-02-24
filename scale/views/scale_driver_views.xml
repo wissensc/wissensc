@@ -5,11 +5,11 @@
         <field name="name">Scale Driver Form</field>
         <field name="model">scale.driver</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Choferes">
                 <header>
                 </header>
                 <sheet>
-                    <field name="photo" widget='image' class="oe_avatar"/>
+                    <field name="image_1920" widget='image' class="oe_avatar" options="{'preview_image': 'image_128'}"/>
                     <group>
                         <group>
                             <field name="name"/>
@@ -21,9 +21,9 @@
                     </group>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
@@ -32,7 +32,7 @@
         <field name="name">Scale Driver Tree</field>
         <field name="model">scale.driver</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string="Choferes">
                 <field name="name"/>
                 <field name="license"/>
                 <field name="external"/>
@@ -43,7 +43,7 @@
         <field name="name">Scale Driver Search</field>
         <field name="model">scale.driver</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Choferes">
                 <field name="name"/>
                 <field name="external"/>
                 <field name="license"/>

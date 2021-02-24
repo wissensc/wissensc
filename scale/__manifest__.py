@@ -14,7 +14,7 @@
    'category': 'Báscula',
    'version': '14.0.1',
 
-   'depends': ['sale_management', 'purchase', 'fleet', 'contacts',
+   'depends': ['sale_management', 'purchase', 'fleet', 'stock', 'contacts',
                'lob_extend'],
 
    'data': [
@@ -26,6 +26,10 @@
       'views/scale_entrance_views.xml',
       'views/scale_exit_views.xml',
       'views/scale_driver_views.xml',
+      'views/move_line_view.xml',
+      'wizard/scale_confirmation_wizard.xml',
+      'wizard/entrance_confirmation_wizard.xml',
+      'wizard/exit_confirmation_wizard.xml',
    ],
    'installable': True,
    'application': True,

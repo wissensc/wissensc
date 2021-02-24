@@ -5,11 +5,11 @@ from odoo import fields, models
 
 class Lob(models.Model):
    _name = 'lob'
+   _inherit = ['image.mixin']
    _description = 'Línea de negocio'
 
    name = fields.Char('Nombre', required=True)
-   code = fields.Char('Código', required=True)
-   logo = fields.Binary(attachment=True, copy=False)
+   code = fields.Char('Nombre corto', required=True)
 
    scale_entrance = fields.Boolean('Báscula de entrada', copy=False)
    scale_exit = fields.Boolean('Báscula de salida', copy=False)

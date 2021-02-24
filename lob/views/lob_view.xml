@@ -8,13 +8,11 @@
                 <header>
                 </header>
                 <sheet>
-                    <field name="logo" widget='image' class="oe_avatar"/>
+                    <field name="image_1920" widget='image' class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <h1><field name="name" placeholder="Nombre"/></h1>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                        </group>
-                        <group>
+                            <field name="code" placeholder="Ej. lob-01"/>
                         </group>
                     </group>
                     <notebook>
