@@ -38,7 +38,11 @@
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="rel_license_plate"/>
                             <field name="driver_id" options="{'no_create': True, 'no_create_edit':True}"/>
-                            <field name="vehicle_weight"/>
+                            <label for="vehicle_weight" string="Peso del vehículo"/>
+                            <div class="o_row">
+                                <field name="vehicle_weight"/>
+                                <field name="rel_unit_name"/>
+                            </div>
                         </group>
                     </group>
                     <group>
@@ -63,8 +67,8 @@
                                     <field name="rel_partner"/>
                                 </group>
                             </group>
-                            <field name="order_line_ids">
-                                <form string="Línea de la orden">
+                            <field name="orderline_ids">
+                                <form string="Línea de la orden" create="0" edit="0">
                                     <header>
                                         <field name="state" widget="statusbar"/>
                                     </header>
@@ -86,8 +90,7 @@
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom" create="false" delete="false">
                                     <field name="rel_state" invisible="1"/>
-                                    <field name="line_id" force_save="1" invisible="True"/>
-                                    <field name="rel_line_id_id" force_save="1" invisible="True"/>
+                                    <field name="moveline_id" force_save="1" invisible="True"/>
                                     <field name="name" force_save="1"/>
                                     <field name="unit_id" force_save="1" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -98,9 +101,10 @@
                                            decoration-bf="state == 'done'"/>
                                     <field name="net_weight" decoration-info="state == 'done'"
                                            decoration-bf="state == 'done'"/>
-                                    <field name="state" widget="badge" class="text-white" decoration-info="state == 'draft'"
+                                    <field name="state" widget="badge" class="text-white"
+                                           decoration-info="state == 'draft'"
                                            decoration-success="state == 'done'"/>
-                                    <button name="action_test" string="Pesar" type="object" class="btn-info"
+                                    <button name="confirmation_weight" string="Pesar" type="object" class="btn-info"
                                             icon="fa-truck"
                                             attrs="{'invisible': ['|',('state', '!=', 'draft'),('rel_state','!=','assigned')]}"/>
                                 </tree>

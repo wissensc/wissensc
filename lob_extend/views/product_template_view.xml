@@ -18,7 +18,90 @@
             <xpath expr="//notebook/page[@name='general_information']/group[2]" position="replace">
                 <group string="Descripción">
                     <field name="description" nolabel="1" placeholder="Añada una descripción del producto..."/>
-                </group></xpath>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='general_information']/group[last()]" position="before">
+                <group>
+                    <group>
+                        <field name="line_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="classification_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="presentation_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="packing_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                    </group>
+                </group>
+            </xpath>
         </field>
     </record>
+    <!--Catalogos-->
+    <record id="product_template_view_form_inherit_product_line" model="ir.ui.view">
+        <field name="name">Product Template Line Form</field>
+        <field name="model">product.line</field>
+        <field name="arch" type="xml">
+            <tree string="Líneas de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_form_inherit_product_class" model="ir.ui.view">
+        <field name="name">Product Template Class Form</field>
+        <field name="model">product.classification</field>
+        <field name="arch" type="xml">
+            <tree string="Clasificación de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_form_inherit_product_present" model="ir.ui.view">
+        <field name="name">Product Template Present Form</field>
+        <field name="model">product.presentation</field>
+        <field name="arch" type="xml">
+            <tree string="Presentación de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_form_inherit_product_packing" model="ir.ui.view">
+        <field name="name">Product Template Packing Form</field>
+        <field name="model">product.packing</field>
+        <field name="arch" type="xml">
+            <tree string="Empaque de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_line_model_action" model="ir.actions.act_window">
+        <field name="name">Lineas de producto</field>
+        <field name="res_model">product.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="product_class_model_action" model="ir.actions.act_window">
+        <field name="name">Clasificaciones de producto</field>
+        <field name="res_model">product.classification</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="product_present_model_action" model="ir.actions.act_window">
+        <field name="name">Presentaciones de producto</field>
+        <field name="res_model">product.presentation</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="product_packing_model_action" model="ir.actions.act_window">
+        <field name="name">Empaques de producto</field>
+        <field name="res_model">product.packing</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Líneas" id="product_line_menu" groups="base.group_system"
+              parent="sale.prod_config_main" sequence="1" action="product_line_model_action"/>
+    <menuitem name="Clasificaciones" id="product_class_menu" groups="base.group_system"
+              parent="sale.prod_config_main" sequence="2" action="product_class_model_action"/>
+    <menuitem name="Presentaciones" id="product_present_menu" groups="base.group_system"
+              parent="sale.prod_config_main" sequence="3" action="product_present_model_action"/>
+    <menuitem name="Empaques" id="product_packing_menu" groups="base.group_system"
+              parent="sale.prod_config_main" sequence="4" action="product_packing_model_action"/>
 </odoo>

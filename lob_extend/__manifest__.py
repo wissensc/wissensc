@@ -19,10 +19,12 @@
 
     'data': [
         'security/groups.xml',
+        'security/ir.model.access.csv',
         'views/sale_order_view.xml',
         'views/purchase_order_view.xml',
         'views/product_template_view.xml',
         'views/res_partner_view.xml',
+        'data/lob_extend_data.xml',
     ],
     'installable': True,
 }

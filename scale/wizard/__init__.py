@@ -3,3 +3,5 @@
 
 
 from . import scale_confirmation
+from . import entrance_confirmation
+from . import exit_confirmation

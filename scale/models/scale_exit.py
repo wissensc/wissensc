@@ -36,7 +36,7 @@ class ScaleExit(models.Model):
    @api.onchange('lob_id')
    def _resetOrder(self):
       self.order_id = None
-      self.order_line_ids = None
+      self.orderline_ids = None
 
    order_id = fields.Many2one('sale.order', 'Número de orden de venta',
                               states=STATES, copy=False,
@@ -79,31 +79,38 @@ class ScaleExit(models.Model):
    @api.onchange('order_id')
    def _onchangelines(self):
       if self.order_id:
-         self.order_line_ids = None
-         for line in self.env['sale.order.line'].search(
-               [('order_id', '=', self.order_id.id),
-                ('display_type', '=', False)]):
-            dic = {'line_id': line.id, 'name': line.product_id.name,
-                   'unit_id': line.product_uom,
-                   'weight_order': line.product_uom_qty}
-            self.order_line_ids = [(0, 0, dic)]
+         self.orderline_ids = None
+         picking_ids = self.order_id.picking_ids.filtered(
+            lambda x: x.state == 'assigned').mapped('id')
+         print(picking_ids)
+         for moveline in self.env['stock.move.line'].search(
+               [('picking_id', 'in', picking_ids)]):
+            dic = {
+               'moveline_id': moveline,
+               'name': moveline.product_id,
+               'unit_id': moveline.product_uom_id,
+               'weight_order': moveline.product_uom_qty
+            }
+            self.orderline_ids = [(0, 0, dic)]
 
    @api.constrains('order_id', 'unit_id')
    def _onchangeuom(self):
       for record in self:
-         if record.order_id:
-            for line in record.env['sale.order.line'].search(
-                  [('order_id', '=', record.order_id.id),
-                   ('display_type', '=', False)]):
-               if line.product_uom.id != record.unit_id.id:
+         if record.orderline_ids:
+            for moveline in record.orderline_ids:
+               if moveline.unit_id != record.unit_id:
                   raise ValidationError(_(
                      'La unidad de medida "%s" %s no existe en todas las lineas del pedido %s') % (
                                            record.unit_id.name, record.unit_id,
                                            record.order_id.name))
+         else:
+            raise ValidationError(_(
+               'No existen movimientos de stock validos para la orden %s') % (
+                                     record.order_id.name))
 
-   order_line_ids = fields.One2many('scale.exit.orderline', 'order_id',
-                                    string='Lineas del pedido', states=STATES,
-                                    copy=False)
+   orderline_ids = fields.One2many('scale.exit.orderline', 'order_id',
+                                   string='Lineas del pedido', states=STATES,
+                                   copy=False)
 
    note = fields.Text('Nota')
 
@@ -112,11 +119,11 @@ class ScaleExit(models.Model):
                                    readonly=True)
    exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
 
-   @api.depends('order_line_ids.net_weight', 'order_id')
+   @api.depends('orderline_ids.net_weight', 'order_id')
    def _compute_lines(self):
       for record in self:
          total = 0
-         for line in record.order_line_ids:
+         for line in record.orderline_ids:
             total = total + line.net_weight
          # record.total_weight = total
          record.update({'total_weight': total})
@@ -153,21 +160,13 @@ class ScaleExit(models.Model):
 
    def action_sent(self):
       self.ensure_one()
-      if not 'draft' in self.order_line_ids.mapped('state'):
+      if not 'draft' in self.orderline_ids.mapped('state'):
+         stock = self.env['stock.move.line']
          self.exit_date = datetime.now()
          self.state = 'sent'
-
-         # for line in self.env['purchase.order.line'].search(
-         #       [('order_id', '=', self.order_id.id)]):
-         #    line.qty_received = self.order_line_ids.filtered(
-         #       lambda x: x.line_id.id == line.id).net_weight
-
-         if self.order_id.picking_ids:
-            print(self.order_id.picking_ids)
-         # for line in self.env['purchase.order.line'].search(
-         #       [('order_id', '=', self.order_id.id)]):
-         #    line.qty_received = self.order_line_ids.filtered(
-         #       lambda x: x.line_id.id == line.id).net_weight
+         for moveline in self.orderline_ids:
+            id = moveline.moveline_id.id
+            stock.browse(id).write({'qty_done': moveline.net_weight})
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
 

@@ -8,3 +8,4 @@ from . import exit_orderline
 from . import entrance_orderline
 from . import sale_order
 from . import purchase_order
+from . import move_line
