@@ -10,10 +10,10 @@ class ProductTemplate(models.Model):
       self: self.env.user.business_line_id.id, tracking=True)
    weight_ok = fields.Boolean("Puede ser pesado", default=False)
 
-   line_id = fields.Many2one('product.line', "Línea")
-   classification_id = fields.Many2one('product.classification', "Clasificación")
-   presentation_id = fields.Many2one('product.presentation', "Presentación")
-   packing_id = fields.Many2one('product.packing', "Empaque")
+   line_id = fields.Many2one('product.line', "Línea", ondelete="restrict")
+   classification_id = fields.Many2one('product.classification', "Clasificación", ondelete="restrict")
+   presentation_id = fields.Many2one('product.presentation', "Presentación", ondelete="restrict")
+   packing_id = fields.Many2one('product.packing', "Empaque", ondelete="restrict")
 
 
 class ProductLine(models.Model):

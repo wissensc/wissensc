@@ -11,7 +11,7 @@
    'author': "Wissen",
    'website': "http://www.yourcompany.com",
 
-   'category': 'Báscula',
+   'category': 'Scale',
    'version': '14.0.1',
 
    'depends': ['sale_management', 'purchase', 'fleet', 'stock', 'contacts',

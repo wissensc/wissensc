@@ -8,9 +8,12 @@
                 <form string="Mensaje">
                     <group>
                         <group>
-                            <field name="lot_name"/>
+                            <field name="lot_name" placeholder="Ej. 10000"/>
                         </group>
                     </group>
+                    <separator string="Mensaje" span="6"/>
+                    <field name="text" colspan="4" nolabel="1" readonly="1" widget="html"/>
+                    <newline/>
                     <separator colspan="6"/>
                     <footer>
                         <button string="Confirmar" name="yes" class="btn-primary" type="object"/>
