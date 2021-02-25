@@ -62,6 +62,8 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <menuitem name="Configuración" sequence="99" id="configuration"
+              parent="base_menu" groups="base.group_user"/>
     <menuitem name="Choferes" id="scale_driver_menu"
               parent="configuration" action="scale_driver_model_action"/>
 </odoo>

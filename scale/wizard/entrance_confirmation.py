@@ -8,6 +8,8 @@ class EntranceConfirmation(models.TransientModel):
    _description = 'Asistente de confirmación de entrada'
 
    lot_name = fields.Char("Número de lote")
+   text = fields.Text(
+      default="Una vez confirmada la pesada no podra revertirse")
 
    def yes(self):
       active = self._context.get('active_id', False)

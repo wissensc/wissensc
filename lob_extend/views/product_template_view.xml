@@ -96,12 +96,12 @@
         <field name="view_mode">tree</field>
     </record>
 
-    <menuitem name="Líneas" id="product_line_menu" groups="base.group_system"
+    <menuitem name="Líneas" id="product_line_menu" groups="base.group_user"
               parent="sale.prod_config_main" sequence="1" action="product_line_model_action"/>
-    <menuitem name="Clasificaciones" id="product_class_menu" groups="base.group_system"
+    <menuitem name="Clasificaciones" id="product_class_menu" groups="base.group_user"
               parent="sale.prod_config_main" sequence="2" action="product_class_model_action"/>
-    <menuitem name="Presentaciones" id="product_present_menu" groups="base.group_system"
+    <menuitem name="Presentaciones" id="product_present_menu" groups="base.group_user"
               parent="sale.prod_config_main" sequence="3" action="product_present_model_action"/>
-    <menuitem name="Empaques" id="product_packing_menu" groups="base.group_system"
+    <menuitem name="Empaques" id="product_packing_menu" groups="base.group_user"
               parent="sale.prod_config_main" sequence="4" action="product_packing_model_action"/>
 </odoo>
