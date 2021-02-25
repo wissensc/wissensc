@@ -38,7 +38,7 @@ class ScaleExit(models.Model):
       self.order_id = None
       self.orderline_ids = None
 
-   order_id = fields.Many2one('sale.order', 'Número de orden de venta',
+   order_id = fields.Many2one('sale.order', 'Orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
                               domain="[('state', '=', 'sale'),('business_line_id','=',lob_id),('scale_id','=',False)]")

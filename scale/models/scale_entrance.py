@@ -39,7 +39,7 @@ class ScaleEntrance(models.Model):
       self.order_id = None
       self.orderline_ids = None
 
-   order_id = fields.Many2one('purchase.order', 'Número de orden de compra',
+   order_id = fields.Many2one('purchase.order', 'Orden de compra',
                               states=STATES, required=True, ondelete='cascade',
                               domain="[('state', '=', 'purchase'),('business_line_id','=',lob_id),('scale_id','=',False)]")
 
