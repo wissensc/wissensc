@@ -14,12 +14,34 @@
                         '|',
                         '&amp;', ('is_locked', '=', True),
                         ('state', 'in', ('done', 'cancel')),
-                        ('rel_weight_ok', '=', True),
+                        ('rel_weight_ok', '=', True)
                     ]}
                 </attribute>
             </xpath>
         </field>
     </record>
+    <record id="stock_move_line_view_form_inherit_scale2" model="ir.ui.view">
+        <field name="name">Move Line Form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[1]" position="before">
+                <field name="rel_weight_ok"/>
+            </xpath>
+            <xpath expr="//field[@name='qty_done']" position="attributes">
+                <attribute name="attrs">
+                    {'readonly': [
+                        '|',
+                        '|',
+                        '&amp;', ('state', '=', 'done'), ('is_locked', '=', True),
+                        '&amp;', ('package_level_id', '!=', False), ('parent.picking_type_entire_packs', '=', True),
+                        ('rel_weight_ok', '=', True)
+                    ]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
     <record id="stock_picking_view_form_inherit_scale" model="ir.ui.view">
         <field name="name">Stock Picking Form</field>
         <field name="model">stock.picking</field>
@@ -35,11 +57,32 @@
                     {'readonly': [
                         '|',
                         ('is_quantity_done_editable', '=', False),
-                        ('rel_weight_ok', '=', True),
+                        ('rel_weight_ok', '=', True)
 
                     ]}
                 </attribute>
             </xpath>
         </field>
     </record>
+
+    <record id="stock_move_view_form_inherit_scale" model="ir.ui.view">
+        <field name="name">Stock Move Form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_picking_move_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[1]" position="before">
+                <field name="rel_weight_ok"/>
+            </xpath>
+            <xpath expr="//field[@name='quantity_done']" position="attributes">
+                <attribute name="attrs">
+                    {'readonly': [
+                        '|',
+                        ('is_quantity_done_editable', '=', False),
+                        ('rel_weight_ok', '=', True)
+                    ]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

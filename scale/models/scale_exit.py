@@ -170,13 +170,13 @@ class ScaleExit(models.Model):
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
 
-   def confirmation_init_weight(self):
+   def confirmation_init(self):
       return {
          'name': 'Confirmación',
          'type': 'ir.actions.act_window',
-         'res_model': 'scale.confirmation',
+         'res_model': 'exit.init.confirmation',
          'view_mode': 'form',
-         'context': {'active_id': self.id, 'operation': 'sale'},
+         'context': {'active_id': self.id},
          'target': 'new',
       }
 

@@ -3,9 +3,9 @@
 from odoo import models, fields, api
 
 
-class ExitConfirmation(models.TransientModel):
-   _name = 'exit.confirmation'
-   _description = 'Asistente de confirmación de salida'
+class WeightConfirmation(models.TransientModel):
+   _name = 'exit.weight.confirmation'
+   _description = 'Asistente de confirmación de pesada'
 
    text = fields.Text(
       default="Una vez confirmada la pesada no podra revertirse")
