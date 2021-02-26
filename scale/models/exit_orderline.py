@@ -32,7 +32,7 @@ class ExitOrderLine(models.Model):
       return {
          'name': 'Confirmación',
          'type': 'ir.actions.act_window',
-         'res_model': 'exit.confirmation',
+         'res_model': 'exit.weight.confirmation',
          'view_mode': 'form',
          'context': {'active_id': self.id},
          'target': 'new',

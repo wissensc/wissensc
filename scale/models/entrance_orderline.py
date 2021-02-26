@@ -34,7 +34,7 @@ class EntranceOrderLine(models.Model):
       return {
          'name': 'Confirmación',
          'type': 'ir.actions.act_window',
-         'res_model': 'entrance.confirmation',
+         'res_model': 'entrance.weight.confirmation',
          'view_mode': 'form',
          'context': {'active_id': self.id},
          'target': 'new',

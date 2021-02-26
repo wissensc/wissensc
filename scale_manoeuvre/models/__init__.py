@@ -3,5 +3,4 @@
 
 
 from . import scale_manoeuvre
-
 from . import manoeuvre_orderline

@@ -11,13 +11,13 @@ class ScaleReporting(models.Model):
    order = fields.Char('Numero del pedido', readonly=True)
    folio = fields.Char('Folio', readonly=True)
    date_order = fields.Datetime('Fecha de orden', readonly=True)
-   product = fields.Char('Producto', readonly=True)
+   product = fields.Many2one('product.product', "Producto", readonly=True)
    license_plate = fields.Char('Matrícula', readonly=True)
    tare_weight = fields.Float('Peso tara', readonly=True)
    gross_weight = fields.Float('Peso bruto', readonly=True)
    net_weight = fields.Float('Peso neto', readonly=True)
    driver_id = fields.Many2one('scale.driver', 'Chofer', readonly=True)
-   type = fields.Selection([('ent', 'Entrada'), ('exit', 'Salida')], 'Tipo',
+   type = fields.Selection([('entrance', 'Entrada'), ('exit', 'Salida')], 'Tipo',
                            readonly=True)
    entrance_date = fields.Datetime('Fecha de entrada', readonly=True)
    exit_date = fields.Datetime('Fecha de salida', readonly=True)

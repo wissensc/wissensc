@@ -10,7 +10,7 @@
                     <button name="action_sent"
                             string="Enviar" type="object"
                             attrs="{'invisible': [('state', 'in', ['draft', 'sent'])]}"/>
-                    <button name="confirmation_init_weight"
+                    <button name="confirmation_init"
                             string="Peso Inicial" type="object"
                             attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                     <field name="state" widget="statusbar"/>
@@ -187,6 +187,8 @@
     <menuitem name="Báscula" id="base_menu"/>
     <menuitem name="Informes" sequence="98" id="reporting"
               parent="base_menu"/>
-    <menuitem name="Entradas" id="scale_entrance_menu"
+    <menuitem name="Configuración" sequence="99" id="configuration"
+              parent="base_menu"/>
+    <menuitem name="Entradas" id="scale_entrance_menu" groups="scale.scale_entrance_group"
               parent="base_menu" sequence="1" action="scale_entrance_model_action"/>
 </odoo>
