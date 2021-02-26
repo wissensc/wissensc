@@ -11,7 +11,7 @@
    'author': "Wissen",
    'website': "http://www.yourcompany.com",
 
-   'category': 'Báscula',
+   'category': 'Uncategorized',
    'version': '14.0.1',
 
    'depends': ['scale'],
@@ -20,6 +20,8 @@
       'security/groups.xml',
       'security/ir.model.access.csv',
       'views/scale_manoeuvre_views.xml',
+      'wizard/manoeuvre_init_confirmation_wizard.xml',
+      'wizard/manoeuvre_weight_confirmation_wizard.xml',
    ],
    'installable': True,
    'application': True,

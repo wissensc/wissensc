@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="exit_confirmation_wizard_form" model="ir.ui.view">
-            <field name="name">exit.confirmation.form</field>
-            <field name="model">exit.confirmation</field>
+        <record id="entrance_init_confirmation_wizard_form" model="ir.ui.view">
+            <field name="name">entrance.init.confirmation.form</field>
+            <field name="model">entrance.init.confirmation</field>
             <field name="arch" type="xml">
                 <form string="Mensaje">
                     <separator string="Mensaje" span="6"/>

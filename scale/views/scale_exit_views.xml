@@ -9,7 +9,7 @@
                     <button name="action_sent"
                             string="Enviar" type="object"
                             attrs="{'invisible': [('state', 'in', ['draft', 'sent'])]}"/>
-                    <button name="confirmation_init_weight"
+                    <button name="confirmation_init"
                             string="Peso Inicial" type="object"
                             attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                     <field name="state" widget="statusbar"/>
@@ -183,6 +183,6 @@
         <field name="res_model">scale.exit</field>
         <field name="view_mode">tree,form,pivot</field>
     </record>
-    <menuitem name="Salidas" id="scale_exit_menu"
+    <menuitem name="Salidas" id="scale_exit_menu" groups="scale.scale_exit_group"
               parent="base_menu" sequence="2" action="scale_exit_model_action"/>
 </odoo>

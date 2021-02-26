@@ -178,13 +178,13 @@ class ScaleEntrance(models.Model):
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
 
-   def confirmation_init_weight(self):
+   def confirmation_init(self):
       return {
          'name': 'Confirmación',
          'type': 'ir.actions.act_window',
-         'res_model': 'scale.confirmation',
+         'res_model': 'entrance.init.confirmation',
          'view_mode': 'form',
-         'context': {'active_id': self.id, 'operation': 'purchase'},
+         'context': {'active_id': self.id},
          'target': 'new',
       }
 

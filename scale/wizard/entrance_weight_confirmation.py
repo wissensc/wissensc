@@ -3,9 +3,9 @@
 from odoo import models, fields, api
 
 
-class EntranceConfirmation(models.TransientModel):
-   _name = 'entrance.confirmation'
-   _description = 'Asistente de confirmación de entrada'
+class WeightConfirmation(models.TransientModel):
+   _name = 'entrance.weight.confirmation'
+   _description = 'Asistente de confirmación de pesada'
 
    lot_name = fields.Char("Número de lote")
    text = fields.Text(

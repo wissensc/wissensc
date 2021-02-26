@@ -7,43 +7,51 @@
             <form>
                 <header>
                     <button name="action_confirm"
-                            string="Enviar" type="object"
+                            string="Confirmar" type="object"
+                            attrs="{'invisible': [('state', 'in', ['draft', 'sent'])]}"/>
+                    <button name="confirmation_init"
+                            string="Peso Inicial" type="object"
                             attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" readonly="1"/>
+                            <span attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('name', '!=', '/')]}">
+                                Borrador</span>
+                        </h1>
+
+                        <h1 class="mt0" attrs="{'invisible':[('name', '=', '/'), ('state', '=', 'draft')]}">
+                            <field name="name" readonly="True"/>
                         </h1>
                     </div>
                     <group>
                         <group>
                             <field name="type"/>
-                            <field name="plant_id"
+                            <field name="lob_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                         </group>
-                        <group>
-                        </group>
-                    </group>
-                    <group>
                         <group>
                             <field name="vehicle_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="rel_license_plate"/>
                             <field name="driver_id" options="{'no_create': True, 'no_create_edit':True}"/>
+                            <label for="vehicle_weight" string="Peso del vehículo"/>
+                            <div class="o_row">
+                                <field name="vehicle_weight"/>
+                                <field name="rel_unit_name"/>
+                            </div>
                         </group>
-                    </group>
+                    </group><group>
                     <group>
-                        <group>
-                            <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
-                                   readonly="True"/>
-                        </group>
+                        <field name="unit_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                               readonly="False"/>
                     </group>
+                </group>
                     <notebook>
                         <page string="Información de la orden">
-                            <field name="order_line_ids">
-                                <form string="Línea de la orden">
+                            <field name="orderline_ids">
+                                <form string="Línea de la orden" create="0" edit="0">
                                     <header>
                                         <field name="state" widget="statusbar"/>
                                     </header>
@@ -64,27 +72,32 @@
                                     </sheet>
                                 </form>
                                 <tree string="Líneas de la orden" editable="bottom">
+                                    <field name="rel_state" invisible="1"/>
                                     <field name="name"/>
                                     <field name="unit_id" optional="show"
                                            options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
-                                    <field name="tare_weight"/>
-                                    <field name="gross_weight"/>
-                                    <field name="net_weight"/>
-                                    <field name="state" widget="badge" decoration-info="state == 'draft'"
+                                    <field name="tare_weight" readonly="True" force_save="1"
+                                           decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="gross_weight" readonly="True" force_save="1"
+                                           decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="net_weight" readonly="True" force_save="1"
+                                           decoration-info="state == 'done'"
+                                           decoration-bf="state == 'done'"/>
+                                    <field name="lot_name" optional="hide"/>
+                                    <field name="state" widget="badge" class="text-white"
+                                           decoration-info="state == 'draft'"
                                            decoration-success="state == 'done'"/>
-                                    <button name="action_test" string="Pesar" type="object" class="btn-info"
+                                    <button name="confirmation_weight" string="Pesar" type="object" class="btn-info"
                                             icon="fa-truck"
-                                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                                            attrs="{'invisible': ['|',('state', '!=', 'draft'),('rel_state','!=','assigned')]}"/>
                                 </tree>
                             </field>
                             <div class="float-right">
                                 <label for="total_weight"/>
                                 <field name="total_weight" nolabel="1" class="mr-2"/>
-                                <span>
-                                    <field name="unit_id" nolabel="1"
-                                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
-                                           readonly="True"/>
-                                </span>
+                                <span><field name="rel_unit_name" nolabel="1"/></span>
                             </div>
                             <group name="note_group" col="6" class="mt-2 mt-md-0">
                                 <group colspan="4">
@@ -92,7 +105,6 @@
                                 </group>
                             </group>
                         </page>
-
                         <page string="Datos del sistema">
                             <group>
                                 <group>
@@ -107,9 +119,9 @@
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
@@ -141,6 +153,7 @@
         <field name="res_model">scale.manoeuvre</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem name="Maniobras" id="scale_manoeuvre_menu"
+
+    <menuitem name="Maniobras" id="scale_manoeuvre_menu" groups="scale_manoeuvre.scale_manoeuvre_group"
               parent="scale.base_menu" sequence="3" action="scale_manoeuvre_model_action"/>
 </odoo>

@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 
-from . import scale_confirmation
-from . import entrance_confirmation
-from . import exit_confirmation
+from . import entrance_init_confirmation
+from . import entrance_weight_confirmation
+from . import exit_init_confirmation
+from . import exit_weight_confirmation
