@@ -91,7 +91,6 @@ class ScaleExit(models.Model):
          self.orderline_ids = None
          picking_ids = self.order_id.picking_ids.filtered(
             lambda x: x.state == 'assigned').mapped('id')
-         print(picking_ids)
          for moveline in self.env['stock.move.line'].search(
                [('picking_id', 'in', picking_ids)]):
             dic = {
@@ -157,7 +156,7 @@ class ScaleExit(models.Model):
             {'scale_id': res.id})
          date = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'scale')]).write_date
-         res.reference = date.strftime('M%d%m%y%H%M-') + str(res.id)
+         res.reference = date.strftime('S%d%m%y%H%M-') + str(res.id)
       return res
 
    def write(self, vals):

@@ -157,7 +157,7 @@ class ScaleEntrance(models.Model):
             {'scale_id': res.id})
          date = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'scale')]).write_date
-         res.reference = date.strftime('M%d%m%y%H%M-') + str(res.id)
+         res.reference = date.strftime('P%d%m%y%H%M-') + str(res.id)
       return res
 
    def write(self, vals):
