@@ -37,7 +37,7 @@ class ScaleOrderLine(models.Model):
    net_weight = fields.Float("Peso neto", readonly=True)
 
    lot_name = fields.Char("Número de lote", readonly=True)
-   photo_url = fields.Char("URL", readonly=True, default='')
+   photo_url = fields.Char("URL", readonly=True)
 
    def confirmation_weight(self):
       self.ensure_one()

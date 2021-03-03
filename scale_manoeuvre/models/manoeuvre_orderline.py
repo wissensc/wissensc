@@ -38,7 +38,7 @@ class ManoeuvreOrderLine(models.Model):
    gross_weight = fields.Float("Peso bruto")
    net_weight = fields.Float("Peso neto")
 
-   photo_url = fields.Char("URL", readonly=True, default='')
+   photo_url = fields.Char("URL", readonly=True)
 
    def confirmation_weight(self):
       self.ensure_one()
