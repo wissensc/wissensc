@@ -18,7 +18,7 @@ class ManoeuvreOrderLine(models.Model):
       [('draft', 'Sin pesar'), ('done', 'Pesado')], "Estado",
       default='draft', readonly=True)
 
-   name = fields.Char("Nombre", required=True)
+   name = fields.Char("Descripción", required=True)
    product_id = fields.Many2one('product.product', "Producto", readonly=True)
 
    order_id = fields.Many2one('scale.manoeuvre', "Número de orden",

@@ -236,7 +236,7 @@ class ScaleExit(models.Model):
          params = {
             'key': self.reference,
             'location': lob.get(self.lob_id.name),
-            'secKey': 'S-' + str(self.id),
+            'secKey': 'S-Peso Inicial',
             'type': type.get('exit')
          }
          return requests.put(url, data=json.dumps(params), headers=headers)
