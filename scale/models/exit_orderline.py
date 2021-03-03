@@ -18,7 +18,7 @@ class ExitOrderLine(models.Model):
       [('draft', 'Sin pesar'), ('done', 'Pesado')], 'Estado',
       default='draft', readonly=True)
 
-   name = fields.Char("Nombre", readonly=True)
+   name = fields.Char("Descripción", readonly=True)
    product_id = fields.Many2one('product.product', "Producto", readonly=True)
 
    order_id = fields.Many2one('scale.exit', 'Número de orden', readonly=True,

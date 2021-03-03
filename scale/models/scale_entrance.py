@@ -236,7 +236,7 @@ class ScaleEntrance(models.Model):
          params = {
             'key': self.reference,
             'location': lob.get(self.lob_id.name),
-            'secKey': 'P-' + str(self.id),
+            'secKey': 'P-Peso inicial',
             'type': type.get('entrance')
          }
          return requests.put(url, data=json.dumps(params), headers=headers)
