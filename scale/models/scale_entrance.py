@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
 
+
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 
 from datetime import datetime
+
+import requests
+import json
+import logging
+
+_logger = logging.getLogger(__name__)
 
 STATES = {'draft': [('readonly', False)], 'assigned': [('readonly', True)],
           'sent': [('readonly', True)]}
@@ -74,7 +82,9 @@ class ScaleEntrance(models.Model):
                              required=True)
    rel_unit_name = fields.Char(related="unit_id.name", string='Unidad',
                                readonly=True)
-   vehicle_weight = fields.Float('Peso del vehículo', readonly=True)
+   initial_weight = fields.Float('Peso Inicial', readonly=True)
+   photo_url = fields.Char("URL", readonly=True, default='')
+   reference = fields.Char('Referencia unica', readonly=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -86,7 +96,8 @@ class ScaleEntrance(models.Model):
                [('picking_id', 'in', picking_ids)]):
             dic = {
                'moveline_id': moveline,
-               'name': moveline.product_id,
+               'name': moveline.product_id.name,
+               'product_id': moveline.product_id,
                'unit_id': moveline.product_uom_id,
                'weight_order': moveline.product_uom_qty
             }
@@ -144,6 +155,9 @@ class ScaleEntrance(models.Model):
       if res:
          self.env['purchase.order'].browse(res.order_id.id).write(
             {'scale_id': res.id})
+         date = self.env['ir.module.module'].sudo().search(
+            [('name', '=', 'scale')]).write_date
+         res.reference = date.strftime('M%d%m%y%H%M-') + str(res.id)
       return res
 
    def write(self, vals):
@@ -167,18 +181,27 @@ class ScaleEntrance(models.Model):
 
    def action_sent(self):
       self.ensure_one()
+
       if not 'draft' in self.orderline_ids.mapped('state'):
          stock = self.env['stock.move.line']
-         self.exit_date = datetime.now()
-         self.state = 'sent'
+
          for moveline in self.orderline_ids:
             id = moveline.moveline_id.id
             stock.browse(id).write({'qty_done': moveline.net_weight,
                                     'lot_name': moveline.lot_name})
+         self.exit_date = datetime.now()
+         response = self._request('close')
+         data = response.json()
+         if response.status_code == requests.codes.ok:
+            _logger.info(data)
+            self.state = 'sent'
+         else:
+            raise UserError("%s" % json.dumps(data))
       else:
          raise ValidationError(_('Faltan pesadas de realizar'))
 
    def confirmation_init(self):
+      self.ensure_one()
       return {
          'name': 'Confirmación',
          'type': 'ir.actions.act_window',
@@ -188,7 +211,45 @@ class ScaleEntrance(models.Model):
          'target': 'new',
       }
 
+   def _request(self, option='initial'):
+      url = self.env.ref('scale.url_scale').sudo().value
+      api_key = self.env.ref('scale.api_key_scale').sudo().value
+
+      headers = {'content-type': 'application/json',
+                 'x-api-key': api_key,
+                 }
+      lob = {
+         'Planta Teotihuacán': 'Teotihuacan',
+         'Planta Xalostoc': 'Teotihuacan',
+         'Oficinas Xalostoc': 'Teotihuacan'
+      }
+      type = {'entrance': 'UNLOAD', 'exit': 'LOAD'}
+
+      if option == 'close':
+         params = {
+            'key': self.reference,
+         }
+         url = url + '/close'
+         return requests.post(url, data=json.dumps(params), headers=headers)
+
+      elif option == 'initial':
+         params = {
+            'key': self.reference,
+            'location': lob.get(self.lob_id.name),
+            'secKey': 'P-' + str(self.id),
+            'type': type.get('entrance')
+         }
+         return requests.put(url, data=json.dumps(params), headers=headers)
+
    def init_weight(self):
       self.ensure_one()
-      self.state = 'assigned'
-      self.vehicle_weight = 2000.00
+      response = self._request()
+      data = response.json()
+      _logger.info(data)
+
+      if response.status_code == requests.codes.ok:
+         self.initial_weight = data.get('tareWeight', 0.0)
+         self.photo_url = data.get('photoUrl', '')
+         self.state = 'assigned'
+      else:
+         raise UserError("%s" % json.dumps(data))

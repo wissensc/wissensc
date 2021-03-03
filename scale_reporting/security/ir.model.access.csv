@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-id_scale_reporting_model_user,scale_reporting_model_user,model_scale_reporting,base.group_user,1,0,0,0
+id_scale_reporting_model_entrance,scale_reporting_model_entrance,model_scale_reporting,scale.scale_entrance_group,1,0,0,0
+id_scale_reporting_model_exit,scale_reporting_model_exit,model_scale_reporting,scale.scale_exit_group,1,0,0,0
 

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-   'name': "Báscula",
+   'name': "Scale",
 
-   'summary': """Báscula""",
+   'summary': """Scale""",
 
    'description': """
         
@@ -31,6 +31,7 @@
       'wizard/exit_weight_confirmation_wizard.xml',
       'wizard/exit_init_confirmation_wizard.xml',
       'wizard/entrance_weight_confirmation_wizard.xml',
+      'data/data.xml',
    ],
    'installable': True,
    'application': True,
