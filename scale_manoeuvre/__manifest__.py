@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-   'name': "Báscula maniobras",
+   'name': "Scale Manoeuvres",
 
-   'summary': """Báscula maniobras""",
+   'summary': """Scale Manoeuvres""",
 
    'description': """
         

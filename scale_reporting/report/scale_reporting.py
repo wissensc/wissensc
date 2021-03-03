@@ -28,7 +28,7 @@ class ScaleReporting(models.Model):
       tools.drop_view_if_exists(self.env.cr, self._table)
       query = """
       CREATE OR REPLACE VIEW scale_reporting AS 
-SELECT ROW_NUMBER() OVER(ORDER BY sp.date_order) AS id, * FROM (SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.name AS product, fv.license_plate AS license_plate,
+SELECT ROW_NUMBER() OVER(ORDER BY sp.date_order) AS id, * FROM (SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.product_id AS product, fv.license_plate AS license_plate,
 eo.tare_weight AS tare_weight, eo.gross_weight AS gross_weight, eo.net_weight AS net_weight, se.driver_id AS driver_id, se.type AS "type",
 se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS create_id, se.note AS note
 	FROM scale_entrance_orderline eo 	
@@ -36,7 +36,7 @@ se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS c
 	INNER JOIN fleet_vehicle fv ON se.vehicle_id = fv.id
 	INNER JOIN purchase_order po ON se.order_id = po.id WHERE se.state='sent'
 UNION ALL
-SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.name AS product, fv.license_plate AS license_plate,
+SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.product_id AS product, fv.license_plate AS license_plate,
 eo.tare_weight AS tare_weight, eo.gross_weight AS gross_weight, eo.net_weight AS net_weight, se.driver_id AS driver_id, se.type AS "type",
 se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS create_id, se.note AS note
 	FROM scale_exit_orderline eo 	
