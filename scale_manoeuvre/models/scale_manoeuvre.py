@@ -187,7 +187,7 @@ class ScaleManoeuvre(models.Model):
          params = {
             'key': self.reference,
             'location': 'Teotihuacan',
-            'secKey': 'M-' + str(self.id),
+            'secKey': 'M-Peso Inicial',
             'type': type.get('entrance')
          }
          return requests.put(url, data=json.dumps(params), headers=headers)
