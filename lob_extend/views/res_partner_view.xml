@@ -21,4 +21,18 @@
             </xpath>
         </field>
     </record>
+    <!--Tree-->
+    <record id="res_partner_view_tree_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="business_line_id"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="code"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
