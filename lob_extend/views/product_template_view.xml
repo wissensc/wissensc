@@ -112,7 +112,7 @@
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="business_line_id"/>
+                <field name="business_line_id" optional="show"/>
             </xpath>
         </field>
     </record>
