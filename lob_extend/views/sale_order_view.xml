@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[1]/group/field[last()]" position="after">
                 <field name="business_line_id" attrs="{'readonly': [('state','not in',['draft', 'sent'])]}"
-                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"  optional="show"/>
             </xpath>
         </field>
     </record>
