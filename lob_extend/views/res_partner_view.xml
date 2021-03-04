@@ -28,10 +28,27 @@
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='display_name']" position="after">
-                <field name="business_line_id"  optional="show"/>
+                <field name="business_line_id" optional="show"/>
             </xpath>
             <xpath expr="//field[@name='display_name']" position="before">
-                <field name="code"  optional="show"/>
+                <field name="code" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Search-->
+    <record id="res_partner_view_search_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name"
+                       filter_domain="['|', '|', '|',
+                       ('display_name', 'ilike', self),
+                       ('ref', '=', self),
+                       ('email', 'ilike', self),
+                       ('code', 'ilike', self)]
+                        "/>
             </xpath>
         </field>
     </record>
