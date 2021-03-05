@@ -10,6 +10,17 @@
             </xpath>
         </field>
     </record>
+    <!--Tree-->
+    <record id="account_move_view_tree_inherit_lob_account" model="ir.ui.view">
+        <field name="name">Account Move Tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[last()]" position="after">
+                <field name="project_id"/>
+            </xpath>
+        </field>
+    </record>
     <!--Search-->
     <record id="account_move_view_search_inherit_lob_account" model="ir.ui.view">
         <field name="name">Account Move Search</field>
