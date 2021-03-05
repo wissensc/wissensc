@@ -35,6 +35,7 @@ class ManoeuvreOrderLine(models.Model):
    net_weight = fields.Float("Peso neto")
 
    photo_url = fields.Char("URL", readonly=True)
+   weight_date = fields.Datetime("Fecha de pesada", readonly=True)
 
    def confirmation_weight(self):
       self.ensure_one()

@@ -38,6 +38,7 @@ class ScaleOrderLine(models.Model):
 
    lot_name = fields.Char("Número de lote", readonly=True)
    photo_url = fields.Char("URL", readonly=True)
+   weight_date = fields.Datetime("Fecha de pesada", readonly=True)
 
    def confirmation_weight(self):
       self.ensure_one()
