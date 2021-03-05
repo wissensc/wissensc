@@ -48,7 +48,7 @@ class ScaleExit(models.Model):
    order_id = fields.Many2one('sale.order', 'Orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'sale'),('business_line_id','=',lob_id),('scale_id','=',False)]")
+                              domain="[('state', '=', 'purchase'),('business_line_id','=',lob_id),('scale_id','=',False),('valid_count','!=',0)]")
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
                                 states=STATES,
@@ -134,7 +134,6 @@ class ScaleExit(models.Model):
          total = 0
          for line in record.orderline_ids:
             total = total + line.net_weight
-         # record.total_weight = total
          record.update({'total_weight': total})
 
    total_weight = fields.Float('Peso neto total', store=True,
@@ -242,6 +241,9 @@ class ScaleExit(models.Model):
 
    def init_weight(self):
       self.ensure_one()
+      if self.order_id.scale_id:
+         raise ValidationError(
+            "Ya existe una báscula asociada a la orden %s,no se puede continuar con el proceso" % self.order_id.name)
       response = self._request()
       data = response.json()
       _logger.info(data)
@@ -250,5 +252,6 @@ class ScaleExit(models.Model):
          self.initial_weight = data.get('grossWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
+         self.order_id.write({'scale_id': self.id})
       else:
-         raise UserError("%s" % json.dumps(data))
+         raise UserError("Error de conexión:\n%s" % json.dumps(data))

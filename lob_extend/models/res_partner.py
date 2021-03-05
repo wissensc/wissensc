@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class RestPartner(models.Model):
@@ -11,3 +11,4 @@ class RestPartner(models.Model):
 
    code = fields.Char('Código')
    legal_representative = fields.Char('Representante legal')
+
