@@ -83,7 +83,7 @@ class ScaleExit(models.Model):
                                readonly=True)
    initial_weight = fields.Float('Peso Inicial', readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
-   reference = fields.Char('Referencia unica', readonly=True)
+   reference = fields.Char('Referencia', readonly=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -123,10 +123,6 @@ class ScaleExit(models.Model):
 
    note = fields.Text('Nota')
 
-   entrance_date = fields.Datetime('Hora y fecha de inicio',
-                                   default=fields.Datetime.now,
-                                   readonly=True)
-   exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
 
    @api.depends('orderline_ids.net_weight', 'order_id')
    def _compute_lines(self):
@@ -151,8 +147,6 @@ class ScaleExit(models.Model):
    def create(self, vals):
       res = super(ScaleExit, self).create(vals)
       if res:
-         self.env['sale.order'].browse(res.order_id.id).write(
-            {'scale_id': res.id})
          date = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'scale')]).write_date
          res.reference = date.strftime('S%d%m%y%H%M-') + str(res.id)
@@ -186,7 +180,6 @@ class ScaleExit(models.Model):
          for moveline in self.orderline_ids:
             id = moveline.moveline_id.id
             stock.browse(id).write({'qty_done': moveline.net_weight})
-         self.exit_date = datetime.now()
          response = self._request('close')
          data = response.json()
          if response.status_code == requests.codes.ok:
