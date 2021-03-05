@@ -37,6 +37,7 @@ class ExitOrderLine(models.Model):
    net_weight = fields.Float('Peso neto', readonly=True)
 
    photo_url = fields.Char("URL", readonly=True)
+   weight_date = fields.Datetime("Fecha de pesada", readonly=True)
 
    def confirmation_weight(self):
       self.ensure_one()
