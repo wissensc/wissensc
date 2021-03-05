@@ -84,7 +84,7 @@ class ScaleEntrance(models.Model):
                                readonly=True)
    initial_weight = fields.Float('Peso Inicial', readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
-   reference = fields.Char('Referencia unica', readonly=True)
+   reference = fields.Char('Referencia', readonly=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -124,10 +124,6 @@ class ScaleEntrance(models.Model):
 
    note = fields.Text('Nota')
 
-   entrance_date = fields.Datetime('Hora y fecha de inicio',
-                                   default=fields.Datetime.now,
-                                   readonly=True)
-   exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
 
    @api.depends('orderline_ids.net_weight', 'order_id')
    def _compute_lines(self):
@@ -186,7 +182,6 @@ class ScaleEntrance(models.Model):
             id = moveline.moveline_id.id
             stock.browse(id).write({'qty_done': moveline.net_weight,
                                     'lot_name': moveline.lot_name})
-         self.exit_date = datetime.now()
          response = self._request('close')
          data = response.json()
          if response.status_code == requests.codes.ok:

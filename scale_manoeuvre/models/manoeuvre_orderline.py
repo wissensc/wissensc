@@ -25,10 +25,6 @@ class ManoeuvreOrderLine(models.Model):
                               ondelete='cascade')
    rel_state = fields.Selection(string="Estado de orden",
                                 related='order_id.state', readonly=True)
-   # moveline_id = fields.Many2one('stock.move.line',
-   #                               "Linea de movimiento de stock",
-   #                               readonly=True)
-
    unit_id = fields.Many2one('uom.uom', "UdM",
                              ondelete='restrict',
                              required=True)

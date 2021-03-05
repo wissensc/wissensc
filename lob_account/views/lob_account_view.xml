@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="account_move_project_view_tree" model="ir.ui.view">
+        <field name="name">Account Move Project Tree</field>
+        <field name="model">account.move.project</field>
+        <field name="arch" type="xml">
+            <tree string="Proyectos" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_move_project_model_action" model="ir.actions.act_window">
+        <field name="name">Proyectos</field>
+        <field name="res_model">account.move.project</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem name="Proyectos" id="account_move_project_menu" groups="base.group_user"
+              parent="account.account_invoicing_menu" sequence="1" action="account_move_project_model_action"/>
+</odoo>

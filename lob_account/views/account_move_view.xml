@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="account_move_view_form_inherit_lob_account" model="ir.ui.view">
+        <field name="name">Account Move Form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]/group[1]/field[last()]" position="after">
+                <field name="project_id"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Search-->
+    <record id="account_move_view_search_inherit_lob_account" model="ir.ui.view">
+        <field name="name">Account Move Search</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]/filter[last()]" position="after">
+                <separator/>
+                <filter string="Proyecto" name="project" context="{'group_by': 'project_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
