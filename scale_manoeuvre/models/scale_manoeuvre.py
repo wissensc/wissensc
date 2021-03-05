@@ -89,11 +89,6 @@ class ScaleManoeuvre(models.Model):
 
    note = fields.Text('Nota')
 
-   entrance_date = fields.Datetime('Hora y fecha de inicio',
-                                   default=fields.Datetime.now,
-                                   readonly=True)
-   exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
-
    @api.depends('orderline_ids.net_weight')
    def _compute_lines(self):
       for record in self:
