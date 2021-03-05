@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="account.view_invoice_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[last()]" position="after">
-                <field name="project_id"/>
+                <field name="project_id" optional="show"/>
             </xpath>
         </field>
     </record>
