@@ -137,8 +137,7 @@
                                     <field name="create_uid"/>
                                 </group>
                                 <group>
-                                    <field name="entrance_date"/>
-                                    <field name="exit_date"/>
+                                    <field name="create_date"/>
                                 </group>
                             </group>
                         </page>
@@ -175,7 +174,7 @@
         <field name="model">scale.exit</field>
         <field name="arch" type="xml">
             <pivot string="Salidas">
-                <field name="entrance_date" type="row"/>
+                <field name="create_date" type="row"/>
                 <field name="lob_id" type="col"/>
             </pivot>
         </field>

@@ -32,15 +32,18 @@ class ScaleManoeuvre(models.Model):
       index=True, tracking=1,
       default='draft')
 
-   type = fields.Selection([('manoeuvre', 'Maniobra')], 'Tipo',
-                           default='manoeuvre',
-                           required=True, readonly=True)
+   type = fields.Selection([('entrance', 'Entrada'), ('exit', 'Salida')],
+                           'Tipo',
+                           default=None, required=True, states=STATES)
 
    lob_id = fields.Many2one('lob', 'Línea de negocio', default=None,
                             required=True,
                             domain="[('scale_manoeuvre','=',True)]",
                             states=STATES,
                             ondelete='restrict')
+   scale = fields.Selection(
+      [('Teotihuacan', 'Teotihuacan'), ('Teotihuacan', 'Xalostoc')], 'Planta',
+      default=None, required=True, states=STATES)
 
    @api.onchange('lob_id')
    def _resetOrder(self):
@@ -67,7 +70,7 @@ class ScaleManoeuvre(models.Model):
                                readonly=True)
    initial_weight = fields.Float('Peso inicial', readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
-   reference = fields.Char('Referencia unica', readonly=True)
+   reference = fields.Char('Referencia', readonly=True)
 
    @api.constrains('unit_id')
    def _onchangeuom(self):
@@ -97,7 +100,6 @@ class ScaleManoeuvre(models.Model):
          total = 0
          for line in record.orderline_ids:
             total = total + line.net_weight
-         # record.total_weight = total
          record.update({'total_weight': total})
 
    total_weight = fields.Float('Peso neto total', store=True,
@@ -173,7 +175,11 @@ class ScaleManoeuvre(models.Model):
       headers = {'content-type': 'application/json',
                  'x-api-key': api_key,
                  }
-
+      lob = {
+         'Planta Teotihuacán': 'Teotihuacan',
+         'Planta Xalostoc': 'Teotihuacan',
+         'Oficinas Xalostoc': 'Teotihuacan'
+      }
       type = {'entrance': 'UNLOAD', 'exit': 'LOAD'}
 
       if option == 'close':
@@ -186,9 +192,9 @@ class ScaleManoeuvre(models.Model):
       elif option == 'initial':
          params = {
             'key': self.reference,
-            'location': 'Teotihuacan',
+            'location': lob.get(self.lob_id.name),
             'secKey': 'M-Peso Inicial',
-            'type': type.get('entrance')
+            'type': type.get(self.type)
          }
          return requests.put(url, data=json.dumps(params), headers=headers)
 
@@ -203,4 +209,4 @@ class ScaleManoeuvre(models.Model):
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
       else:
-         raise UserError("%s" % json.dumps(data))
+         raise UserError("Error de conexión:\n%s" % json.dumps(data))

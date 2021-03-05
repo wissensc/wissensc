@@ -49,7 +49,7 @@ class ScaleEntrance(models.Model):
 
    order_id = fields.Many2one('purchase.order', 'Orden de compra',
                               states=STATES, required=True, ondelete='cascade',
-                              domain="[('state', '=', 'purchase'),('business_line_id','=',lob_id),('scale_id','=',False)]")
+                              domain="[('state', '=', 'purchase'),('business_line_id','=',lob_id),('scale_id','=',False),('valid_count','!=',0)]")
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
                                 states=STATES,
@@ -84,7 +84,7 @@ class ScaleEntrance(models.Model):
                                readonly=True)
    initial_weight = fields.Float('Peso Inicial', readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
-   reference = fields.Char('Referencia unica', readonly=True)
+   reference = fields.Char('Referencia', readonly=True)
 
    @api.onchange('order_id')
    def _onchangelines(self):
@@ -124,10 +124,6 @@ class ScaleEntrance(models.Model):
 
    note = fields.Text('Nota')
 
-   entrance_date = fields.Datetime('Hora y fecha de inicio',
-                                   default=fields.Datetime.now,
-                                   readonly=True)
-   exit_date = fields.Datetime('Hora y fecha de salida', readonly=True)
 
    @api.depends('orderline_ids.net_weight', 'order_id')
    def _compute_lines(self):
@@ -135,7 +131,6 @@ class ScaleEntrance(models.Model):
          total = 0
          for line in record.orderline_ids:
             total = total + line.net_weight
-         # record.total_weight = total
          record.update({'total_weight': total})
 
    total_weight = fields.Float('Peso neto total', store=True,
@@ -153,8 +148,6 @@ class ScaleEntrance(models.Model):
    def create(self, vals):
       res = super(ScaleEntrance, self).create(vals)
       if res:
-         self.env['purchase.order'].browse(res.order_id.id).write(
-            {'scale_id': res.id})
          date = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'scale')]).write_date
          res.reference = date.strftime('P%d%m%y%H%M-') + str(res.id)
@@ -189,7 +182,6 @@ class ScaleEntrance(models.Model):
             id = moveline.moveline_id.id
             stock.browse(id).write({'qty_done': moveline.net_weight,
                                     'lot_name': moveline.lot_name})
-         self.exit_date = datetime.now()
          response = self._request('close')
          data = response.json()
          if response.status_code == requests.codes.ok:
@@ -243,6 +235,9 @@ class ScaleEntrance(models.Model):
 
    def init_weight(self):
       self.ensure_one()
+      if self.order_id.scale_id:
+         raise ValidationError(
+            "Ya existe una báscula asociada a la orden %s,no se puede continuar con el proceso" % self.order_id.name)
       response = self._request()
       data = response.json()
       _logger.info(data)
@@ -251,5 +246,6 @@ class ScaleEntrance(models.Model):
          self.initial_weight = data.get('tareWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
+         self.order_id.write({'scale_id': self.id})
       else:
-         raise UserError("%s" % json.dumps(data))
+         raise UserError("Error de conexión:\n%s" % json.dumps(data))
