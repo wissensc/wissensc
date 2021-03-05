@@ -115,6 +115,8 @@ class ScaleManoeuvre(models.Model):
    def create(self, vals):
       res = super(ScaleManoeuvre, self).create(vals)
       if res:
+         self.env['purchase.order'].browse(res.order_id.id).write(
+            {'scale_id': res.id})
          date = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'scale')]).write_date
          res.reference = date.strftime('M%d%m%y%H%M-') + str(res.id)
@@ -202,5 +204,6 @@ class ScaleManoeuvre(models.Model):
          self.initial_weight = data.get('tareWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
+
       else:
-         raise UserError("%s" % json.dumps(data))
+         raise UserError("Error de conexión:\n%s" % json.dumps(data))
