@@ -6,6 +6,7 @@ from odoo.exceptions import UserError
 import requests
 import json
 import logging
+import datetime as dt
 
 _logger = logging.getLogger(__name__)
 
@@ -64,8 +65,6 @@ class ManoeuvreOrderLine(models.Model):
          'secKey': 'M-' + str(self.id),
          'type': type.get('entrance')
       }
-      print(params)
-
       return requests.post(url, data=json.dumps(params), headers=headers)
 
    def action_weight(self):
@@ -75,6 +74,9 @@ class ManoeuvreOrderLine(models.Model):
       _logger.info(data)
 
       if response.status_code == requests.codes.ok:
+         if data.get('date'):
+            date_obj = dt.datetime.strptime(data.get('date'), '%Y-%m-%dT%H:%M:%S.%f')
+            self.weight_date = date_obj
          self.net_weight = data.get('netWeight', 0.0) if data.get('netWeight',
                                                                   0.0) > 0 else data.get(
             'netWeight', 0.0) * - 1

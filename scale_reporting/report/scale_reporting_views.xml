@@ -15,8 +15,8 @@
                 <field name="net_weight" sum="Peso neto total"/>
                 <field name="driver_id"/>
                 <field name="type"/>
-                <field name="entrance_date"/>
-                <field name="exit_date"/>
+                <field name="scale_date"/>
+                <field name="weight_date"/>
                 <field name="create_id"/>
                 <field name="note"/>
             </tree>
