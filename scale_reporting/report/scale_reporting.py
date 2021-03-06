@@ -8,7 +8,7 @@ class ScaleReporting(models.Model):
    _auto = False
    _description = 'Informe de entradas y salidas de bascula'
 
-   order = fields.Char('Numero del pedido', readonly=True)
+   order = fields.Char('Número de orden', readonly=True)
    folio = fields.Char('Folio', readonly=True)
    date_order = fields.Datetime('Fecha de orden', readonly=True)
    product = fields.Many2one('product.product', "Producto", readonly=True)
@@ -19,8 +19,8 @@ class ScaleReporting(models.Model):
    driver_id = fields.Many2one('scale.driver', 'Chofer', readonly=True)
    type = fields.Selection([('entrance', 'Entrada'), ('exit', 'Salida')], 'Tipo',
                            readonly=True)
-   entrance_date = fields.Datetime('Fecha de entrada', readonly=True)
-   exit_date = fields.Datetime('Fecha de salida', readonly=True)
+   scale_date = fields.Datetime('Fecha de báscula', readonly=True)
+   weight_date = fields.Datetime('Fecha de pesada', readonly=True)
    create_id = fields.Many2one('res.users', 'Creado por', readonly=True)
    note = fields.Text('Nota', readonly=True)
 
@@ -30,7 +30,7 @@ class ScaleReporting(models.Model):
       CREATE OR REPLACE VIEW scale_reporting AS 
 SELECT ROW_NUMBER() OVER(ORDER BY sp.date_order) AS id, * FROM (SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.product_id AS product, fv.license_plate AS license_plate,
 eo.tare_weight AS tare_weight, eo.gross_weight AS gross_weight, eo.net_weight AS net_weight, se.driver_id AS driver_id, se.type AS "type",
-se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS create_id, se.note AS note
+se.create_date AS scale_date, eo.weight_date AS weight_date, eo.create_uid AS create_id, se.note AS note
 	FROM scale_entrance_orderline eo 	
 	INNER JOIN scale_entrance se ON eo.order_id = se.id
 	INNER JOIN fleet_vehicle fv ON se.vehicle_id = fv.id
@@ -38,7 +38,7 @@ se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS c
 UNION ALL
 SELECT po.name AS "order", se.name AS folio, po.date_order AS date_order,  eo.product_id AS product, fv.license_plate AS license_plate,
 eo.tare_weight AS tare_weight, eo.gross_weight AS gross_weight, eo.net_weight AS net_weight, se.driver_id AS driver_id, se.type AS "type",
-se.entrance_date AS entrance_date, se.exit_date AS exit_date, eo.create_uid AS create_id, se.note AS note
+se.create_date AS scale_date, eo.weight_date AS weight_date, eo.create_uid AS create_id, se.note AS note
 	FROM scale_exit_orderline eo 	
 	INNER JOIN scale_exit se ON eo.order_id = se.id
 	INNER JOIN fleet_vehicle fv ON se.vehicle_id = fv.id

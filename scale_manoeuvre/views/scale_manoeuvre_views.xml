@@ -105,8 +105,8 @@
                                 </tree>
                             </field>
                             <div class="float-right">
-                                <label for="total_weight"/>
-                                <field name="total_weight" nolabel="1" class="mr-2"/>
+                                <label for="total_netWeight"/>
+                                <field name="total_netWeight" nolabel="1" class="mr-2"/>
                                 <span><field name="rel_unit_name" nolabel="1"/></span>
                             </div>
                             <group name="note_group" col="6" class="mt-2 mt-md-0">

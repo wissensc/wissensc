@@ -95,9 +95,9 @@ class ScaleManoeuvre(models.Model):
          total = 0
          for line in record.orderline_ids:
             total = total + line.net_weight
-         record.update({'total_weight': total})
+         record.update({'total_netWeight': total})
 
-   total_weight = fields.Float('Peso neto total', store=True,
+   total_netWeight = fields.Float('Peso neto total', store=True,
                                compute=_compute_lines)
 
    def name_get(self):
@@ -141,7 +141,6 @@ class ScaleManoeuvre(models.Model):
       self.ensure_one()
 
       if not 'draft' in self.orderline_ids.mapped('state'):
-         self.exit_date = datetime.now()
          response = self._request('close')
          data = response.json()
          if response.status_code == requests.codes.ok:
@@ -200,7 +199,8 @@ class ScaleManoeuvre(models.Model):
       _logger.info(data)
 
       if response.status_code == requests.codes.ok:
-         self.initial_weight = data.get('tareWeight', 0.0)
+         peso = data.get('grossWeight', 0.0) if self.type == 'entrance' else data.get('tareWeight', 0.0)
+         self.initial_weight = peso
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
       else:
