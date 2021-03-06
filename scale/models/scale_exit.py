@@ -92,7 +92,7 @@ class ScaleExit(models.Model):
          picking_ids = self.order_id.picking_ids.filtered(
             lambda x: x.state == 'assigned').mapped('id')
          for moveline in self.env['stock.move.line'].search(
-               [('picking_id', 'in', picking_ids)]):
+               [('picking_id', 'in', picking_ids), ('product_qty', '>', 0.0)]):
             dic = {
                'moveline_id': moveline,
                'name': moveline.product_id.name,
@@ -123,7 +123,6 @@ class ScaleExit(models.Model):
 
    note = fields.Text('Nota')
 
-
    @api.depends('orderline_ids.net_weight', 'order_id')
    def _compute_lines(self):
       for record in self:
@@ -133,7 +132,7 @@ class ScaleExit(models.Model):
          record.update({'total_netWeight': total})
 
    total_netWeight = fields.Float('Peso neto total', store=True,
-                               compute=_compute_lines)
+                                  compute=_compute_lines)
 
    def name_get(self):
       result = []
