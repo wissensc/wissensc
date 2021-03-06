@@ -45,17 +45,11 @@
                     <div class="page">
                         <div class="row">
                             <div class="col">
-                                <strong>Fecha y hora de inicio: </strong>
-                                <strong t-field="doc.entrance_date"/>
+                                <strong>Fecha de báscula: </strong>
+                                <strong t-field="doc.create_date"/>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <span>Fecha y hora de Fin: </span>
-                                <span t-field="doc.exit_date"/>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
+                         <div class="row mt-4">
                             <div class="col-6">
                                 <p>Chofer: <span t-field="doc.driver_id"/><br/>
                                 Matrícula: <span t-field="doc.rel_license_plate"/></p>
@@ -95,7 +89,7 @@
                        <div class="float-right mt-4"
                              style="color:#000;font-weight:bold;font-size:16px;">
                             <span class="mr-2">Peso neto total: </span>
-                            <span t-field="doc.total_weight"/>
+                            <span t-field="doc.total_netWeight"/>
                             <span class="pr-1" t-field="doc.unit_id.name"/>
                         </div>
                     </div>

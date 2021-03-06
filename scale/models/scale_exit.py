@@ -48,7 +48,7 @@ class ScaleExit(models.Model):
    order_id = fields.Many2one('sale.order', 'Orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'purchase'),('business_line_id','=',lob_id),('scale_id','=',False),('valid_count','!=',0)]")
+                              domain="[('state', '=', 'sale'),('business_line_id','=',lob_id),('scale_id','=',False),('valid_count','!=',0)]")
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
                                 states=STATES,
@@ -130,9 +130,9 @@ class ScaleExit(models.Model):
          total = 0
          for line in record.orderline_ids:
             total = total + line.net_weight
-         record.update({'total_weight': total})
+         record.update({'total_netWeight': total})
 
-   total_weight = fields.Float('Peso neto total', store=True,
+   total_netWeight = fields.Float('Peso neto total', store=True,
                                compute=_compute_lines)
 
    def name_get(self):
@@ -242,7 +242,7 @@ class ScaleExit(models.Model):
       _logger.info(data)
 
       if response.status_code == requests.codes.ok:
-         self.initial_weight = data.get('grossWeight', 0.0)
+         self.initial_weight = data.get('tareWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'
          self.order_id.write({'scale_id': self.id})

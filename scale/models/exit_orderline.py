@@ -6,6 +6,7 @@ from odoo.exceptions import UserError
 import requests
 import json
 import logging
+import datetime as dt
 
 _logger = logging.getLogger(__name__)
 
@@ -79,6 +80,9 @@ class ExitOrderLine(models.Model):
       _logger.info(data)
 
       if response.status_code == requests.codes.ok:
+         if data.get('date'):
+            date_obj = dt.datetime.strptime(data.get('date'), '%Y-%m-%dT%H:%M:%S.%f')
+            self.weight_date = date_obj
          self.net_weight = data.get('netWeight', 0.0) if data.get('netWeight', 0.0) > 0 else data.get('netWeight', 0.0) * - 1
          self.gross_weight = data.get('grossWeight', 0.0)
          self.tare_weight = data.get('tareWeight', 0.0)
