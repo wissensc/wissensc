@@ -69,7 +69,6 @@
                                                 <field name="name"/>
                                                 <field name="unit_id"
                                                        options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
-                                                <field name="weight_order"/>
                                             </group>
                                             <group>
                                                 <field name="net_weight"/>
