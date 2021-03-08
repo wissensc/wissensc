@@ -58,7 +58,6 @@ class ScaleManoeuvre(models.Model):
 
    driver_id = fields.Many2one('scale.driver', 'Chofer',
                                states=STATES,
-                               domain="[('external', '=', True)]",
                                required=True, ondelete='restrict')
 
    unit_id = fields.Many2one('uom.uom', 'Unidad de báscula',
