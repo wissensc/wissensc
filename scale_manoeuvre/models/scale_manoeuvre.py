@@ -58,7 +58,6 @@ class ScaleManoeuvre(models.Model):
 
    driver_id = fields.Many2one('scale.driver', 'Chofer',
                                states=STATES,
-                               domain="[('external', '=', True)]",
                                required=True, ondelete='restrict')
 
    unit_id = fields.Many2one('uom.uom', 'Unidad de báscula',
@@ -68,7 +67,9 @@ class ScaleManoeuvre(models.Model):
                              required=True)
    rel_unit_name = fields.Char(related="unit_id.name", string='Unidad',
                                readonly=True)
-   initial_weight = fields.Float('Peso inicial', readonly=True)
+   initial_weight = fields.Float('Peso inicial',
+                                 digits='Product Unit of Measure',
+                                 readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
    reference = fields.Char('Referencia', readonly=True)
 
@@ -97,8 +98,9 @@ class ScaleManoeuvre(models.Model):
             total = total + line.net_weight
          record.update({'total_netWeight': total})
 
-   total_netWeight = fields.Float('Peso neto total', store=True,
-                               compute=_compute_lines)
+   total_netWeight = fields.Float('Peso neto total',
+                                  digits='Product Unit of Measure', store=True,
+                                  compute=_compute_lines)
 
    def name_get(self):
       result = []
@@ -199,7 +201,9 @@ class ScaleManoeuvre(models.Model):
       _logger.info(data)
 
       if response.status_code == requests.codes.ok:
-         peso = data.get('grossWeight', 0.0) if self.type == 'entrance' else data.get('tareWeight', 0.0)
+         peso = data.get('grossWeight',
+                         0.0) if self.type == 'entrance' else data.get(
+            'tareWeight', 0.0)
          self.initial_weight = peso
          self.photo_url = data.get('photoUrl', '')
          self.state = 'assigned'

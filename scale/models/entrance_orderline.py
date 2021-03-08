@@ -31,11 +31,15 @@ class ScaleOrderLine(models.Model):
 
    unit_id = fields.Many2one('uom.uom', "UdM", readonly=True,
                              ondelete='restrict')
-   weight_order = fields.Float("Peso requerido", readonly=True)
+   weight_order = fields.Float("Peso requerido",
+                               digits='Product Unit of Measure', readonly=True)
 
-   tare_weight = fields.Float("Peso tara", readonly=True)
-   gross_weight = fields.Float("Peso bruto", readonly=True)
-   net_weight = fields.Float("Peso neto", readonly=True)
+   tare_weight = fields.Float("Peso tara", digits='Product Unit of Measure',
+                              readonly=True)
+   gross_weight = fields.Float("Peso bruto", digits='Product Unit of Measure',
+                               readonly=True)
+   net_weight = fields.Float("Peso neto", digits='Product Unit of Measure',
+                             readonly=True)
 
    lot_name = fields.Char("Número de lote", readonly=True)
    photo_url = fields.Char("URL", readonly=True)
@@ -83,9 +87,12 @@ class ScaleOrderLine(models.Model):
 
       if response.status_code == requests.codes.ok:
          if data.get('date'):
-            date_obj = dt.datetime.strptime(data.get('date'), '%Y-%m-%dT%H:%M:%S.%f')
+            date_obj = dt.datetime.strptime(data.get('date'),
+                                            '%Y-%m-%dT%H:%M:%S.%f')
             self.weight_date = date_obj
-         self.net_weight = data.get('netWeight', 0.0) if data.get('netWeight', 0.0) > 0 else data.get('netWeight', 0.0) * - 1
+         self.net_weight = data.get('netWeight', 0.0) if data.get('netWeight',
+                                                                  0.0) > 0 else data.get(
+            'netWeight', 0.0) * - 1
          self.gross_weight = data.get('grossWeight', 0.0)
          self.tare_weight = data.get('tareWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')

@@ -13,9 +13,9 @@ class ScaleReporting(models.Model):
    date_order = fields.Datetime('Fecha de orden', readonly=True)
    product = fields.Many2one('product.product', "Producto", readonly=True)
    license_plate = fields.Char('Matrícula', readonly=True)
-   tare_weight = fields.Float('Peso tara', readonly=True)
-   gross_weight = fields.Float('Peso bruto', readonly=True)
-   net_weight = fields.Float('Peso neto', readonly=True)
+   tare_weight = fields.Float('Peso tara', digits='Product Unit of Measure', readonly=True)
+   gross_weight = fields.Float('Peso bruto', digits='Product Unit of Measure', readonly=True)
+   net_weight = fields.Float('Peso neto', digits='Product Unit of Measure', readonly=True)
    driver_id = fields.Many2one('scale.driver', 'Chofer', readonly=True)
    type = fields.Selection([('entrance', 'Entrada'), ('exit', 'Salida')], 'Tipo',
                            readonly=True)

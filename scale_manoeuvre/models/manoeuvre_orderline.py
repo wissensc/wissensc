@@ -29,11 +29,9 @@ class ManoeuvreOrderLine(models.Model):
    unit_id = fields.Many2one('uom.uom', "UdM",
                              ondelete='restrict',
                              required=True)
-   weight_order = fields.Float("Peso requerido")
-
-   tare_weight = fields.Float("Peso tara")
-   gross_weight = fields.Float("Peso bruto")
-   net_weight = fields.Float("Peso neto")
+   tare_weight = fields.Float("Peso tara", digits='Product Unit of Measure')
+   gross_weight = fields.Float("Peso bruto", digits='Product Unit of Measure')
+   net_weight = fields.Float("Peso neto", digits='Product Unit of Measure')
 
    photo_url = fields.Char("URL", readonly=True)
    weight_date = fields.Datetime("Fecha de pesada", readonly=True)
