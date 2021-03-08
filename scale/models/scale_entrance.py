@@ -82,7 +82,7 @@ class ScaleEntrance(models.Model):
                              required=True)
    rel_unit_name = fields.Char(related="unit_id.name", string='Unidad',
                                readonly=True)
-   initial_weight = fields.Float('Peso Inicial', readonly=True)
+   initial_weight = fields.Float('Peso Inicial', digits='Product Unit of Measure', readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
    reference = fields.Char('Referencia', readonly=True)
 
@@ -132,7 +132,8 @@ class ScaleEntrance(models.Model):
             total = total + line.net_weight
          record.update({'total_netWeight': total})
 
-   total_netWeight = fields.Float('Peso neto total', store=True,
+   total_netWeight = fields.Float('Peso neto total',
+                                  digits='Product Unit of Measure', store=True,
                                   compute=_compute_lines)
 
    def name_get(self):
