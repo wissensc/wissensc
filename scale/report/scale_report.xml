@@ -22,6 +22,7 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">scale.scale_entrance_report_template</field>
         <field name="report_file">scale.scale_entrance_report_template</field>
+        <field name="print_report_name">(object.state in ('assigned', 'sent') and 'Báscula - %s' % object.name or 'Borrador - (%s)' % object.order_id.name)</field>
         <field name="binding_model_id" ref="model_scale_entrance"/>
         <field name="binding_type">report</field>
         <field name="binding_view_types">form</field>
@@ -33,6 +34,7 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">scale.scale_exit_report_template</field>
         <field name="report_file">scale.scale_exit_report_template</field>
+        <field name="print_report_name">(object.state in ('assigned', 'sent') and 'Báscula - %s' % object.name or 'Borrador - (%s)' % object.order_id.name)</field>
         <field name="binding_model_id" ref="model_scale_exit"/>
         <field name="binding_type">report</field>
         <field name="binding_view_types">form</field>
