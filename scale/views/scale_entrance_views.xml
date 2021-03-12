@@ -39,7 +39,7 @@
                             <field name="vehicle_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="rel_license_plate"/>
-                            <field name="driver_id" options="{'no_create': True, 'no_create_edit':True}"/>
+                            <field name="driver_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                         </group>
                     </group><group>
                     <group>
