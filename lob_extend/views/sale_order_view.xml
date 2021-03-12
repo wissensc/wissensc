@@ -23,6 +23,9 @@
                 <field name="effective_date" optional="hide"/>
                 <field name="commitment_date" widget="date" optional="hide"/>
             </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="business_line_id"  optional="show"/>
+            </xpath>
         </field>
     </record>
 </odoo>
