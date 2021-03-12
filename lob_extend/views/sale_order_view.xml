@@ -7,7 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//group[1]/group/field[last()]" position="after">
                 <field name="business_line_id" attrs="{'readonly': [('state','not in',['draft', 'sent'])]}"
-                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"  optional="show"/>
+                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"
+                       optional="show"/>
             </xpath>
         </field>
     </record>
@@ -24,7 +25,24 @@
                 <field name="commitment_date" widget="date" optional="hide"/>
             </xpath>
             <xpath expr="//field[@name='name']" position="after">
-                <field name="business_line_id"  optional="show"/>
+                <field name="business_line_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_order_view_tree_inherit_lob2" model="ir.ui.view">
+        <field name="name">Sale Order Tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='commitment_date']" position="replace">
+                <field name="date_order" widget="date" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='expected_date']" position="after">
+                <field name="effective_date" optional="hide"/>
+                <field name="commitment_date" widget="date" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="business_line_id" optional="show"/>
             </xpath>
         </field>
     </record>
