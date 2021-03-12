@@ -26,7 +26,6 @@
         <field name="binding_model_id" ref="model_scale_entrance"/>
         <field name="binding_type">report</field>
         <field name="binding_view_types">form</field>
-        <field name="paperformat_id" ref="scale.paperformat_scale"/>
     </record>
     <record id="scale_exit_report" model="ir.actions.report">
         <field name="name">Báscula</field>
