@@ -14,12 +14,13 @@
     'category': 'Uncategorized',
     'version': '14.0.1',
 
-    'depends': ['base', 'account'],
+    'depends': ['base', 'account', 'l10n_mx_edi'],
 
     'data': [
         'security/ir.model.access.csv',
         'views/lob_account_view.xml',
         'views/account_move_view.xml',
+        'views/res_partner_view.xml',
     ],
 
     'installable': True,
