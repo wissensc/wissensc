@@ -8,41 +8,41 @@ class ResPartner(models.Model):
 
    edi_usage = fields.Selection(
       selection=[
-         ('G01', 'Acquisition of merchandise'),
-         ('G02', 'Returns, discounts or bonuses'),
-         ('G03', 'General expenses'),
-         ('I01', 'Constructions'),
-         ('I02', 'Office furniture and equipment investment'),
-         ('I03', 'Transportation equipment'),
-         ('I04', 'Computer equipment and accessories'),
-         ('I05', 'Dices, dies, molds, matrices and tooling'),
-         ('I06', 'Telephone communications'),
-         ('I07', 'Satellite communications'),
-         ('I08', 'Other machinery and equipment'),
-         ('D01', 'Medical, dental and hospital expenses.'),
-         ('D02', 'Medical expenses for disability'),
-         ('D03', 'Funeral expenses'),
-         ('D04', 'Donations'),
+         ('G01', 'Adquisición de mercancías'),
+         ('G02', 'Devoluciones, descuentos o bonificaciones'),
+         ('G03', 'Gastos en general'),
+         ('I01', 'Construcciones'),
+         ('I02', 'Mobilario y equipo de oficina por inversiones'),
+         ('I03', 'Equipo de transporte'),
+         ('I04', 'Equipo de cómputo y accesorios'),
+         ('I05', 'Dados, troqueles, moldes, matrices y herramental'),
+         ('I06', 'Comunicaciones telefónicas'),
+         ('I07', 'Comunicaciones satelitales'),
+         ('I08', 'Otra maquinaria y equipo'),
+         ('D01', 'Honorarios médicos, dentales y gastos hospitalarios'),
+         ('D02', 'Gastos médicos por incapacidad o discapacidad'),
+         ('D03', 'Gastos funerales'),
+         ('D04', 'Donativos'),
          ('D05',
-          'Real interest effectively paid for mortgage loans (room house)'),
-         ('D06', 'Voluntary contributions to SAR'),
-         ('D07', 'Medical insurance premiums'),
-         ('D08', 'Mandatory School Transportation Expenses'),
+          'Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)'),
+         ('D06', 'Aportaciones voluntarias al SAR'),
+         ('D07', 'Primas por seguros de gastos médicos'),
+         ('D08', 'Gastos de transportación escolar obligatoria.'),
          ('D09',
-          'Deposits in savings accounts, premiums based on pension plans.'),
-         ('D10', 'Payments for educational services (Colegiatura)'),
-         ('P01', 'To define'),
+          'Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones.'),
+         ('D10', 'Pagos por servicios educativos (colegiaturas)'),
+         ('P01', 'Por definir'),
       ],
-      string="Usage",
+      string="Uso",
       default='P01',
-      help="Used in CFDI 3.3 to express the key to the usage that will gives the receiver to this invoice. This "
-           "value is defined by the customer.\nNote: It is not cause for cancellation if the key set is not the usage "
-           "that will give the receiver of the document.")
+      help="Utilizado en CFDI 3.3 para indicar la clave del uso que le dará el receptor a esta factura. Este "
+           "valor es definido por el cliente.\nNota: No es motivo de cancelación si la clave configurada no corresponde con el uso "
+           "que le dará el receptor del documento.")
 
    payment_method_id = fields.Many2one(
       'l10n_mx_edi.payment.method',
-      string="Payment Way",
-      help="Indicates the way the invoice was/will be paid, where the options could be: "
-           "Cash, Nominal Check, Credit Card, etc. Leave empty if unkown and the XML will show 'Unidentified'.",
+      string="Forma de pago",
+      help='Indica la forma en que se pagó o se pagará la factura, donde las opciones podrían ser: '
+           'Tarjeta de Crédito, etc. Deje vacía si no conoce la forma de pago y el XML mostrará "No Identificado".',
       default=lambda self: self.env.ref('l10n_mx_edi.payment_method_otros',
                                         raise_if_not_found=False))
