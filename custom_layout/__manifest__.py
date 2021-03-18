@@ -17,7 +17,7 @@
     'depends': ['base'],
 
     'data': [
-        'views/templates.xml',
+        #'views/templates.xml',
     ],
 
     'installable': True,
