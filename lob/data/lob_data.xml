@@ -6,7 +6,7 @@
             <field name="name">Báscula PTE</field>
             <field name="code">bpte</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPTE-</field>
+            <field name="prefix">BPTE</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -15,7 +15,7 @@
             <field name="name">Báscula PXE</field>
             <field name="code">bpxe</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPXE-</field>
+            <field name="prefix">BPXE</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -24,7 +24,7 @@
             <field name="name">Báscula OXE</field>
             <field name="code">boxe</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BOXE-</field>
+            <field name="prefix">BOXE</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -34,7 +34,7 @@
             <field name="name">Báscula PTS</field>
             <field name="code">bpts</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPTS-</field>
+            <field name="prefix">BPTS</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -43,7 +43,7 @@
             <field name="name">Báscula PXS</field>
             <field name="code">bpxs</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPXS-</field>
+            <field name="prefix">BPXS</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -52,7 +52,7 @@
             <field name="name">Báscula OXS</field>
             <field name="code">boxs</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BOXS-</field>
+            <field name="prefix">BOXS</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -62,7 +62,7 @@
             <field name="name">Báscula PTM</field>
             <field name="code">bptm</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPTM-</field>
+            <field name="prefix">BPTM</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -71,7 +71,7 @@
             <field name="name">Báscula PXM</field>
             <field name="code">bpxm</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BPXM-</field>
+            <field name="prefix">BPXM</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -80,7 +80,7 @@
             <field name="name">Báscula OXM</field>
             <field name="code">boxm</field>
             <field name="active">TRUE</field>
-            <field name="prefix">BOXM-</field>
+            <field name="prefix">BOXM</field>
             <field name="padding">6</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
