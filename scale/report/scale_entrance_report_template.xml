@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Template-->
+    <template id="scale_entrance_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="float-right mt-2"
+                             style="color:#E23E1B;font-weight:bold;font-size:20px;">
+                            <span class="mr-3">NO. DE FOLIO: </span>
+                            <span t-field="doc.name"/>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <strong>Fecha de báscula: </strong>
+                                <strong t-field="doc.create_date"/>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <p>Chofer: <span t-field="doc.driver_id"/><br/>
+                                    Matrícula: <span t-field="doc.rel_license_plate"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p>Proveedor: <span t-field="doc.rel_partner"/></p>
+                            </div>
+                        </div>
+                        <table class="table mt-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">PRODUCTO</th>
+                                    <th scope="col">PESO NETO</th>
+                                    <th scope="col">PESO TARA</th>
+                                    <th scope="col">PESO BRUTO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.orderline_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.net_weight"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.tare_weight"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.gross_weight"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="float-right mt-4 mb-5"
+                             style="color:#000;font-weight:bold;font-size:16px;">
+                            <span class="mr-2">Peso neto total: </span>
+                            <span t-field="doc.total_netWeight"/>
+                            <span class="pr-1" t-field="doc.unit_id.name"/>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <span>Firma de báscula:</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 mx-auto text-center" style="border-top:1px solid #000;">
+                            <span>Firma</span>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

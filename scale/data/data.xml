@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="url_scale" model="ir.config_parameter">
+        <field name="key">url_request</field>
+        <field name="value">https://8tenp5tqp2.execute-api.us-east-1.amazonaws.com/dev/weight</field>
+    </record>
+    <record id="api_key_scale" model="ir.config_parameter">
+        <field name="key">x_api_key</field>
+        <field name="value">tketM4M8EK1oHUEWjfAn70x4IU5VRVJ6kfmDp25i</field>
+    </record>
+</odoo>

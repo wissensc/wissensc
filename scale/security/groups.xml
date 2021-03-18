@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="module_category_bentrance">
+        <field name="name">Entrada</field>
+        <field name="parent_id" ref="base.module_category_scale"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="scale_entrance_group" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="scale.module_category_bentrance"/>
+    </record>
+    <record id="scale_entrance_group_system" model="res.groups">
+        <field name="name">Administradora</field>
+        <field name="category_id" ref="scale.module_category_bentrance"/>
+        <field name="implied_ids" eval="[
+            (4, ref('scale.scale_entrance_group'))
+            ]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record model="ir.module.category" id="module_category_bexit">
+        <field name="name">Salida</field>
+        <field name="parent_id" ref="base.module_category_scale"/>
+        <field name="sequence">2</field>
+    </record>
+    <record id="scale_exit_group" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="scale.module_category_bexit"/>
+    </record>
+    <record id="scale_exit_group_system" model="res.groups">
+        <field name="name">Administradora</field>
+        <field name="category_id" ref="scale.module_category_bexit"/>
+        <field name="implied_ids" eval="[
+            (4, ref('scale.scale_exit_group'))
+            ]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>
