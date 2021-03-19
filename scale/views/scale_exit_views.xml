@@ -29,7 +29,7 @@
                         <group>
                             <field name="reference"/>
                             <field name="type"/>
-                            <field name="lob_id"
+                            <field name="business_line_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="order_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
@@ -175,7 +175,7 @@
         <field name="arch" type="xml">
             <pivot string="Salidas">
                 <field name="create_date" type="row"/>
-                <field name="lob_id" type="col"/>
+                <field name="business_line_id" type="col"/>
             </pivot>
         </field>
     </record>
