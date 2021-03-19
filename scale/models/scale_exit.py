@@ -34,13 +34,13 @@ class ScaleExit(models.Model):
    type = fields.Selection([('exit', 'Salida')], 'Tipo', default='exit',
                            required=True, readonly=True)
 
-   lob_id = fields.Many2one('lob', 'Línea de negocio', default=None,
+   business_line_id = fields.Many2one('lob', 'Línea de negocio', default=None,
                             required=True,
                             domain="[('scale_exit','=',True)]",
                             states=STATES,
                             ondelete='restrict')
 
-   @api.onchange('lob_id')
+   @api.onchange('business_line_id')
    def _resetOrder(self):
       self.order_id = None
       self.orderline_ids = None
@@ -48,7 +48,7 @@ class ScaleExit(models.Model):
    order_id = fields.Many2one('sale.order', 'Orden de venta',
                               states=STATES, copy=False,
                               required=True, ondelete='cascade',
-                              domain="[('state', '=', 'sale'),('business_line_id','=',lob_id),('scale_id','=',False),('valid_count','!=',0)]")
+                              domain="[('state', '=', 'sale'),('business_line_id','=',business_line_id),('scale_id','=',False),('valid_count','!=',0)]")
 
    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehículo',
                                 states=STATES,
@@ -156,8 +156,8 @@ class ScaleExit(models.Model):
       for record in self:
          if record.name == '/' and vals.get('state') == 'assigned':
             seq = record.env['ir.sequence']
-            lob_id = vals.get('lob_id') or record.lob_id.id
-            code = record.env['lob'].browse(lob_id).exit_seq_id.code
+            business_line_id = vals.get('business_line_id') or record.business_line_id.id
+            code = record.env['lob'].browse(business_line_id).exit_seq_id.code
             record.name = seq.next_by_code(code) or 'Nuevo'
       return super(ScaleExit, self).write(vals)
 
@@ -226,7 +226,7 @@ class ScaleExit(models.Model):
       elif option == 'initial':
          params = {
             'key': self.reference,
-            'location': lob.get(self.lob_id.name),
+            'location': lob.get(self.business_line_id.name),
             'secKey': 'S-Peso Inicial',
             'type': type.get('exit')
          }

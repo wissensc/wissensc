@@ -651,8 +651,8 @@ msgid "Línea de la orden"
 msgstr ""
 
 #. module: scale
-#: model:ir.model.fields,field_description:scale.field_scale_entrance__lob_id
-#: model:ir.model.fields,field_description:scale.field_scale_exit__lob_id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__business_line_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__business_line_id
 msgid "Línea de negocio"
 msgstr ""
 

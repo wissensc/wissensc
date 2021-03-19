@@ -285,7 +285,7 @@ msgid "Línea de la orden"
 msgstr ""
 
 #. module: scale_manoeuvre
-#: model:ir.model.fields,field_description:scale_manoeuvre.field_scale_manoeuvre__lob_id
+#: model:ir.model.fields,field_description:scale_manoeuvre.field_scale_manoeuvre__business_line_id
 msgid "Línea de negocio"
 msgstr ""
 

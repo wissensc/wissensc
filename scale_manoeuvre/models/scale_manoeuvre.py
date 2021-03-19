@@ -36,7 +36,7 @@ class ScaleManoeuvre(models.Model):
                            'Tipo',
                            default=None, required=True, states=STATES)
 
-   lob_id = fields.Many2one('lob', 'Línea de negocio', default=None,
+   business_line_id = fields.Many2one('lob', 'Línea de negocio', default=None,
                             required=True,
                             domain="[('scale_manoeuvre','=',True)]",
                             states=STATES,
@@ -45,7 +45,7 @@ class ScaleManoeuvre(models.Model):
       [('Teotihuacan', 'Teotihuacan'), ('Teotihuacan', 'Xalostoc')], 'Planta',
       default=None, required=True, states=STATES)
 
-   @api.onchange('lob_id')
+   @api.onchange('business_line_id')
    def _resetOrder(self):
       self.orderline_ids = None
 
@@ -123,8 +123,8 @@ class ScaleManoeuvre(models.Model):
       for record in self:
          if record.name == '/' and vals.get('state') == 'assigned':
             seq = record.env['ir.sequence']
-            lob_id = vals.get('lob_id') or record.lob_id.id
-            code = record.env['lob'].browse(lob_id).manoeuvre_seq_id.code
+            business_line_id = vals.get('business_line_id') or record.business_line_id.id
+            code = record.env['lob'].browse(business_line_id).manoeuvre_seq_id.code
             record.name = seq.next_by_code(code) or 'Nuevo'
       return super(ScaleManoeuvre, self).write(vals)
 
@@ -188,7 +188,7 @@ class ScaleManoeuvre(models.Model):
       elif option == 'initial':
          params = {
             'key': self.reference,
-            'location': lob.get(self.lob_id.name),
+            'location': lob.get(self.business_line_id.name),
             'secKey': 'M-Peso Inicial',
             'type': type.get(self.type)
          }
