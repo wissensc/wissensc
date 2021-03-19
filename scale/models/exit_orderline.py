@@ -71,7 +71,7 @@ class ExitOrderLine(models.Model):
 
       params = {
          'key': self.order_id.reference,
-         'location': lob.get(self.order_id.lob_id.name),
+         'location': lob.get(self.order_id.business_line_id.name),
          'secKey': 'S-' + str(self.id),
          'type': type.get('exit')
       }
