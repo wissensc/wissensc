@@ -22,13 +22,13 @@
                 <span>Régimen Fiscal: </span>
                 <span t-field="company.partner_id.property_account_position_id.name"/>
             </t>
-        </xpath>
+        </xpath><!--
         <xpath expr="//div[2]" position="replace">
             <div t-attf-class="o_company_#{company.id}_layout article o_report_layout_background"
                  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
                  t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <t t-raw="0"/>
             </div>
-        </xpath>
+        </xpath>-->
     </template>
 </odoo>
