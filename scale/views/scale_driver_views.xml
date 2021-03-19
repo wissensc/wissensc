@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="scale_driver_view_form" model="ir.ui.view">
+        <field name="name">Scale Driver Form</field>
+        <field name="model">scale.driver</field>
+        <field name="arch" type="xml">
+            <form string="Choferes">
+                <header>
+                </header>
+                <sheet>
+                    <field name="image_1920" widget='image' class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <group>
+                        <group>
+                            <field name="name" placeholder="Nombre del chofer"/>
+                            <field name="license" placeholder="Ej. 01N251523"/>
+                        </group>
+                        <group>
+                            <field name="external"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="scale_driver_view_tree" model="ir.ui.view">
+        <field name="name">Scale Driver Tree</field>
+        <field name="model">scale.driver</field>
+        <field name="arch" type="xml">
+            <tree string="Choferes">
+                <field name="name"/>
+                <field name="license"/>
+                <field name="external"/>
+            </tree>
+        </field>
+    </record>
+    <record id="scale_driver_view_search" model="ir.ui.view">
+        <field name="name">Scale Driver Search</field>
+        <field name="model">scale.driver</field>
+        <field name="arch" type="xml">
+            <search string="Choferes">
+                <field name="name"/>
+                <field name="external"/>
+                <field name="license"/>
+                <filter string="Externos"
+                        name="externos"
+                        domain="[('external','=',True)]"/>
+                <filter string="Internos"
+                        name="internos"
+                        domain="[('external','=',False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="scale_driver_model_action" model="ir.actions.act_window">
+        <field name="name">Choferes</field>
+        <field name="res_model">scale.driver</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Choferes" id="scale_driver_menu"
+              parent="configuration" action="scale_driver_model_action"/>
+</odoo>

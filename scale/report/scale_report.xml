@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Paper format-->
+    <record id="paperformat_scale" model="report.paperformat">
+        <field name="name">Báscula</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">6</field>
+        <field name="margin_right">6</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">45</field>
+        <field name="dpi">90</field>
+    </record>
+    <!--Report-->
+    <record id="scale_entrance_report" model="ir.actions.report">
+        <field name="name">Báscula</field>
+        <field name="model">scale.entrance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">scale.scale_entrance_report_template</field>
+        <field name="report_file">scale.scale_entrance_report_template</field>
+        <field name="print_report_name">(object.state in ('assigned', 'sent') and 'Báscula - %s' % object.name or 'Borrador - (%s)' % object.order_id.name)</field>
+        <field name="binding_model_id" ref="model_scale_entrance"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form</field>
+    </record>
+    <record id="scale_exit_report" model="ir.actions.report">
+        <field name="name">Báscula</field>
+        <field name="model">scale.exit</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">scale.scale_exit_report_template</field>
+        <field name="report_file">scale.scale_exit_report_template</field>
+        <field name="print_report_name">(object.state in ('assigned', 'sent') and 'Báscula - %s' % object.name or 'Borrador - (%s)' % object.order_id.name)</field>
+        <field name="binding_model_id" ref="model_scale_exit"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form</field>
+        <field name="paperformat_id" ref="scale.paperformat_scale"/>
+    </record>
+</odoo>

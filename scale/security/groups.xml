@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="module_category_bentrance">
+        <field name="name">Entrada</field>
+        <field name="parent_id" ref="base.module_category_scale"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="scale_entrance_group" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="scale.module_category_bentrance"/>
+    </record>
+    <record id="scale_entrance_group_system" model="res.groups">
+        <field name="name">Administradora</field>
+        <field name="category_id" ref="scale.module_category_bentrance"/>
+        <field name="implied_ids" eval="[
+            (4, ref('scale.scale_entrance_group'))
+            ]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record model="ir.module.category" id="module_category_bexit">
+        <field name="name">Salida</field>
+        <field name="parent_id" ref="base.module_category_scale"/>
+        <field name="sequence">2</field>
+    </record>
+    <record id="scale_exit_group" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="scale.module_category_bexit"/>
+    </record>
+    <record id="scale_exit_group_system" model="res.groups">
+        <field name="name">Administradora</field>
+        <field name="category_id" ref="scale.module_category_bexit"/>
+        <field name="implied_ids" eval="[
+            (4, ref('scale.scale_exit_group'))
+            ]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <data noupdate="1">
+        <!--Record rules-->
+        <record model="ir.rule" id="group_lob_rule_scale_entrance">
+            <field name="name">ws lob scale_entrance</field>
+            <field name="model_id" ref="model_scale_entrance"/>
+            <field name="groups" eval="[(4, ref('lob.group_lob'))]"/>
+            <field name="domain_force">['|', ('business_line_id', 'in', user.business_line_ids.mapped('id')),
+                                        ('business_line_id', '=', False)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="ir.rule" id="group_lob_rule_scale_exit">
+            <field name="name">ws lob scale_exit</field>
+            <field name="model_id" ref="model_scale_exit"/>
+            <field name="groups" eval="[(4, ref('lob.group_lob'))]"/>
+            <field name="domain_force">['|', ('business_line_id', 'in', user.business_line_ids.mapped('id')),
+                                        ('business_line_id', '=', False)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo>

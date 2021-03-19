@@ -1,0 +1,1102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* scale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20210129\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-03 06:19+0000\n"
+"PO-Revision-Date: 2021-03-03 00:23-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid ""
+"<br/>\n"
+"                                Matrícula:"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid ""
+"<span attrs=\"{'invisible': ['|', ('state', '!=', 'draft'), ('name', '!=', "
+"'/')]}\">\n"
+"                                Borrador</span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<span class=\"mr-2\">Peso neto total: </span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<span class=\"mr-3\">NO. DE FOLIO: </span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<span>Fecha y hora de Fin: </span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<span>Firma de Báscula:</span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<span>Firma</span>"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "<strong>Fecha y hora de inicio: </strong>"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_needaction
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_needaction
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_exception_decoration
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_exception_decoration
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_state
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_state
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_type_icon
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_type_icon
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: scale
+#: model:res.groups,name:scale.scale_entrance_group_system
+#: model:res.groups,name:scale.scale_exit_group_system
+msgid "Administradora"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance__state__assigned
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit__state__assigned
+msgid "Asignado"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_entrance_init_confirmation
+msgid "Asistente de confirmación de entrada"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_entrance_weight_confirmation
+#: model:ir.model,name:scale.model_exit_weight_confirmation
+msgid "Asistente de confirmación de pesada"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_exit_init_confirmation
+msgid "Asistente de confirmación de salida"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_attachment_count
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_attachment_count
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance__state__draft
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit__state__draft
+msgid "Borrador"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "Borrador (* Orden %s)"
+msgstr ""
+
+#. module: scale
+#: model:ir.actions.report,name:scale.scale_entrance_report
+#: model:ir.actions.report,name:scale.scale_exit_report
+#: model:ir.model.fields,field_description:scale.field_purchase_order__scale_id
+#: model:ir.model.fields,field_description:scale.field_sale_order__scale_id
+msgid "Báscula"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.entrance_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.entrance_weight_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_weight_confirmation_wizard_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__driver_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__driver_id
+msgid "Chofer"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_scale_driver
+msgid "Chofer de camión"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "Chofer:"
+msgstr ""
+
+#. module: scale
+#: model:ir.actions.act_window,name:scale.scale_driver_model_action
+#: model:ir.ui.menu,name:scale.scale_driver_menu
+#: model_terms:ir.ui.view,arch_db:scale.scale_driver_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_driver_view_search
+#: model_terms:ir.ui.view,arch_db:scale.scale_driver_view_tree
+msgid "Choferes"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_partner
+msgid "Cliente"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_idpartner
+msgid "Cliente Id"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "Cliente:"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_user
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_user
+msgid "Comercial"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.entrance_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.entrance_weight_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_weight_confirmation_wizard_form
+msgid "Confirmar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__create_uid
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__create_uid
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__create_uid
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__create_uid
+#: model:ir.model.fields,field_description:scale.field_scale_driver__create_uid
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__create_uid
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__create_uid
+#: model:ir.model.fields,field_description:scale.field_scale_exit__create_uid
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__create_date
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__create_date
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__create_date
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__create_date
+#: model:ir.model.fields,field_description:scale.field_scale_driver__create_date
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__create_date
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__create_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit__create_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_exit__rel_date_order
+msgid ""
+"Creation date of draft/sent orders,\n"
+"Confirmation date of confirmed orders."
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Datos del sistema"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_entrance__rel_date_order
+msgid ""
+"Depicts the date within which the Quotation should be confirmed and converted "
+"into a purchase order."
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__display_name
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__display_name
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__display_name
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__display_name
+#: model:ir.model.fields,field_description:scale.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:scale.field_sale_order__display_name
+#: model:ir.model.fields,field_description:scale.field_scale_driver__display_name
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__display_name
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__display_name
+#: model:ir.model.fields,field_description:scale.field_scale_exit__display_name
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__display_name
+#: model:ir.model.fields,field_description:scale.field_stock_move__display_name
+#: model:ir.model.fields,field_description:scale.field_stock_move_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid ""
+"Domicilio: Antonio Gonzalez Mendoza No. 1 Col. Viveros de Xalostoc, Ecatepec, "
+"Edo de\n"
+"                                México, C.P: 55340 R.F.C: PEO 8602207 4J1 Tel. "
+"Conmutador: 57 55 81 90 Fax: 55 69 85\n"
+"                                85\n"
+"                                e-mail: <u>bascula@proteinasmex.com.mx</u> "
+"Sucursal: Camino viejo a San Juan\n"
+"                                Teotihuacán\n"
+"                                Km 4.5 Col. Santiago Zacualuca , San Juan "
+"Teotihuacán, Edo de México , C.P: 55825\n"
+"                                Tel.\n"
+"                                Conmutador: 59 34 61 74"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.entrance_weight_confirmation_wizard_form
+msgid "Ej. 10000"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance__type__entrance
+#: model:ir.module.category,name:scale.module_category_bentrance
+msgid "Entrada"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_pivot
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_search
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_tree
+msgid "Entradas"
+msgstr ""
+
+#. module: scale
+#: model:ir.actions.act_window,name:scale.scale_entrance_model_action
+msgid "Entradas de báscula"
+msgstr ""
+
+#. module: scale
+#: model:ir.ui.menu,name:scale.scale_entrance_menu
+msgid "Entries"
+msgstr "Entradas"
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance__state__sent
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit__state__sent
+msgid "Enviado"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Enviar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_stock_move__rel_weight_ok
+#: model:ir.model.fields,field_description:scale.field_stock_move_line__rel_weight_ok
+msgid "Es pesado"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__state
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__state
+#: model:ir.model.fields,field_description:scale.field_scale_exit__state
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__state
+msgid "Estado"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__rel_state
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__rel_state
+msgid "Estado de orden"
+msgstr ""
+
+#. module: scale
+#: model:ir.ui.menu,name:scale.scale_exit_menu
+msgid "Exits"
+msgstr "Salidas"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__external
+msgid "Externo"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_driver_view_search
+msgid "Externos"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "Faltan pesadas de realizar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_date_order
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_date_order
+msgid "Fecha de orden"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__name
+#: model:ir.model.fields,field_description:scale.field_scale_exit__name
+msgid "Folio"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_scale_entrance
+msgid "Folio de pesada de entrada"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_scale_exit
+msgid "Folio de pesada de salida"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_follower_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_follower_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_channel_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_channel_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_partner_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_partner_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__activity_type_icon
+#: model:ir.model.fields,help:scale.field_scale_entrance__activity_type_icon
+#: model:ir.model.fields,help:scale.field_scale_exit__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__entrance_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit__entrance_date
+msgid "Hora y fecha de inicio"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__exit_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit__exit_date
+msgid "Hora y fecha de salida"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__id
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__id
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__id
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__id
+#: model:ir.model.fields,field_description:scale.field_purchase_order__id
+#: model:ir.model.fields,field_description:scale.field_sale_order__id
+#: model:ir.model.fields,field_description:scale.field_scale_driver__id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__id
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__id
+#: model:ir.model.fields,field_description:scale.field_stock_move__id
+#: model:ir.model.fields,field_description:scale.field_stock_move_line__id
+msgid "ID"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_exception_icon
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_exception_icon
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__activity_exception_icon
+#: model:ir.model.fields,help:scale.field_scale_entrance__activity_exception_icon
+#: model:ir.model.fields,help:scale.field_scale_exit__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__message_needaction
+#: model:ir.model.fields,help:scale.field_scale_driver__message_unread
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_needaction
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_unread
+#: model:ir.model.fields,help:scale.field_scale_exit__message_needaction
+#: model:ir.model.fields,help:scale.field_scale_exit__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__message_has_error
+#: model:ir.model.fields,help:scale.field_scale_driver__message_has_sms_error
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_has_error
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_has_sms_error
+#: model:ir.model.fields,help:scale.field_scale_exit__message_has_error
+#: model:ir.model.fields,help:scale.field_scale_exit__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Información de la orden"
+msgstr ""
+
+#. module: scale
+#: model:ir.ui.menu,name:scale.reporting
+msgid "Informes"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_driver_view_search
+msgid "Internos"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_is_follower
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_is_follower
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "La unidad de medida \"%s\" %s no existe en todas las lineas del pedido %s"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation____last_update
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation____last_update
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation____last_update
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation____last_update
+#: model:ir.model.fields,field_description:scale.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:scale.field_sale_order____last_update
+#: model:ir.model.fields,field_description:scale.field_scale_driver____last_update
+#: model:ir.model.fields,field_description:scale.field_scale_entrance____last_update
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline____last_update
+#: model:ir.model.fields,field_description:scale.field_scale_exit____last_update
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline____last_update
+#: model:ir.model.fields,field_description:scale.field_stock_move____last_update
+#: model:ir.model.fields,field_description:scale.field_stock_move_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__write_uid
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__write_uid
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__write_uid
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__write_uid
+#: model:ir.model.fields,field_description:scale.field_scale_driver__write_uid
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__write_uid
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__write_uid
+#: model:ir.model.fields,field_description:scale.field_scale_exit__write_uid
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__write_date
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__write_date
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__write_date
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__write_date
+#: model:ir.model.fields,field_description:scale.field_scale_driver__write_date
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__write_date
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__write_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit__write_date
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__license
+msgid "Licencia"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.constraint,message:scale.constraint_scale_driver_license_uniq
+msgid "Licencia usada por otro chofer"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_entrance__rel_license_plate
+#: model:ir.model.fields,help:scale.field_scale_exit__rel_license_plate
+msgid "License plate number of the vehicle (i = plate number for a car)"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__moveline_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__moveline_id
+msgid "Linea de movimiento de stock"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_scale_entrance_orderline
+msgid "Linea de pedido de báscula de entrada"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_scale_exit_orderline
+msgid "Linea de pedido de báscula de salida"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__orderline_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__orderline_ids
+msgid "Lineas del pedido"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "Logo"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Línea de la orden"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__business_line_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__business_line_id
+msgid "Línea de negocio"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Líneas de la orden"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_main_attachment_id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_main_attachment_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_license_plate
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_license_plate
+msgid "Matrícula"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.entrance_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.entrance_weight_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_init_confirmation_wizard_form
+#: model_terms:ir.ui.view,arch_db:scale.exit_weight_confirmation_wizard_form
+msgid "Mensaje"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_has_error
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_has_error
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_date_deadline
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_date_deadline
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_summary
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_summary
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_type_id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_type_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "No es posible eliminar la báscula con peso inicial"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "No existen movimientos de stock validos para la orden %s"
+msgstr ""
+
+#. module: scale
+#: code:addons/scale/models/scale_entrance.py:0
+#: code:addons/scale/models/scale_exit.py:0
+#, python-format
+msgid "No se puede eliminar báscula enviada, existen movimientos"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__name
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__name
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__name
+msgid "Nombre"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__note
+#: model:ir.model.fields,field_description:scale.field_scale_exit__note
+msgid "Nota"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_needaction_counter
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_needaction_counter
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_has_error_counter
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_has_error_counter
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__message_needaction_counter
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_needaction_counter
+#: model:ir.model.fields,help:scale.field_scale_exit__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__message_has_error_counter
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_has_error_counter
+#: model:ir.model.fields,help:scale.field_scale_exit__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__message_unread_counter
+#: model:ir.model.fields,help:scale.field_scale_entrance__message_unread_counter
+#: model:ir.model.fields,help:scale.field_scale_exit__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__lot_name
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__lot_name
+msgid "Número de lote"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__order_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__order_id
+msgid "Número de orden"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Observaciones"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__order_id
+msgid "Orden de compra"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_exit__order_id
+msgid "Orden de venta"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "PESO BRUTO"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "PESO NETO"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "PESO TARA"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "PRODUCTO"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "PROTEÍNAS, ENERGÉTICOS Y OLEOS, S.A. DE C.V."
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_report_template
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_report_template
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance_orderline__state__done
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit_orderline__state__done
+msgid "Pesado"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Pesar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__initial_weight
+#: model:ir.model.fields,field_description:scale.field_scale_exit__initial_weight
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Peso Inicial"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__gross_weight
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__gross_weight
+msgid "Peso bruto"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Peso del vehículo"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_entrance_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+msgid "Peso inicial"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__net_weight
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__net_weight
+msgid "Peso neto"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__total_weight
+#: model:ir.model.fields,field_description:scale.field_scale_exit__total_weight
+msgid "Peso neto total"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__weight_order
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__weight_order
+msgid "Peso requerido"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__tare_weight
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__tare_weight
+msgid "Peso tara"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__product_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__product_id
+msgid "Producto"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_partner
+msgid "Proveedor"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_idpartner
+msgid "Proveedor Id"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__reference
+#: model:ir.model.fields,field_description:scale.field_scale_exit__reference
+msgid "Referencia unica"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__activity_user_id
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__activity_user_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_has_sms_error
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_has_sms_error
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit__type__exit
+#: model:ir.module.category,name:scale.module_category_bexit
+msgid "Salida"
+msgstr ""
+
+#. module: scale
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_form
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_pivot
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_search
+#: model_terms:ir.ui.view,arch_db:scale.scale_exit_view_tree
+msgid "Salidas"
+msgstr ""
+
+#. module: scale
+#: model:ir.actions.act_window,name:scale.scale_exit_model_action
+msgid "Salidas de báscula"
+msgstr ""
+
+#. module: scale
+#: model:ir.ui.menu,name:scale.base_menu
+msgid "Scale"
+msgstr "Báscula"
+
+#. module: scale
+#: model:ir.model.fields.selection,name:scale.selection__scale_entrance_orderline__state__draft
+#: model:ir.model.fields.selection,name:scale.selection__scale_exit_orderline__state__draft
+msgid "Sin pesar"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__activity_state
+#: model:ir.model.fields,help:scale.field_scale_entrance__activity_state
+#: model:ir.model.fields,help:scale.field_scale_exit__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: scale
+#: model:ir.model,name:scale.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_entrance_init_confirmation__text
+#: model:ir.model.fields,field_description:scale.field_entrance_weight_confirmation__text
+#: model:ir.model.fields,field_description:scale.field_exit_init_confirmation__text
+#: model:ir.model.fields,field_description:scale.field_exit_weight_confirmation__text
+msgid "Text"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__type
+#: model:ir.model.fields,field_description:scale.field_scale_exit__type
+msgid "Tipo"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__activity_exception_decoration
+#: model:ir.model.fields,help:scale.field_scale_entrance__activity_exception_decoration
+#: model:ir.model.fields,help:scale.field_scale_exit__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__photo_url
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__photo_url
+#: model:ir.model.fields,field_description:scale.field_scale_exit__photo_url
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__photo_url
+msgid "URL"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance_orderline__unit_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit_orderline__unit_id
+msgid "UdM"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__rel_unit_name
+#: model:ir.model.fields,field_description:scale.field_scale_exit__rel_unit_name
+msgid "Unidad"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__unit_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__unit_id
+msgid "Unidad de báscula"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_unread
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_unread
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__message_unread_counter
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__message_unread_counter
+#: model:ir.model.fields,field_description:scale.field_scale_exit__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: scale
+#: model:res.groups,name:scale.scale_entrance_group
+#: model:res.groups,name:scale.scale_exit_group
+msgid "Usuario"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__vehicle_id
+#: model:ir.model.fields,field_description:scale.field_scale_exit__vehicle_id
+msgid "Vehículo"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,field_description:scale.field_scale_driver__website_message_ids
+#: model:ir.model.fields,field_description:scale.field_scale_entrance__website_message_ids
+#: model:ir.model.fields,field_description:scale.field_scale_exit__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: scale
+#: model:ir.model.fields,help:scale.field_scale_driver__website_message_ids
+#: model:ir.model.fields,help:scale.field_scale_entrance__website_message_ids
+#: model:ir.model.fields,help:scale.field_scale_exit__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: scale
+#: model:ir.ui.menu,name:scale.configuration
+msgid "Setting"
+msgstr "Configuración"

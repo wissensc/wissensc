@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_template_view_form_inherit_lob" model="ir.ui.view">
+        <field name="name">Product Template Form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']/group[1]/group[1]" position="inside">
+                <field name="business_line_id" groups="lob.group_lob"
+                       options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+            </xpath>
+            <xpath expr="//div[@name='options']/div[last()]" position="after">
+                <div>
+                    <field name="weight_ok"/>
+                    <label for="weight_ok"/>
+                </div>
+            </xpath>
+            <xpath expr="//notebook/page[@name='general_information']/group[2]" position="replace">
+                <group string="Descripción">
+                    <field name="description" nolabel="1" placeholder="Añada una descripción del producto..."/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='general_information']/group[last()]" position="before">
+                <group>
+                    <group>
+                        <field name="line_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="classification_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="presentation_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                        <field name="packing_id"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <!--Catalogos-->
+    <record id="product_template_view_tree_inherit_product_line" model="ir.ui.view">
+        <field name="name">Product Template Line Tree</field>
+        <field name="model">product.line</field>
+        <field name="arch" type="xml">
+            <tree string="Líneas de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_tree_inherit_product_class" model="ir.ui.view">
+        <field name="name">Product Template Class Tree</field>
+        <field name="model">product.classification</field>
+        <field name="arch" type="xml">
+            <tree string="Clasificación de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_tree_inherit_product_present" model="ir.ui.view">
+        <field name="name">Product Template Present Tree</field>
+        <field name="model">product.presentation</field>
+        <field name="arch" type="xml">
+            <tree string="Presentación de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_template_view_tree_inherit_product_packing" model="ir.ui.view">
+        <field name="name">Product Template Packing Tree</field>
+        <field name="model">product.packing</field>
+        <field name="arch" type="xml">
+            <tree string="Empaque de producto" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_line_model_action" model="ir.actions.act_window">
+        <field name="name">Lineas de producto</field>
+        <field name="res_model">product.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="product_class_model_action" model="ir.actions.act_window">
+        <field name="name">Clasificaciones de producto</field>
+        <field name="res_model">product.classification</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="product_present_model_action" model="ir.actions.act_window">
+        <field name="name">Presentaciones de producto</field>
+        <field name="res_model">product.presentation</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="product_packing_model_action" model="ir.actions.act_window">
+        <field name="name">Empaques de producto</field>
+        <field name="res_model">product.packing</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Líneas" id="product_line_menu" groups="base.group_user"
+              parent="sale.prod_config_main" sequence="1" action="product_line_model_action"/>
+    <menuitem name="Clasificaciones" id="product_class_menu" groups="base.group_user"
+              parent="sale.prod_config_main" sequence="2" action="product_class_model_action"/>
+    <menuitem name="Presentaciones" id="product_present_menu" groups="base.group_user"
+              parent="sale.prod_config_main" sequence="3" action="product_present_model_action"/>
+    <menuitem name="Empaques" id="product_packing_menu" groups="base.group_user"
+              parent="sale.prod_config_main" sequence="4" action="product_packing_model_action"/>
+
+    <!--Inherit Tree-->
+    <record id="product_template_view_tree_inherit_lob" model="ir.ui.view">
+        <field name="name">Product Template Tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="business_line_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Search-->
+    <record id="product_template_view_search_inherit_lob" model="ir.ui.view">
+        <field name="name">Product Template Search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_to_purchase']" position="after">
+                <filter string="Puede ser pesado" name="filter_to_heavy" domain="[('weight_ok', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

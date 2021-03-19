@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="scale_reporting_view_tree" model="ir.ui.view">
+        <field name="name">Scale Reporting Tree</field>
+        <field name="model">scale.reporting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="folio"/>
+                <field name="order"/>
+                <field name="date_order"/>
+                <field name="product"/>
+                <field name="license_plate"/>
+                <field name="tare_weight"/>
+                <field name="gross_weight"/>
+                <field name="net_weight" sum="Peso neto total"/>
+                <field name="driver_id"/>
+                <field name="type"/>
+                <field name="scale_date"/>
+                <field name="weight_date"/>
+                <field name="create_id"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+    <record id="scale_reporting_view_graph" model="ir.ui.view">
+        <field name="name">Scale Reporting Graph</field>
+        <field name="model">scale.reporting</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="create_id"/>
+                <field name="product"/>
+            </graph>
+        </field>
+    </record>
+    <record id="scale_reporting_view_pivot" model="ir.ui.view">
+        <field name="name">Scale Reporting Pivot</field>
+        <field name="model">scale.reporting</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="create_id" type="row"/>
+                <field name="product" type="col"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="scale_reporting_view_search" model="ir.ui.view">
+        <field name="name">Scale Reporting Search</field>
+        <field name="model">scale.reporting</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="folio"/>
+                <field name="order"/>
+                <field name="product"/>
+            </search>
+        </field>
+    </record>
+    <record id="scale_reporting_model_action" model="ir.actions.act_window">
+        <field name="name">Reporte de folios de báscula por producto</field>
+        <field name="res_model">scale.reporting</field>
+        <field name="view_mode">tree,graph,pivot</field>
+    </record>
+
+    <menuitem name="Folios de báscula por producto" id="scale_reporting_menu"
+              parent="scale.reporting" action="scale_reporting_model_action"/>
+</odoo>

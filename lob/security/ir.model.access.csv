@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+id_lob_model_access_group_system,lob_model_access_group_system,model_lob,base.group_system,1,1,1,1
+id_lob_model_access_group_user,lob_model_access_group_user,model_lob,base.group_user,1,0,0,0
+id_lob_model_access_group_lob,lob_model_access_group_lob,model_lob,lob.group_lob,1,0,0,0

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_partner_view_form_inherit_lob_account" model="ir.ui.view">
+        <field name="name">Res Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='sales_purchases']/group[1]/group[@name='misc']" position="inside">
+                    <field name="payment_method_id"/>
+                    <field name="edi_usage"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="entrance_weight_confirmation_wizard_form" model="ir.ui.view">
+            <field name="name">entrance.weight_confirmation.form</field>
+            <field name="model">entrance.weight.confirmation</field>
+            <field name="arch" type="xml">
+                <form string="Mensaje">
+                    <group>
+                        <group>
+                            <field name="lot_name" placeholder="Ej. 10000"/>
+                        </group>
+                    </group>
+                    <separator string="Mensaje" span="6"/>
+                    <field name="text" colspan="4" nolabel="1" readonly="1" widget="html"/>
+                    <newline/>
+                    <separator colspan="6"/>
+                    <footer>
+                        <button string="Confirmar" name="yes" class="btn-primary" type="object"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_partner_view_form_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]/group[2]/field[last()]" position="before">
+                <field name="business_line_id"
+                       groups="lob.group_lob" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+            </xpath>
+            <xpath expr="//sheet/group[1]/group[1]/field[1]" position="before">
+                <field name="legal_representative" placeholder="Nombre del representante legal"/>
+            </xpath>
+            <xpath expr="//sheet/group[1]" position="before">
+                <group>
+                    <group>
+                        <field name="code" placeholder="Por ejemplo, 000001"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <!--Tree-->
+    <record id="res_partner_view_tree_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="business_line_id" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="code" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Search-->
+    <record id="res_partner_view_search_inherit_lob" model="ir.ui.view">
+        <field name="name">Res Partner Search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name"
+                       filter_domain="['|', '|', '|',
+                       ('display_name', 'ilike', self),
+                       ('ref', '=', self),
+                       ('email', 'ilike', self),
+                       ('code', 'ilike', self)]
+                        "/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
