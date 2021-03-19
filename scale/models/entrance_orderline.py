@@ -90,9 +90,7 @@ class ScaleOrderLine(models.Model):
             date_obj = dt.datetime.strptime(data.get('date'),
                                             '%Y-%m-%dT%H:%M:%S.%f')
             self.weight_date = date_obj
-         self.net_weight = data.get('netWeight', 0.0) if data.get('netWeight',
-                                                                  0.0) > 0 else data.get(
-            'netWeight', 0.0) * - 1
+         self.net_weight = data.get('netWeight', 0.0)
          self.gross_weight = data.get('grossWeight', 0.0)
          self.tare_weight = data.get('tareWeight', 0.0)
          self.photo_url = data.get('photoUrl', '')
