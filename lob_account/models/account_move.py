@@ -12,3 +12,12 @@ class AccountMove(models.Model):
    def _resetOrder(self):
       self.l10n_mx_edi_payment_method_id = self.partner_id.payment_method_id.id
       self.l10n_mx_edi_usage = self.partner_id.edi_usage
+
+   @api.model
+   def create(self, vals):
+      res = super(AccountMove, self).create(vals)
+      if vals.get('partner_id') and vals.get('invoice_origin'):
+         partner_id = self.env['res.partner'].browse(vals.get('partner_id'))
+         res.l10n_mx_edi_payment_method_id = partner_id.payment_method_id.id
+         res.l10n_mx_edi_usage = partner_id.edi_usage
+      return res
