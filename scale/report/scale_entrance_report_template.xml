@@ -6,63 +6,71 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <div class="float-right mt-2"
-                             style="color:#E23E1B;font-weight:bold;font-size:20px;">
-                            <span class="mr-3">NO. DE FOLIO: </span>
-                            <span t-field="doc.name"/>
+                        <div>
+                            <h2 class="float-right">
+                                <span class="mr-3">NO. DE FOLIO:</span><span t-field="doc.name" class="ml-2"/>
+                            </h2>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <strong>Fecha de báscula: </strong>
-                                <strong t-field="doc.create_date"/>
+                            <div class="col-6">
+                                <strong>Fecha de báscula:</strong><span t-field="doc.create_date" class="ml-1"/>
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-6">
-                                <p>Chofer: <span t-field="doc.driver_id"/><br/>
-                                    Matrícula: <span t-field="doc.rel_license_plate"/></p>
+                                <div>
+                                    <strong>Chofer:</strong><span t-field="doc.driver_id" class="ml-1"/>
+                                </div>
+                                <div>
+                                    <strong>Matrícula:</strong><span t-field="doc.rel_license_plate" class="ml-1"/>
+                                </div>
                             </div>
                             <div class="col-6">
-                                <p>Proveedor: <span t-field="doc.rel_partner"/></p>
+                                <div>
+                                    <strong>Proveedor:</strong><span t-field="doc.rel_partner" class="ml-1"/>
+                                </div>
                             </div>
                         </div>
-                        <table class="table mt-5">
-                            <thead>
-                                <tr>
-                                    <th scope="col">PRODUCTO</th>
-                                    <th scope="col">PESO NETO</th>
-                                    <th scope="col">PESO TARA</th>
-                                    <th scope="col">PESO BRUTO</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <t t-foreach="doc.orderline_ids" t-as="line">
+                        <div>
+                            <table class="table mt-5">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <span t-field="line.name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.net_weight"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.tare_weight"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.gross_weight"/>
-                                        </td>
+                                        <th scope="col">PRODUCTO</th>
+                                        <th scope="col">PESO NETO</th>
+                                        <th scope="col">PESO TARA</th>
+                                        <th scope="col">PESO BRUTO</th>
                                     </tr>
-                                </t>
-                            </tbody>
-                        </table>
-                        <div class="float-right mt-4 mb-5"
-                             style="color:#000;font-weight:bold;font-size:16px;">
-                            <span class="mr-2">Peso neto total: </span>
-                            <span t-field="doc.total_netWeight"/>
-                            <span class="pr-1" t-field="doc.unit_id.name"/>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.orderline_ids" t-as="line">
+                                        <tr>
+                                            <td>
+                                                <span t-field="line.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.net_weight"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.tare_weight"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.gross_weight"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <h6 class="float-right mt-4 mb-5">
+                                <strong class="mr-2">Peso neto total:</strong>
+                                <span t-field="doc.total_netWeight" class="ml-1"/>
+                                <span t-field="doc.unit_id.name" class="pr-1"/>
+                            </h6>
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col">
+                        <div class="col-6">
                             <span>Firma de báscula:</span>
                         </div>
                     </div>
