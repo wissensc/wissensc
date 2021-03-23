@@ -29,7 +29,7 @@
                         <group>
                             <field name="reference"/>
                             <field name="type"/>
-                            <field name="lob_id"
+                            <field name="business_line_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
                             <field name="scale"/>
                         </group>

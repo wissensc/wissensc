@@ -17,4 +17,18 @@
             ]"/>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
+        <data noupdate="1">
+        <!--Record rules-->
+        <record model="ir.rule" id="group_lob_rule_scale_manoeuvre">
+            <field name="name">ws lob scale_manoeuvre</field>
+            <field name="model_id" ref="model_scale_manoeuvre"/>
+            <field name="groups" eval="[(4, ref('lob.group_lob'))]"/>
+            <field name="domain_force">['|', ('business_line_id', 'in', user.business_line_ids.mapped('id')),
+                                        ('business_line_id', '=', False)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
 </odoo>

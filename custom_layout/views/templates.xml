@@ -5,30 +5,4 @@
             <link href="/custom_layout/static/src/css/style.css" rel="stylesheet" type="text/css"/>
         </xpath>
     </template>
-    <template id="external_layout_background" inherit_id="web.external_layout_background">
-        <xpath expr="//div[1]/div[1]/div[2]/span[1]" position="replace">
-            <div>
-                <span>Lugar de expedición: </span>
-                <span t-field="company.partner_id.zip"/>
-            </div>
-            <div>
-                <span t-field="company.partner_id.city"/>
-                <span t-field="company.partner_id.state_id.code"/>
-                <t t-if="company.partner_id.country_id">
-                    <span>, </span><span t-field="company.partner_id.country_id"/>
-                </t>
-            </div>
-            <t t-if="company.partner_id.property_account_position_id.name">
-                <span>Régimen Fiscal: </span>
-                <span t-field="company.partner_id.property_account_position_id.name"/>
-            </t>
-        </xpath>
-        <xpath expr="//div[2]" position="replace">
-            <div t-attf-class="o_company_#{company.id}_layout article o_report_layout_background"
-                 t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-                 t-att-data-oe-lang="o and o.env.context.get('lang')">
-                <t t-raw="0"/>
-            </div>
-        </xpath>
-    </template>
 </odoo>
