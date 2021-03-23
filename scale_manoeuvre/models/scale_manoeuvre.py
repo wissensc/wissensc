@@ -125,7 +125,10 @@ class ScaleManoeuvre(models.Model):
             seq = record.env['ir.sequence']
             business_line_id = vals.get('business_line_id') or record.business_line_id.id
             code = record.env['lob'].browse(business_line_id).manoeuvre_seq_id.code
-            record.name = seq.next_by_code(code) or 'Nuevo'
+            if code:
+               record.name = seq.next_by_code(code)
+            else:
+               record.name = 'Nuevo'
       return super(ScaleManoeuvre, self).write(vals)
 
    def unlink(self):
