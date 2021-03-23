@@ -37,10 +37,10 @@ class ScaleEntrance(models.Model):
                            required=True, readonly=True)
 
    business_line_id = fields.Many2one('lob', 'Línea de negocio', default=None,
-                            required=True,
-                            domain="[('scale_entrance','=',True)]",
-                            states=STATES,
-                            ondelete='restrict')
+                                      required=True,
+                                      domain="[('scale_entrance','=',True)]",
+                                      states=STATES,
+                                      ondelete='restrict')
 
    @api.onchange('business_line_id')
    def _resetOrder(self):
@@ -82,7 +82,9 @@ class ScaleEntrance(models.Model):
                              required=True)
    rel_unit_name = fields.Char(related="unit_id.name", string='Unidad',
                                readonly=True)
-   initial_weight = fields.Float('Peso Inicial', digits='Product Unit of Measure', readonly=True)
+   initial_weight = fields.Float('Peso Inicial',
+                                 digits='Product Unit of Measure',
+                                 readonly=True)
    photo_url = fields.Char("URL", readonly=True, default='')
    reference = fields.Char('Referencia', readonly=True)
 
@@ -157,9 +159,13 @@ class ScaleEntrance(models.Model):
       for record in self:
          if record.name == '/' and vals.get('state') == 'assigned':
             seq = record.env['ir.sequence']
-            business_line_id = vals.get('business_line_id') or record.business_line_id.id
+            business_line_id = vals.get(
+               'business_line_id') or record.business_line_id.id
             code = record.env['lob'].browse(business_line_id).entrance_seq_id.code
-            record.name = seq.next_by_code(code) or 'Nuevo'
+            if code:
+               record.name = seq.next_by_code(code)
+            else:
+               record.name = 'Nuevo'
       return super(ScaleEntrance, self).write(vals)
 
    def unlink(self):
