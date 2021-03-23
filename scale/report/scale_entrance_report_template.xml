@@ -7,8 +7,8 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <div>
-                            <h2 class="float-right">
-                                <span class="mr-3">NO. DE FOLIO:</span><span t-field="doc.name" class="ml-2"/>
+                            <h2 class="float-right" style="font-size:23px">
+                                <span>NO. DE FOLIO:</span><span t-field="doc.name" class="ml-1"/>
                             </h2>
                         </div>
                         <div class="row">
