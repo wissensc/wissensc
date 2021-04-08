@@ -6,7 +6,10 @@ from odoo import fields, models, api
 class AccountMove(models.Model):
    _inherit = 'account.move'
 
-   project_id = fields.Many2one('account.move.project', "Proyecto", ondelete="restrict")
+   project_id = fields.Many2one('account.move.project', "Proyecto",
+                                ondelete="restrict")
+   business_line_id = fields.Many2one('lob', 'Línea de negocio', default=lambda
+      self: self.env.user.business_line_id.id, tracking=True)
 
    @api.onchange('partner_id')
    def _resetOrder(self):
