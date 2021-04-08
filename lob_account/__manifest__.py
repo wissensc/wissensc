@@ -14,9 +14,10 @@
     'category': 'Uncategorized',
     'version': '14.0.1',
 
-    'depends': ['base', 'account', 'l10n_mx_edi'],
+    'depends': ['base', 'account', 'l10n_mx_edi', 'lob'],
 
     'data': [
+        'security/groups.xml',
         'security/ir.model.access.csv',
         'views/lob_account_view.xml',
         'views/account_move_view.xml',
