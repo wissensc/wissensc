@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Template-->
+    <template id="checks_format_report_template">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
