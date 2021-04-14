@@ -5,7 +5,68 @@
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
+                    <style>
+                        td{
+                        padding:10px;
+                        text-align:center;
+                        }
+                        .cb td:nth-child(1){
+                        widht:200px;
+                        }
+                        .cb td:nth-child(2){
+                        widht:600px;
+                        }
+                        .cb td:nth-child(3){
+                        widht:100px;
+                        }
+                        .cb td:nth-child(3){
+                        widht:100px;
+                        }
+                    </style>
+                    <t t-set="selection" t-value="doc.journal_id.check_select"/>
+                    <t t-if="selection">
+                        <div t-if="selection=='cb'">
+                            <span t-field="doc.date" style="position:fixed;top:20px;right:20px;"/>
+                            <span t-field="doc.partner_id.name" style="position:fixed;top:100px;left:20px;"/>
+                            <span t-field="doc.amount" style="position:fixed;top:100px;right:20px;"/>
+                            <span t-field="doc.check_amount_in_words" style="position:fixed;top:140px;left:20px;"/>
 
+                            <div  style="position:fixed;top:300px;left:20px;">
+                                <div>
+                                    <span>Cuenta Número: 08 - BANAMEX OFICINA</span>
+                                </div>
+                                <div>
+                                    <span>Cheque Número: 23950 POR </span><span t-field="doc.amount"/>
+                                </div>
+                                <div>
+                                    <span>Beneficiario:</span>
+                                    <span t-field="doc.partner_id.name"/>
+                                </div>
+                            </div>
+
+                            <table class="cb" style="position:fixed;top:500px;left:20px;">
+                                <t t-foreach="doc.line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.account_id.display_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.debit"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.credit"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                            <span t-field="doc.date" style="position:fixed;top:1100px;right:200px;"/>
+                            <span t-field="doc.amount" style="position:fixed;top:1100px;right:100px;"/>
+                        </div>
+                    </t>
+                    Hola
                 </div>
             </t>
         </t>
