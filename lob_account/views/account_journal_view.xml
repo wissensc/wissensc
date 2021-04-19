@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="account_journal_view_form_inherit_lob_account" model="ir.ui.view">
+        <field name="name">Account Journal Form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]/group[1]/field[last()]" position="after">
+                <field name="business_line_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

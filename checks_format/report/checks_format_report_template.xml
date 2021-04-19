@@ -6,67 +6,69 @@
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
                     <style>
-                        td{
+                        html, body, div, span, applet, object, iframe,
+                        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+                        a, abbr, acronym, address, big, cite, code,
+                        del, dfn, em, img, ins, kbd, q, s, samp,
+                        small, strike, strong, sub, sup, tt, var,
+                        b, u, i, center,
+                        dl, dt, dd, ol, ul, li,
+                        fieldset, form, label, legend,
+                        table, caption, tbody, tfoot, thead, tr, th, td,
+                        article, aside, canvas, details, embed,
+                        figure, figcaption, footer, header, hgroup,
+                        menu, nav, output, ruby, section, summary,
+                        time, mark, audio, video {
+                        margin: 0;
+                        padding: 0;
+                        border: 0;
+                        font-size: 100%;
+                        font: inherit;
+                        vertical-align: baseline;
+                        }
+                        /* HTML5 display-role reset for older browsers */
+                        article, aside, details, figcaption, figure,
+                        footer, header, hgroup, menu, nav, section {
+                        display: block;
+                        }
+                        body {
+                        line-height: 1;
+                        }
+                        ol, ul {
+                        list-style: none;
+                        }
+                        blockquote, q {
+                        quotes: none;
+                        }
+                        blockquote:before, blockquote:after,
+                        q:before, q:after {
+                        content: '';
+                        content: none;
+                        }
+                        table {
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        }
+
+                        .detalles td{
                         padding:10px;
                         text-align:center;
                         }
-                        .cb td:nth-child(1){
-                        widht:200px;
-                        }
-                        .cb td:nth-child(2){
-                        widht:600px;
-                        }
-                        .cb td:nth-child(3){
-                        widht:100px;
-                        }
-                        .cb td:nth-child(3){
-                        widht:100px;
-                        }
                     </style>
-                    <t t-set="selection" t-value="doc.journal_id.check_select"/>
-                    <t t-if="selection">
-                        <div t-if="selection=='cb'">
-                            <span t-field="doc.date" style="position:fixed;top:20px;right:20px;"/>
-                            <span t-field="doc.partner_id.name" style="position:fixed;top:100px;left:20px;"/>
-                            <span t-field="doc.amount" style="position:fixed;top:100px;right:20px;"/>
-                            <span t-field="doc.check_amount_in_words" style="position:fixed;top:140px;left:20px;"/>
-
-                            <div  style="position:fixed;top:300px;left:20px;">
-                                <div>
-                                    <span>Cuenta Número: 08 - BANAMEX OFICINA</span>
-                                </div>
-                                <div>
-                                    <span>Cheque Número: 23950 POR </span><span t-field="doc.amount"/>
-                                </div>
-                                <div>
-                                    <span>Beneficiario:</span>
-                                    <span t-field="doc.partner_id.name"/>
-                                </div>
-                            </div>
-
-                            <table class="cb" style="position:fixed;top:500px;left:20px;">
-                                <t t-foreach="doc.line_ids" t-as="line">
-                                    <tr>
-                                        <td>
-                                            <span t-field="line.account_id.display_name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.debit"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.credit"/>
-                                        </td>
-                                    </tr>
-                                </t>
-                            </table>
-                            <span t-field="doc.date" style="position:fixed;top:1100px;right:200px;"/>
-                            <span t-field="doc.amount" style="position:fixed;top:1100px;right:100px;"/>
-                        </div>
+                    <t t-set="currency_t" t-value="'M.E.'"/>
+                    <t t-if="doc.currency_id == env.company.currency_id">
+                        <t t-set="currency_t" t-value="'M.N'"/>
                     </t>
-                    Hola
+                    <t t-elif="doc.currency_id.name=='USD'">
+                        <t t-set="currency_t" t-value="'DLLS'"/>
+                    </t>
+
+                    <t t-set="word" t-value="doc.currency_id.amount_to_text2(doc.amount).upper() + ' ' + currency_t"/>
+
+                    <!--Templates cheques-->
+                    <t t-if="doc.journal_id.check_format">
+                        <t t-call="checks_format.citibanamex_template"/>
+                    </t>
                 </div>
             </t>
         </t>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="citibanamex_template">
+        <div t-if="doc.journal_id.check_format=='cb'" style="position:relative;">
+            <span t-field="doc.date" style="position:absolute;top:100px;right:20px;"/>
+
+            <table style="position:absolute;top:200px;left:20px;">
+                <col style="width:700px;"/>
+                <col style="width:200px;"/>
+                <tr>
+                    <td><span t-field="doc.partner_id.name"/></td>
+                    <td style="text-align:right"><span t-esc="'%.2f'%doc.amount"/></td>
+                </tr>
+            </table>
+
+            <table style="position:absolute;top:240px;left:20px;">
+                <col style="width:700px;"/>
+                <tr>
+                    <td><span t-esc="word"/></td>
+                </tr>
+            </table>
+
+            <table style="position:absolute;top:450px;left:20px;">
+                <col style="width:120px;"/>
+                <col style="width:480px;"/>
+                <tr>
+                    <td>Cuenta Número:</td>
+                    <td>08 - BANAMEX OFICINA</td>
+                </tr>
+                <tr>
+                    <td>Cheque Número:</td>
+                    <td>
+                        <table>
+                            <col style="width:150px;"/>
+                            <col style="width:50px;"/>
+                            <col style="width:30px;"/>
+                            <col style="width:250px;"/>
+                            <tr>
+                                <td>23950</td>
+                                <td>POR</td>
+                                <td>$</td>
+                                <td style="text-align:right"><span t-esc="'%.2f'%doc.amount"/></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Beneficiario:</td>
+                    <td>
+                        <span t-field="doc.partner_id.name"/>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="detalles" style="position:absolute;top:700px;left:20px;">
+                <col style="width:300px"/>
+                <col style="width:400px"/>
+                <col style="width:100px"/>
+                <col style="width:100px"/>
+                <t t-foreach="doc.line_ids" t-as="line">
+                    <tr>
+                        <td>
+                            <span t-field="line.account_id.display_name"/>
+                        </td>
+                        <td>
+                            <span t-field="line.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="'%.2f'% line.debit"/>
+                        </td>
+                        <td>
+                            <span t-esc="'%.2f'% line.credit"/>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+
+            <span t-field="doc.date" style="position:fixed;top:1100px;right:200px;"/>
+            <span t-field="doc.amount" style="position:fixed;top:1100px;right:100px;"/>
+        </div>
+    </template>
+</odoo>

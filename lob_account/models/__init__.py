@@ -4,3 +4,4 @@
 from . import project
 from . import account_move
 from . import rest_partner
+from . import account_journal

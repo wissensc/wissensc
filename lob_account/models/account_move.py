@@ -23,4 +23,8 @@ class AccountMove(models.Model):
          partner_id = self.env['res.partner'].browse(vals.get('partner_id'))
          res.l10n_mx_edi_payment_method_id = partner_id.payment_method_id.id
          res.l10n_mx_edi_usage = partner_id.edi_usage
+         diarios = self.env['account.journal'].search([('type', '=', 'sale'), (
+            'business_line_id', '=', self.env.user.business_line_id.id)])
+         res.journal_id = diarios[0]
+
       return res
