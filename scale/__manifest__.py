@@ -14,7 +14,7 @@
    'category': 'Scale',
    'version': '14.0.1',
 
-   'depends': ['sale_management', 'purchase', 'fleet', 'stock', 'contacts',
+   'depends': ['sale_management', 'purchase', 'fleet', 'stock', 'contacts', 'sale_stock', 'purchase_stock'
                'lob_extend'],
 
    'data': [
