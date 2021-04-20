@@ -19,8 +19,19 @@ class AccountMove(models.Model):
    @api.model
    def create(self, vals):
       res = super(AccountMove, self).create(vals)
-      if vals.get('partner_id') and vals.get('invoice_origin'):
+      if vals.get('partner_id') and vals.get('invoice_origin') and vals.get('move_type') == 'out_invoice':
          partner_id = self.env['res.partner'].browse(vals.get('partner_id'))
          res.l10n_mx_edi_payment_method_id = partner_id.payment_method_id.id
          res.l10n_mx_edi_usage = partner_id.edi_usage
+         diarios = self.env['account.journal'].search(
+               [('type', '=', 'sale'), (
+                  'business_line_id', '=', self.env.user.business_line_id.id)])
+         if diarios:
+            res.journal_id = diarios[0]
+      if vals.get('move_type') == 'in_invoice':
+         diarios = self.env['account.journal'].search(
+               [('type', '=', 'purchase'), (
+                  'business_line_id', '=', self.env.user.business_line_id.id)])
+         if diarios:
+            res.journal_id = diarios[0]
       return res

@@ -6,8 +6,11 @@
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="account.view_account_journal_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//notebook/page[@name='journal_entries']/group[1]/group[2]" position="inside">
-                <field name="check_select"/>
+            <xpath expr="//notebook/page[@name='journal_entries']/group[1]/group[2]" position="after">
+                <group string="Impresión de cheques" attrs="{'invisible':['|',('type','!=','bank'),('check_payment_method_selected','=',False)]}">
+                    <field name="check_payment_method_selected"/>
+                    <field name="check_format"/>
+                </group>
             </xpath>
         </field>
     </record>

@@ -22,6 +22,7 @@
         'views/lob_account_view.xml',
         'views/account_move_view.xml',
         'views/res_partner_view.xml',
+        'views/account_journal_view.xml',
     ],
 
     'installable': True,
