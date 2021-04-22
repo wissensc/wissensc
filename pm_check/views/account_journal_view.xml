@@ -10,7 +10,7 @@
                 <group string="Impresión de cheques" attrs="{'invisible':['|',('type','!=','bank'),('check_payment_method_selected','=',False)]}">
                     <field name="check_payment_method_selected" invisible="1"/>
                     <field name="check_type" attrs="{'required':[('check_payment_method_selected','=', True)]}"/>
-                    <field name="bank_reference" attrs="{'required':[('check_payment_method_selected','=', True)]}"/>
+                    <field name="bank_reference" attrs="{'required':[('check_payment_method_selected','=', True)]}" placeholder="Ej. 08 - BANAMEX OFICIN"/>
                     <field name="check_sequence_id" attrs="{'required':[('check_payment_method_selected','=', True)]}"/>
                 </group>
             </xpath>
