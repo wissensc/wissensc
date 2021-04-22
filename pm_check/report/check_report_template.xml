@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!--Template-->
-    <template id="checks_format_report_template">
+    <template id="check_report_template">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
@@ -50,10 +50,6 @@
                         border-spacing: 0;
                         }
 
-                        .detalles td{
-                        padding:10px;
-                        text-align:center;
-                        }
                     </style>
                     <t t-set="currency_t" t-value="'M.E.'"/>
                     <t t-if="doc.currency_id == env.company.currency_id">
@@ -63,11 +59,13 @@
                         <t t-set="currency_t" t-value="'DLLS'"/>
                     </t>
 
-                    <t t-set="word" t-value="doc.currency_id.amount_to_text2(doc.amount).upper() + ' ' + currency_t"/>
+                    <t t-set="word"
+                       t-value="'--(' + doc.currency_id.amount_to_text2(doc.amount).upper() + ' ' + currency_t + ')--'"/>
 
                     <!--Templates cheques-->
-                    <t t-if="doc.journal_id.check_format">
-                        <t t-call="checks_format.citibanamex_template"/>
+                    <t t-if="doc.journal_id.check_type">
+                        <t t-call="pm_check.banamex_template"/>
+                        <t t-call="pm_check.bancomer_template"/>
                     </t>
                 </div>
             </t>
