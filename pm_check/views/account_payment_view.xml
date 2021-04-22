@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="account_payment_view_form" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="print_check" string="IMPRIMIR CHEQUE" type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|', '|', ('payment_method_code', '!=', 'check'), ('state', '!=', 'posted'), ('is_move_sent', '=', True)]}"/>
+            </xpath>
+            <xpath expr="//group[1]/group[@name='group3']" position="inside">
+                <field name="check_number" attrs="{'invisible': ['|', ('payment_method_code', '!=', 'check'), ('check_number', '=', False)]}"/>
+            </xpath>
+            <xpath expr="//group[last()]" position="after">
+                <group string="Concepto">
+                    <field name="concept" nolabel="1" placeholder="Añada un concepto de pago..."/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

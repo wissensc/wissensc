@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="banamex_template">
+        <div t-if="doc.journal_id.check_type=='cb'" style="padding-left:25px;padding-top:80px;">
+            <!--Fecha-->
+            <table style="margin-bottom:10mm;">
+                <col style="width:600px;"/>
+                <col style="width:300px;background-color:blue;"/>
+                <tr>
+                    <td></td>
+                    <td class="text-center"><span t-field="doc.date"/></td>
+                </tr>
+            </table>
+            <!--Nombre del proveedor y monto-->
+            <table style="margin-bottom:5mm;">
+                <col style="width:700px;background-color:yellow;"/>
+                <col style="width:200px;background-color:orange;"/>
+                <tr>
+                    <td class="pl-1"><span t-field="doc.partner_id.name"/></td>
+                    <td class="text-right"><span t-esc="'%.2f'%doc.amount"/></td>
+                </tr>
+            </table>
+            <!--;Monto con letra-->
+            <table style="margin-bottom:60mm;width:800px;height:35px;">
+                <col style="width:800px;background-color:yellow;"/>
+                <tr>
+                    <td class="pl-1 align-bottom"><span t-esc="word"/></td>
+                </tr>
+            </table>
+            <!--Concepto del pago-->
+            <table style="margin-bottom:20mm;">
+                <col style="width:120px;background-color:yellow;"/>
+                <col style="width:480px;background-color:blue;"/>
+                <tr>
+                    <td class="pl-1">Cuenta Número:</td>
+                    <td class="pl-1"><span t-field="doc.journal_id.bank_reference"/></td>
+                </tr>
+                <tr>
+                    <td class="pl-1">Cheque Número:</td>
+                    <td>
+                        <table>
+                            <col style="width:150px;background-color:cyan;"/>
+                            <col style="width:50px;background-color:magenta;"/>
+                            <col style="width:30px;background-color:green;"/>
+                            <col style="width:250px;background-color:orange;"/>
+                            <tr>
+                                <td class="pl-1"><span t-field="doc.check_number"/></td>
+                                <td class="pl-1">POR</td>
+                                <td class="pl-1">$</td>
+                                <td class="text-right"><span t-esc="'%.2f'%doc.amount"/></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-1">Beneficiario:</td>
+                    <td class="pl-1">
+                        <span t-field="doc.partner_id.name"/>
+                    </td>
+                </tr>
+            </table>
+            <!--Debe y haber-->
+            <t t-set="total_debit" t-value="0.00"/>
+            <t t-set="total_credit" t-value="0.00"/>
+            <table style="margin-bottom:10mm;">
+                <col style="width:120px;background-color:yellow;"/>
+                <col style="width:120px;background-color:green;"/>
+                <col style="width:300px;background-color:magenta;"/>
+                <col style="width:120px;background-color:cyan;"/>
+                <col style="width:120px;background-color:brown;"/>
+                <col style="width:120px;background-color:orange;"/>
+                <t t-foreach="doc.move_id.line_ids" t-as="line">
+                    <tr>
+                        <td class="pl-1 pb-4"></td>
+                        <td class="pl-1"><span t-field="line.account_id.code"/></td>
+                        <td class="pl-1"><span t-field="line.account_id.name"/></td>
+                        <td class="pl-1"></td>
+                        <td class="text-right"><t t-if="line.debit!=0.00"><span t-esc="'%.2f'% line.debit"/></t></td>
+                        <td class="text-right"><t t-if="line.credit!=0.00"><span t-esc="'%.2f'% line.credit"/></t></td>
+                    </tr>
+                    <t t-set="total_debit" t-value="total_debit + line.debit"/>
+                    <t t-set="total_credit" t-value="total_credit + line.credit"/>
+                </t>
+            </table>
+            <!--Total de debe y haber-->
+            <table>
+                <col style="width:120px;background-color:yellow;"/>
+                <col style="width:120px;background-color:green;"/>
+                <col style="width:300px;background-color:magenta;"/>
+                <col style="width:120px;background-color:cyan;"/>
+                <col style="width:120px;background-color:brown;"/>
+                <col style="width:120px;background-color:orange;"/>
+                <tr>
+                    <td class="pl-1 pb-4"></td>
+                    <td class="pl-1"></td>
+                    <td class="pl-1"></td>
+                    <td class="pl-1"></td>
+                    <td class="text-right"><span t-esc="'%.2f'% total_debit"/></td>
+                    <td class="text-right"><span t-esc="'%.2f'% total_credit"/></td>
+                </tr>
+            </table>
+            <!--Concepto-->
+            <table>
+                <col style="width:120px;background-color:green;"/>
+                <col style="width:420px;background-color:cyan;"/>
+                <col style="width:240px;background-color:yellow;"/>
+                <col style="width:120px;background-color:red;"/>
+                <tr>
+                    <td></td>
+                    <td class="pl-1 pb-4 pt-3"><span t-field="doc.concept"/></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <!--Fecha y numero de cheque-->
+            <table>
+                <col style="width:120px;background-color:cyan;"/>
+                <col style="width:420px;background-color:yellow;"/>
+                <col style="width:240px;background-color:red;"/>
+                <col style="width:120px;background-color:green;"/>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center"><span t-field="doc.date"/></td>
+                    <td class="text-center"><span t-field="doc.check_number"/></td>
+                </tr>
+            </table>
+        </div>
+    </template>
+</odoo>

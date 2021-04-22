@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!--Paper format-->
-    <record id="paperformat_checks_format" model="report.paperformat">
+    <record id="paperformat_check" model="report.paperformat">
         <field name="name">Báscula</field>
         <field name="format">A4</field>
         <field name="page_height">0</field>
@@ -16,12 +16,13 @@
         <field name="dpi">90</field>
     </record>
     <!--Report-->
-    <record id="checks_format_report" model="ir.actions.report">
+    <record id="check_report" model="ir.actions.report">
         <field name="name">Cheque</field>
         <field name="model">account.payment</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">checks_format.checks_format_report_template</field>
-        <field name="report_file">checks_format.checks_format_report_template</field>
-        <field name="paperformat_id" ref="checks_format.paperformat_checks_format"/>
+        <field name="report_name">pm_check.check_report_template</field>
+        <field name="report_file">pm_check.check_report_template</field>
+        <field name="print_report_name">('Cheque - %s - %s' % (object.journal_id.bank_reference, object.check_number))</field>
+        <field name="paperformat_id" ref="pm_check.paperformat_check"/>
     </record>
 </odoo>
