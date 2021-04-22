@@ -28,12 +28,10 @@ class AccountMove(models.Model):
                   'business_line_id', '=', self.env.user.business_line_id.id)])
          if diarios:
             res.journal_id = diarios[0]
-         print("Diarios de ventas %s" % [d.name for d in diarios])
       if vals.get('invoice_origin') and vals.get('move_type') == 'in_invoice':
          diarios = self.env['account.journal'].search(
                [('type', '=', 'purchase'), (
                   'business_line_id', '=', self.env.user.business_line_id.id)])
          if diarios:
             res.journal_id = diarios[0]
-         print("Diarios de compras %s" % [d.name for d in diarios])
       return res
