@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <!-- QWeb Reports -->
+    <template id="report_invoice_lob_account" inherit_id="l10n_mx_edi.report_invoice_document_mx">
+        <xpath expr="//div[1]/t[@t-set='is_cfdi_signed']" position="replace">
+            <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document()) and o.move_type!='in_invoice'"/>
+        </xpath>
+    </template>
+</odoo>

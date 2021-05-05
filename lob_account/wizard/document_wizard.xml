@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="document_wizard_form" model="ir.ui.view">
+            <field name="name">document.wizard.form</field>
+            <field name="model">document.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Abrir: Documento Edi">
+                    <group>
+                        <group>
+                            <field name="move_id"/>
+                            <field name="rel_move_id" invisible="1"/>
+                            <field name="attachment_id"/>
+                        </group>
+                        <group>
+                            <field name="edi_format_id" readonly="True"/>
+                            <field name="state" readonly="True"/>
+                        </group>
+                    </group>
+                    <field name="error"/>
+                    <newline/>
+                    <separator colspan="6"/>
+                    <footer>
+                        <button string="Confirmar" name="yes" class="btn-primary" type="object"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
