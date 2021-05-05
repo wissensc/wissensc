@@ -17,7 +17,6 @@
                             <field name="state" readonly="True"/>
                         </group>
                     </group>
-                    <field name="error"/>
                     <newline/>
                     <separator colspan="6"/>
                     <footer>
