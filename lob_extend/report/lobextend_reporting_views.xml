@@ -5,6 +5,9 @@
         <field name="model">lobextend.reporting</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="currency_id" invisible="1"/>
+                <field name="name"/>
+                <field name="invoice_origin"/>
                 <field name="invoide_date"/>
                 <field name="categ_id"/>
                 <field name="serie"/>
@@ -12,8 +15,9 @@
                 <field name="partner_id"/>
                 <field name="amount_untaxed"/>
                 <field name="amount_tax"/>
-                <field name="amount_total"/>
-                <field name="amount_residual"/>
+                <field name="amount_total" sum="Suma del total"/>
+                <field name="amount_residual" sum="Suma del adeudo"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -42,8 +46,17 @@
         <field name="model">lobextend.reporting</field>
         <field name="arch" type="xml">
             <search>
-                <field name="folio"/>
-                <field name="categ_id"/>
+                <field name="name"/>
+                <filter name="estado" string="Publicados" domain="[('state', '=', 'posted')]"/>
+                <filter name="adeudo" string="Con adeudo" domain="[('amount_residual', '>', '0.0')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Estado" name="state"
+                            context="{'group_by':'state'}"/>
+                    <filter string="Serie" name="serie"
+                            context="{'group_by':'serie'}"/>
+                    <filter string="Razón social" name="rsocial"
+                            context="{'group_by':'partner_id'}"/>
+                </group>
             </search>
         </field>
     </record>

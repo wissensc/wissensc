@@ -11,6 +11,13 @@ class LobextendReporting(models.Model):
    currency_id = fields.Many2one('res.currency', readonly=True)
    business_line_id = fields.Many2one('lob', 'Línea de negocio', readonly=True)
 
+   name = fields.Char('Nombre', readonly=True)
+   state = fields.Selection(
+      selection=[('draft', 'Borrador'), ('posted', 'Publicado'),
+                 ('cancel', 'Cancelado')],
+      string="Estado", readonly=True)
+   invoice_origin = fields.Char('Origen', readonly=True)
+
    invoide_date = fields.Date('Fecha del CFDI', readonly=True)
    categ_id = fields.Many2one('product.category', "Referencia", readonly=True)
    serie = fields.Char('Serie', readonly=True)
@@ -26,7 +33,7 @@ class LobextendReporting(models.Model):
       tools.drop_view_if_exists(self.env.cr, self._table)
       query = """
 CREATE OR REPLACE VIEW lobextend_reporting AS
-SELECT ROW_NUMBER() OVER(ORDER BY t.move_id) AS id, * FROM (SELECT am.business_line_id AS business_line_id, am.id AS move_id, am.currency_id AS currency_id, am.invoice_date AS invoide_date, 
+SELECT ROW_NUMBER() OVER(ORDER BY t.move_id) AS id, * FROM (SELECT am.name AS name, am.state AS state, am.invoice_origin AS invoice_origin, am.business_line_id AS business_line_id, am.id AS move_id, am.currency_id AS currency_id, am.invoice_date AS invoide_date, 
 pt.categ_id AS categ_id, 
 am.serie AS serie, am.folio AS folio, 
 am.partner_id AS partner_id, am.amount_untaxed AS amount_untaxed, am.amount_tax AS amount_tax, am.amount_total AS amount_total, am.amount_residual AS amount_residual 
