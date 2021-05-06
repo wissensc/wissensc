@@ -11,7 +11,7 @@ class LobextendReporting(models.Model):
    currency_id = fields.Many2one('res.currency', readonly=True)
    business_line_id = fields.Many2one('lob', 'Línea de negocio', readonly=True)
 
-   invoide_date = fields.Datetime('Fecha del CFDI', readonly=True)
+   invoide_date = fields.Date('Fecha del CFDI', readonly=True)
    categ_id = fields.Many2one('product.category', "Referencia", readonly=True)
    serie = fields.Char('Serie', readonly=True)
    folio = fields.Char('Folio', readonly=True)
