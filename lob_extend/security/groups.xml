@@ -35,6 +35,17 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
+        <record model="ir.rule" id="group_lob_rule_lobextend_reporting">
+            <field name="name">ws lob lobextend_reporting</field>
+            <field name="model_id" ref="model_lobextend_reporting"/>
+            <field name="groups" eval="[(4, ref('lob.group_lob'))]"/>
+            <field name="domain_force">['|', ('business_line_id', 'in', user.business_line_ids.mapped('id')),
+                                        ('business_line_id', '=', False)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
         <record model="ir.rule" id="group_lob_rule_res_partner">
             <field name="name">ws lob res_partner</field>
             <field name="model_id" ref="model_res_partner"/>

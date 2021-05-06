@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="lobextend_reporting_view_tree" model="ir.ui.view">
+        <field name="name">lobextend.reporting.tree</field>
+        <field name="model">lobextend.reporting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="invoide_date"/>
+                <field name="categ_id"/>
+                <field name="serie"/>
+                <field name="folio"/>
+                <field name="partner_id"/>
+                <field name="amount_untaxed"/>
+                <field name="amount_tax"/>
+                <field name="amount_total"/>
+                <field name="amount_residual"/>
+            </tree>
+        </field>
+    </record>
+    <record id="lobextend_reporting_view_graph" model="ir.ui.view">
+        <field name="name">lobextend.reporting.graph</field>
+        <field name="model">lobextend.reporting</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="invoide_date"/>
+                <field name="categ_id"/>
+            </graph>
+        </field>
+    </record>
+    <record id="lobextend_reporting_view_pivot" model="ir.ui.view">
+        <field name="name">Scale Reporting Pivot</field>
+        <field name="model">lobextend.reporting</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="invoide_date" type="row"/>
+                <field name="categ_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="lobextend_reporting_view_search" model="ir.ui.view">
+        <field name="name">lobextend.reporting.search</field>
+        <field name="model">lobextend.reporting</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="folio"/>
+                <field name="categ_id"/>
+            </search>
+        </field>
+    </record>
+    <record id="lobextend_reporting_model_action" model="ir.actions.act_window">
+        <field name="name">Reporte pendientes de pago</field>
+        <field name="res_model">lobextend.reporting</field>
+        <field name="view_mode">tree,graph,pivot</field>
+    </record>
+
+    <menuitem name="Pendientes de pago" id="lobextend_reporting_menu"
+              parent="account.menu_finance_reports" action="lobextend_reporting_model_action"/>
+</odoo>

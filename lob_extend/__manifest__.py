@@ -25,6 +25,7 @@
         'views/product_template_view.xml',
         'views/res_partner_view.xml',
         'views/mrp_production_view.xml',
+        'report/lobextend_reporting_views.xml',
         'data/lob_extend_data.xml',
     ],
     'installable': True,
