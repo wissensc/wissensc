@@ -47,8 +47,13 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
-                <filter name="estado" string="Publicados" domain="[('state', '=', 'posted')]"/>
-                <filter name="adeudo" string="Con adeudo" domain="[('amount_residual', '>', '0.0')]"/>
+                <separator/>
+                <filter name="posted" string="Publicados" domain="[('state', '=', 'posted')]"/>
+                <filter name="cancel" string="Cancelados" domain="[('state', '=', 'cancel')]"/>
+                <filter name="draft" string="Borrador" domain="[('state', '=', 'draft')]"/>
+                <separator/>
+                <filter name="adeudo" string="Con adeudo" domain="[('amount_residual', '&gt;', '0.0')]"/>
+                <filter name="sin_adeudo" string="Sin adeudo" domain="[('amount_residual', '&lt;=', '0.0')]"/>
                 <group expand="0" string="Group By">
                     <filter string="Estado" name="state"
                             context="{'group_by':'state'}"/>
@@ -56,6 +61,8 @@
                             context="{'group_by':'serie'}"/>
                     <filter string="Razón social" name="rsocial"
                             context="{'group_by':'partner_id'}"/>
+                    <filter string="Referencia" name="referencia"
+                            context="{'group_by':'categ_id'}"/>
                 </group>
             </search>
         </field>
